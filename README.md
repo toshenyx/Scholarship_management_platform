@@ -17,13 +17,11 @@ Welcome to my personal project coding log! I'm using this space to track my prog
 | 1   | 2026-06-25 |Started the design progress on figma |
 | 2   |2026-06-28  |Designed landing page,signup,signin and forgot password page.|
 | 3   | 2026-07-01 | Designed homepage,settings&profile page. |
-
 |4| 2026-07-04      |Designed scholarship page & update page|
 |||Started working on the project proposal and finished chapter 1|
 |5| 2026-07-06|Started coding and made login,signup,forgot password and landing page|
 |||Pushed code to GitHub|
 |||Started chapter 2 of the project proposal|
-
 |6|2026-07-09|Finished chapter1,2 & 3 of the proposal|
 |7|2026-07-12|Finished the landing page code and pushed it|
 |||Started working on the homepage|
