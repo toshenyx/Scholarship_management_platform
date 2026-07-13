@@ -24,7 +24,10 @@ Welcome to my personal project coding log! I'm using this space to track my prog
 |||Started chapter 2 of the project proposal|
 |6|2026-07-09|Finished chapter1,2 & 3 of the proposal|
 |7|2026-07-12|Finished the landing page code and pushed it|
-|||Started working on the homepage|
+|||Started working on the dashboard|
+|8|2026-07-13|Finished dashboard and settings page|
+|||Had a consultation session with the supervisor|
+|||Started working on the profile page|
 
 ---
 
