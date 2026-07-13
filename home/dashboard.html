@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="eng">
+   
+    <head> 
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="app">
+            <aside class="sidebar">
+                <div class="logo-box">
+                    <img src="/images/logo1.png" alt="Site logo">
+                </div>
+
+                <nav class="nav">
+                    <a href="#" class="nav-btn nav-btn--active">
+                        <span class="icon">▦</span> Dashboard
+                     </a>
+                     <a href="#" class="nav-btn">
+                         <span class="icon">🎓</span> Scholarships
+                     </a>
+                    <a href="#" class="nav-btn">
+                         <span class="icon">◔</span> Profile
+                    </a>
+                    <a href="#" class="nav-btn">
+                        <span class="icon">☰</span> Updates
+                    </a>
+                    <a href="settings.html" class="nav-btn">
+                       <span class="icon">⚙</span> Settings
+                    </a>
+                     <a href="signin/signin.html" class="nav-btn">Logout</a>
+
+                </nav>
+            </aside>
+
+            <div class="main">
+                <header class="topbar">
+                    <div class="search">
+                        <input type="text" placeholder="Search here">
+                        <button aria-label="Search">🔍</button>
+                    </div>
+
+                    <div class="topbar-right">
+                        <button class="bell" aria-label="Notifications">
+                            🔔 <span class="badge">2</span>
+                        </button>
+                        <img class="avatar" src="/images/logo1.png" alt="User avatar">
+
+                        <div class="user-info">
+                            <div class="user-name">Toshe</div>
+                            <div class="user-role">Admin</div>
+                        </div>
+                    </div>
+                </header>
+
+                <section class="card welcome-card">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Hello <strong>Toshe</strong>👋, Welcome back</p>
+                    </div>
+                    <img class="welcome-badge" src="/images/badge.png" alt="Badge">
+                </section>
+
+                <section class="card search-card">
+                    <h2>Quick university search</h2>
+
+                    <label class="field-label" for="study">What do you want to study?</label>
+                    <input id="study" type="text" placeholder="e.g. Computer Science, Nursing ...">
+
+                    <div class="filter-row">
+                        <div class="field">
+                            <label class="field-label">Country</label>
+                            <select>
+                                <option>Any Country</option>
+                                <option>Nairobi</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">Budget</label>
+                            <select>
+                                <option>Any Budget</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">Study Level</label>
+                            <select>
+                                <option>Any Level</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filter-row">
+                        <div class="field">
+                            <label class="field-label">Your qualification</label>
+                            <select>
+                                <option>Select only the ones applicable</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">Accomodation</label>
+                            <select>
+                                <option>Select Any</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="search-btn">🔍 Search Universities</button>
+                </section>
+
+                <section class="feature-grid">
+
+                    <article class="feature-card feature-card--pink">
+                        <div class="feature-head">
+                            <span class="feature-icon">📝</span>
+                            <div>
+                                <h3>Student Forum</h3>
+                                <p class="feature-sub">Anonymous Q&A</p>
+                            </div>
+                        </div>
+                        <p class="feature-body">
+                            Ask real questions, get honest answers from fellow students.<br>
+                            Discuss <strong>visas,Accomodation,applications</strong> and university life across different categories - completely anonymous.
+                        </p>
+                        <button class="feature-btn">Join community</button>
+                    </article>
+
+                    <article class="feature-card feature-card--blue">
+                       <div class="feature-head">
+                             <span class="feature-icon">🎓</span>
+                             <div>
+                                 <h3>Scholarship Filtering</h3>
+                                 <p class="feature-sub">Eligibility wizard</p>
+                             </div>
+                       </div>
+                       <p class="feature-body">
+                        Get personalized scholarship recommendations.
+                       </p>
+                       <button class="feature-btn">View filtered options</button>
+                    </article>
+ 
+                    <article class="feature-card feature-card--green">
+                        <div class="feature-head">
+                              <span class="feature-icon">📄</span>
+                            <div>
+                                <h3>PDF Export</h3>
+                                 <p class="feature-sub">Branded shortlist report</p>
+                            </div>
+                        </div>
+                        <p class="feature-body">
+                            Shortlist universities, compare them side-by-side across 8
+                            criteria, then download a branded PDF to share with parents
+                            or your school counsellor — one click.
+                        </p>
+                        <button class="feature-btn">Build and export</button>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
