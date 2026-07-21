@@ -1,4 +1,4 @@
-/* ---------- Base ---------- */
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ body {
   color: #1a1a1a;
 }
 
-/* ---------- Navbar ---------- */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -55,7 +55,7 @@ body {
   color: #e8543c;
 }
 
-/* ---------- Hero ---------- */
+
 .hero {
   padding: 60px 80px 100px;
 }
@@ -95,7 +95,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ---------- Mission / Vision ---------- */
+
 .mission-vision {
   display: flex;
   gap: 40px;
@@ -126,7 +126,7 @@ body {
   color: #1a1a1a;
 }
 
-/* ---------- Info Section (About / Offer / Values) ---------- */
+
 .info-section {
   display: flex;
   gap: 20px;
@@ -172,7 +172,7 @@ body {
   color: #1a1a1a;
 }
 
-/* ---------- Footer / Inquiries Section ---------- */
+
 .inquiries-section {
   padding: 40px 80px 100px;
 }
@@ -212,7 +212,7 @@ body {
   color: #1a1a1a;
 }
 
-/* ---------- Responsive ---------- */
+
 @media (max-width: 768px) {
   .navbar {
     padding: 20px 24px;

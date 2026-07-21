@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post Scholarship — Complete Registration</title>
+<link rel="stylesheet" href="/home/style.css">
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+      <div class="logo-box">
+        <img src="/images/logo1.png" alt="Site logo">
+      </div>
+
+      <nav class="nav">
+        <a href="/home/dashboard.html" class="nav-btn">
+          <span class="icon">▦</span> Dashboard
+        </a>
+        <a href="#" class="nav-btn">
+          <span class="icon">🎓</span> Scholarships
+        </a>
+        <a href="#" class="nav-btn nav-btn--active">
+          <span class="icon">◔</span> Profile
+        </a>
+        <a href="#" class="nav-btn">
+          <span class="icon">☰</span> Updates
+        </a>
+        <a href="#" class="nav-btn">
+          <span class="icon">⚙</span> Settings
+        </a>
+        <a href="/signin/signin.html" class="nav-btn">Logout</a>
+      </nav>
+    </aside>
+
+  <!-- Main content -->
+  <main class="main">
+    <div class="panel">
+      <div class="breadcrumb">
+        <span class="dim-crumb">Post scholarship</span>
+        <span class="divider"></span>
+        <span class="active-crumb">Complete registration</span>
+      </div>
+
+      <div class="steps">
+        <div class="step current">
+          <div class="step-number">1</div>
+          <div>
+            <div class="step-title link">Personal Information</div>
+            <div class="step-sub">Fill in your full personal details</div>
+          </div>
+        </div>
+        <div class="step-sep"></div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <div class="step-title dim">Educational Information</div>
+            <div class="step-sub">Education,languages,skills</div>
+          </div>
+        </div>
+        <div class="step-sep"></div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <div class="step-title dim">Scholarship filtering preferences</div>
+            <div class="step-sub">Scholarship data</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-area">
+        <h2 class="form-heading">Personal Information</h2>
+
+        <div class="col-left">
+          <div class="field">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname">
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="text" id="email" name="email">
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+254 *********">
+          </div>
+          <div class="field">
+            <label for="dob">Date of birth</label>
+            <input type="date" id="dob" name="dob">
+          </div>
+          <div class="field">
+            <label for="gender">Gender<span class="optional">(optional)</span></label>
+            <input type="text" id="gender" name="gender">
+          </div>
+        </div>
+
+        <div class="col-right">
+          <div class="field">
+            <label for="nationality">Nationality</label>
+            <select id="nationality" name="nationality">
+              <option>Select One</option>
+              <option>Kenyan</option>
+              <option>Ugandan</option>
+              <option>Tanzanian</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="residence">Country of residence</label>
+            <select id="residence" name="residence">
+              <option>Select One</option>
+              <option>Kenya</option>
+              <option>Uganda</option>
+              <option>Tanzania</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="skills">Skills</label>
+            <input type="text" id="skills" name="skills">
+          </div>
+          <div class="field">
+            <label for="workexp">Work experience</label>
+            <input type="text" id="workexp" name="workexp">
+          </div>
+          <div class="field">
+            <label for="achievements">Achievements/ Extracurricular activities</label>
+            <input type="text" id="achievements" name="achievements">
+          </div>
+        </div>
+
+        <div class="notes-col">
+          <label for="notes">Anything you want to add(optional)</label>
+          <textarea id="notes" name="notes" placeholder="Any......"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="next-btn">Next</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

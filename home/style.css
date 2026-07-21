@@ -1,8 +1,8 @@
-/* default page spacing */
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* padding/border are now INCLUDED in an element's width, not added on top */
+  box-sizing: border-box; 
 }
 
 body {
@@ -11,9 +11,9 @@ body {
   color: #333;
 }
 
-/* OVERALL LAYOUT  */
+
 .app {
-  display: flex;          /* sidebar + main, side by side */
+  display: flex;          
   gap: 24px;
   max-width: 1600px;
   margin: 0 auto;
@@ -21,14 +21,13 @@ body {
 }
 
 .main {
-  flex: 1;                /* main area takes up all remaining space */
+  flex: 1;                
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-/* A reusable "card" look, shared by the welcome banner, search box,
-   and (via extra classes) the feature tiles. Define it once, reuse everywhere. */
+
 .card {
   background: #fff;
   border-radius: 12px;
@@ -67,7 +66,7 @@ body {
   text-decoration: none;
   font-weight: 700;
   font-size: 1.1rem;
-  transition: background 0.15s ease; /* smooth hover, not instant snap */
+  transition: background 0.15s ease; 
 }
 
 .nav-btn:hover {
@@ -309,176 +308,7 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* ---------- 8. SETTINGS PAGE ---------- */
-.settings-card {
-  display: flex;
-  flex-direction: column;
-}
 
-.settings-heading {
-  color: #1a2b4c;
-  font-size: 1.05rem;
-  margin-bottom: 16px;
-}
-
-.settings-heading--spaced {
-  margin-top: 32px;
-}
-
-.settings-subheading {
-  color: #1a2b4c;
-  font-size: 0.95rem;
-  margin: 28px 0 16px;
-}
-
-/* --- form fields (current/new/confirm password) --- */
-.form-group {
-  max-width: 520px;
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #333;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 14px 18px;
-  border: 1px solid #cfd6e4;
-  border-radius: 8px;
-  font-size: 0.95rem;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid #e4e8f0;
-  margin: 32px 0 20px;
-}
-
-.card-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-.btn {
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid transparent;
-}
-
-.btn--ghost {
-  background: #fff;
-  border-color: #cfd6e4;
-  color: #333;
-}
-
-.btn--ghost:hover {
-  background: #f4f6fa;
-}
-
-.btn--primary {
-  background: #2f6fed;
-  color: #fff;
-}
-
-.btn--primary:hover {
-  background: #2559c7;
-}
-
-/* the Notifications card's save button is a darker navy in the design */
-.btn--dark {
-  background: #1a2b6b;
-}
-
-.btn--dark:hover {
-  background: #14225a;
-}
-
-/* --- toggle switch --- */
-.toggle-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.95rem;
-  color: #333;
-  cursor: pointer;
-  width: fit-content;      /* so the click target doesn't stretch across the whole row */
-}
-
-.toggle {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-/* Hide the real checkbox but keep it in the layout and accessible to
-   keyboard/screen readers — this is why we use opacity, not display:none. */
-.toggle input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.toggle-track {
-  position: absolute;
-  inset: 0;               /* shorthand for top/right/bottom/left: 0 */
-  background: #d7dce5;
-  border-radius: 999px;
-  transition: background 0.2s ease;
-}
-
-/* the sliding circle knob, drawn with a pseudo-element so we don't need extra markup */
-.toggle-track::before {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  left: 3px;
-  top: 3px;
-  background: #fff;
-  border-radius: 50%;
-  transition: transform 0.2s ease;
-}
-
-
-.toggle input:checked + .toggle-track {
-  background: #2f6fed;
-}
-
-.toggle input:checked + .toggle-track::before {
-  transform: translateX(20px);
-}
-
-/* visible focus outline for keyboard users tabbing to the toggle */
-.toggle input:focus-visible + .toggle-track {
-  outline: 2px solid #2f6fed;
-  outline-offset: 2px;
-}
-
-.notifications-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 8px;
-}
-
-.toggle-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 32px;
-}
-
-/* responsive sidebar for smaller screeens */
 @media (max-width: 900px) {
   .app {
     flex-direction: column;
