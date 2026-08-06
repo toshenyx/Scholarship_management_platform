@@ -28,6 +28,8 @@ Welcome to my personal project coding log! I'm using this space to track my prog
 |8|2026-07-13|Finished dashboard and settings page|
 |||Had a consultation session with the supervisor|
 |||Started working on the profile page|
+|||Been on a procrastination spell😭😭.Tough times|
+|9|2026-08-06|Finished up on all html and css, yayyy🌸🥱,work on button colors later during testing.|
 
 ---
 
