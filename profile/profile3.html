@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Scholarship — Scholarship Filtering Preferences</title>
+  <link rel="stylesheet" href="../home/style.css">
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="logo-box">
+      <img src="../images/logo1.png" alt="Site logo">
+    </div>
+
+    <nav class="nav">
+      <a href="../home/dashboard.html" class="nav-btn">
+        <span class="icon">▦</span> Dashboard
+      </a>
+      <a href="../home/scholarships.html" class="nav-btn">
+        <span class="icon">🎓</span> Scholarships
+      </a>
+      <a href="../profile/profile1.html" class="nav-btn nav-btn--active">
+        <span class="icon">◔</span> Profile
+      </a>
+      <a href="../home/updates.html" class="nav-btn">
+        <span class="icon">☰</span> Updates
+      </a>
+      <a href="../home/settings.html" class="nav-btn">
+        <span class="icon">⚙</span> Settings
+      </a>
+      <a href="../signin/signin.html" class="nav-btn">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="panel">
+      <div class="breadcrumb">
+        <span class="active-crumb">Complete registration</span>
+      </div>
+
+      <div class="steps">
+        <div class="step done">
+          <div class="step-number">1</div>
+          <div>
+            <div class="step-title link">Personal Information</div>
+            <div class="step-sub">Fill in your full personal details</div>
+          </div>
+        </div>
+        <div class="step-sep"></div>
+        <div class="step done">
+          <div class="step-number">2</div>
+          <div>
+            <div class="step-title link">Educational Information</div>
+            <div class="step-sub">Education,languages,skills</div>
+          </div>
+        </div>
+        <div class="step-sep"></div>
+        <div class="step current">
+          <div class="step-number">3</div>
+          <div>
+            <div class="step-title link">Scholarship filtering preferences</div>
+            <div class="step-sub">Scholarship data</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-area form-area--scholarships">
+        <h2 class="form-heading">Scholarships</h2>
+
+       
+        <div class="section-box scholarship-box">
+          <div class="scholarship-grid">
+
+            
+            <div class="scholarship-col">
+
+              <div class="field">
+                <label for="pref">Scholarship preference</label>
+
+                <div class="multiselect">
+                  <button type="button" class="multiselect-trigger" id="pref">
+                    <span class="multiselect-placeholder">Select preferences</span>
+                    <span class="multiselect-arrow">▾</span>
+                  </button>
+
+                  <div class="multiselect-panel">
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="preference" value="fully-funded">
+                      Fully funded
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="preference" value="partial-funding">
+                      Partial funding
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="preference" value="tuition-only">
+                      Tuition funding only
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <fieldset class="radio-field">
+                <legend>Work study</legend>
+                <label class="radio-option">
+                  Yes <input type="radio" name="work-study" value="yes">
+                </label>
+                <label class="radio-option">
+                  No <input type="radio" name="work-study" value="no">
+                </label>
+              </fieldset>
+
+              <fieldset class="radio-field">
+                <legend>Would you want Research grants</legend>
+                <label class="radio-option">
+                  Yes <input type="radio" name="research-grants" value="yes">
+                </label>
+                <label class="radio-option">
+                  No <input type="radio" name="research-grants" value="no">
+                </label>
+              </fieldset>
+
+              <fieldset class="radio-field">
+                <legend>Are you interested in short courses</legend>
+                <label class="radio-option">
+                  Yes <input type="radio" name="short-courses" value="yes">
+                </label>
+                <label class="radio-option">
+                  No <input type="radio" name="short-courses" value="no">
+                </label>
+            
+              </fieldset>
+
+            </div>
+
+        
+            <div class="scholarship-col">
+
+              <fieldset class="radio-field">
+                <legend>Are you interested in exchange programmes?</legend>
+                <label class="radio-option">
+                  Yes <input type="radio" name="exchange-programmes" value="yes">
+                </label>
+                <label class="radio-option">
+                  No <input type="radio" name="exchange-programmes" value="no">
+                </label>
+              </fieldset>
+
+              <fieldset class="radio-field">
+                <legend>Should the scholarship provide a living stipend?</legend>
+                <label class="radio-option">
+                  Yes <input type="radio" name="living-stipend" value="yes">
+                </label>
+                <label class="radio-option">
+                  No <input type="radio" name="living-stipend" value="no">
+                </label>
+              </fieldset>
+
+              <div class="field">
+                <label for="other-requirements">
+                  Other requirements<span class="optional">(optional)</span>
+                </label>
+                <textarea id="other-requirements" name="other-requirements"></textarea>
+              </div>
+
+              <div class="save-row">
+                <button type="button" class="save-btn">SAVE</button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="complete-btn">Complete registration</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Updates</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="logo-box">
+        <img src="../images/logo1.png" alt="Site logo">
+      </div>
+
+      <nav class="nav">
+        <a href="dashboard.html" class="nav-btn">
+          <span class="icon">▦</span> Dashboard
+        </a>
+        <a href="scholarships.html" class="nav-btn">
+          <span class="icon">🎓</span> Scholarships
+        </a>
+        <a href="../profile/profile1.html" class="nav-btn">
+          <span class="icon">◔</span> Profile
+        </a>
+        <a href="updates.html" class="nav-btn nav-btn--active">
+          <span class="icon">☰</span> Updates
+        </a>
+        <a href="settings.html" class="nav-btn">
+          <span class="icon">⚙</span> Settings
+        </a>
+        <a href="../signin/signin.html" class="nav-btn">Logout</a>
+      </nav>
+    </aside>
+
+    
+    <div class="main">
+
+      
+      <header class="topbar">
+        <div class="search">
+          <input type="text" placeholder="Search here">
+          <button aria-label="Search">🔍</button>
+        </div>
+
+        <div class="topbar-right">
+          <button class="bell" aria-label="Notifications">
+            🔔 <span class="badge">1</span>
+          </button>
+          <img class="avatar" src="../images/logo1.png" alt="User avatar">
+          <div class="user-info">
+            <div class="user-name">Toshe Sample</div>
+            <div class="user-role">Admin</div>
+          </div>
+        </div>
+      </header>
+
+      
+      <section class="card updates-card">
+
+        <div class="updates-header">
+          <h2 class="updates-title">Updates</h2>
+          <a href="#" class="shortlist-link">
+            <span class="heart-icon" aria-hidden="true">♥</span>
+            Shortlist/saved
+          </a>
+        </div>
+
+        <div class="update-list">
+
+          <article class="update-card">
+            <h3 class="update-title">Harvard University application</h3>
+            <p class="update-text">Your application has been received and is being processed.</p>
+            <div class="update-actions">
+              <a href="#" class="update-btn">Open application platform</a>
+            </div>
+          </article>
+
+          <article class="update-card">
+            <h3 class="update-title">University of Iowa application update</h3>
+            <p class="update-text">Your application has been received and is being processed.</p>
+            <div class="update-actions">
+              <a href="#" class="update-btn">Open application platform</a>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+</body>
+</html>

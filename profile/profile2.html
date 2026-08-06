@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Post Scholarship — Educational Information</title>
+  <link rel="stylesheet" href="../home/style.css">
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="logo-box">
+      <img src="/images/logo1.png" alt="Site logo">
+    </div>
+
+    <nav class="nav">
+      <a href="../home/dashboard.html" class="nav-btn">
+        <span class="icon">▦</span> Dashboard
+      </a>
+      <a href="../home/scholarships.html" class="nav-btn">
+        <span class="icon">🎓</span> Scholarships
+      </a>
+      <a href="../profile/profile1.html" class="nav-btn nav-btn--active">
+        <span class="icon">◔</span> Profile
+      </a>
+      <a href="../home/updates.html" class="nav-btn">
+        <span class="icon">☰</span> Updates
+      </a>
+      <a href="../home/settings.html" class="nav-btn">
+        <span class="icon">⚙</span> Settings
+      </a>
+      <a href="../signin/signin.html" class="nav-btn">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="panel">
+      <div class="breadcrumb">
+        <span class="active-crumb">Complete registration</span>
+      </div>
+
+      <div class="steps">
+        <div class="step done">
+          <div class="step-number">1</div>
+          <div>
+            <div class="step-title link">Personal Information</div>
+            <div class="step-sub">Fill in your full personal details</div>
+          </div>
+        </div>
+        <div class="step-sep"></div>
+        <div class="step current">
+          <div class="step-number">2</div>
+          <div>
+            <div class="step-title link">Educational Information</div>
+            <div class="step-sub">Education,languages,skills</div>
+          </div>
+        </div>
+        <div class="step-sep"></div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <div class="step-title dim">Scholarship filtering preferences</div>
+            <div class="step-sub">Scholarship data</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-area form-area--education">
+        <h2 class="form-heading">Education</h2>
+
+        
+        <div class="section-box edu-box">
+          <div class="section-grid">
+            <div class="field">
+              <label for="edu-level">Current education level</label>
+              <select id="edu-level" name="edu-level">
+                <option>Select One</option>
+                <option>High School</option>
+                <option>Undergraduate</option>
+                <option>Postgraduate</option>
+                <option>PhD</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="grad-year">Expected year of graduation</label>
+              <input type="text" id="grad-year" name="grad-year">
+            </div>
+
+            <div class="field">
+              <label for="institution">Institution of study</label>
+              <input type="text" id="institution" name="institution">
+            </div>
+            <div class="field">
+              <label for="gpa">Current GPA/CGPA</label>
+              <input type="text" id="gpa" name="gpa">
+            </div>
+
+            <div class="field">
+              <label for="course">Course /major of study</label>
+              <input type="text" id="course" name="course">
+            </div>
+            <div class="field">
+              <label for="achievements">Academic achievements</label>
+              <input type="text" id="achievements" name="achievements">
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="section-box upload-box-wrap">
+          <h3 class="section-title">Upload docx</h3>
+
+          <label class="upload-item">
+            <input type="file" name="transcript" hidden>
+            <span class="upload-text">
+              Academic transcript<br>pdf/docx
+            </span>
+            <span class="upload-icon">📄</span>
+          </label>
+
+          <label class="upload-item">
+            <input type="file" name="certificate" hidden>
+            <span class="upload-text">
+              Graduation certificate<br>or<br>certificate of completion
+            </span>
+            <span class="upload-icon">📄</span>
+          </label>
+        </div>
+
+        
+        <div class="section-box languages-box">
+          <h3 class="section-title">Languages and skills</h3>
+
+          <div class="languages-grid">
+            <div class="field">
+              <label for="languages">Languages spoken</label>
+              <select id="languages" name="languages">
+                <option>Select .....</option>
+                <option>English</option>
+                <option>Swahili</option>
+                <option>French</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="skills">Skills</label>
+              <select id="skills" name="skills">
+                <option>Select .....</option>
+                <option>Research</option>
+                <option>Leadership</option>
+                <option>Programming</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field field--proficiency">
+              <label>English proficiency test<span class="optional">(if applicable)</span></label>
+              <div class="proficiency-row">
+                <input type="text" placeholder="IELTS Score" name="ielts"><br><br>
+                <input type="text" placeholder="TOEFL Score" name="toefl">
+              </div>
+            </div>
+
+            <div class="field field--other-langs">
+              <label for="other-langs" class="sr-only">Any other languages / certifications</label>
+              <input type="text" placeholder="Enter if any..." name="ielts">
+            </div>
+          </div><br><br>
+
+          <div class="save-row">
+            <button type="button" class="save-btn">SAVE</button>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a href="profile3.html" class="next-btn">Next</a>
+        </div>
+        
+      </form>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

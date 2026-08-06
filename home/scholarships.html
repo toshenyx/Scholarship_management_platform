@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarships</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    
+    <aside class="sidebar">
+      <div class="logo-box">
+        <img src="../images/logo1.png" alt="Site logo">
+      </div>
+
+      <nav class="nav">
+        <a href="dashboard.html" class="nav-btn">
+          <span class="icon">▦</span> Dashboard
+        </a>
+        <a href="scholarships.html" class="nav-btn nav-btn--active">
+          <span class="icon">🎓</span> Scholarships
+        </a>
+        <a href="../profile/profile1.html" class="nav-btn">
+          <span class="icon">◔</span> Profile
+        </a>
+        <a href="updates.html" class="nav-btn">
+          <span class="icon">☰</span> Updates
+        </a>
+        <a href="settings.html" class="nav-btn">
+          <span class="icon">⚙</span> Settings
+        </a>
+        <a href="../signin/signin.html" class="nav-btn">Logout</a>
+      </nav>
+    </aside>
+
+   
+    <div class="main">
+
+      
+      <header class="topbar">
+        <div class="search">
+          <input type="text" placeholder="Search here">
+          <button aria-label="Search">🔍</button>
+        </div>
+
+        <div class="topbar-right">
+          <button class="bell" aria-label="Notifications">
+            🔔 <span class="badge">2</span>
+          </button>
+          <img class="avatar" src="../images/logo1.png" alt="User avatar">
+          <div class="user-info">
+            <div class="user-name">Toshe Sample</div>
+            <div class="user-role">Admin</div>
+          </div>
+        </div>
+      </header>
+
+     
+      <section class="card scholarships-card">
+
+       
+        <div class="section-box search-filter-box">
+          <h2 class="section-title search-filter-title">Search &amp; filter</h2>
+
+          <div class="scholarship-search">
+            <span class="scholarship-search-icon" aria-hidden="true">🔍</span>
+            <input type="text" placeholder="Search scholarships">
+          </div>
+
+          <div class="destination-row">
+            <label for="destination">Study destination</label>
+            <select id="destination" name="destination">
+              <option>Any country</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Canada</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <h3 class="award-type-heading">Award type</h3>
+
+          <div class="pill-group">
+            <button type="button" class="pill-btn pill-btn--active">All</button>
+            <button type="button" class="pill-btn">Full</button>
+            <button type="button" class="pill-btn">Partial</button>
+            <button type="button" class="pill-btn">Govt</button>
+          </div>
+          <div class="pill-group">
+            <button type="button" class="pill-btn">Merit</button>
+            <button type="button" class="pill-btn">NeedBased</button>
+            <button type="button" class="pill-btn">Auto</button>
+          </div>
+
+          <h3 class="options-heading">Options</h3>
+
+          <div class="options-grid">
+            <label class="option-checkbox">
+              <input type="checkbox" name="full-scholarships-only">
+              Full scholarships only
+            </label>
+            <label class="option-checkbox">
+              <input type="checkbox" name="renewable-awards">
+              Renewable awards
+            </label>
+            <label class="option-checkbox">
+              <input type="checkbox" name="international-students">
+              International Students
+            </label>
+            <label class="option-checkbox">
+              <input type="checkbox" name="exchange-programs">
+              Exchange programs
+            </label>
+          </div>
+        </div>
+
+        
+        <div class="results-grid">
+
+          <article class="result-card">
+            <div class="result-header">
+              <span class="result-icon" aria-hidden="true">🎓</span>
+              <h3 class="result-title">Harvard University</h3>
+            </div>
+
+            <div class="result-body">
+              <p class="result-subtitle">Full scholarship</p>
+              <p class="result-text">
+                It extends to international students. Families earning under $85k pay nothing.
+              </p>
+
+              <div class="eligibility-note">
+                <p class="eligibility-note-title">Eligibility</p>
+                <p class="eligibility-note-text">
+                  Admission to Harvard, financial need demonstration, excellent academic record.
+                </p>
+              </div>
+            </div>
+
+            <div class="result-footer">
+              Deadline: January each year
+            </div>
+          </article>
+
+          <article class="result-card">
+            <div class="result-header">
+              <span class="result-icon" aria-hidden="true">🎓</span>
+              <h3 class="result-title">University of Iowa</h3>
+            </div>
+
+            <div class="result-body">
+              <p class="result-subtitle">Full scholarship</p>
+              <p class="result-text">
+                It extends to international students. Families earning under $85k pay nothing.
+              </p>
+
+              <div class="eligibility-note">
+                <p class="eligibility-note-title">Eligibility</p>
+                <p class="eligibility-note-text">
+                  Admission to University of Iowa, financial need demonstration, excellent academic record.
+                </p>
+              </div>
+            </div>
+
+            <div class="result-footer">
+              Deadline: January each year
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+</body>
+</html>
