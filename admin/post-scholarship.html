@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Post Scholarship - Scholarly
+</title>
+
+<link
+    rel="stylesheet"
+    href="admin.css"
+>
+
+</head>
+
+
+<body data-page="post">
+
+<div class="admin-app">
+
+
+<aside class="admin-sidebar">
+
+<div class="admin-logo">
+
+<img
+src="../images/logo1.png"
+alt="Scholarly"
+>
+
+<span>scholarly</span>
+
+</div>
+
+<div class="admin-label">
+ADMIN PORTAL
+</div>
+
+
+<nav class="admin-nav">
+
+<a href="dashboard.html">
+▦ Dashboard
+</a>
+
+<a href="scholarships.html">
+🎓 Scholarships
+</a>
+
+<a href="pending.html">
+◷ Pending Reviews
+</a>
+
+<a href="users.html">
+👥 Users
+</a>
+
+<a
+href="post-scholarship.html"
+class="active"
+>
+＋ Post Scholarship
+</a>
+
+<a href="reports.html">
+▤ Reports
+</a>
+
+<a href="settings.html">
+⚙ Settings
+</a>
+
+<a
+href="../backend/logout.php"
+class="logout"
+>
+↪ Logout
+</a>
+
+</nav>
+
+</aside>
+
+
+
+<main class="admin-main">
+
+
+<header class="admin-header">
+
+<div>
+
+<h1>
+Post Scholarship
+</h1>
+
+<p>
+Scholarships posted by an administrator
+are approved immediately.
+</p>
+
+</div>
+
+</header>
+
+
+<section class="admin-card">
+
+
+<form
+class="admin-form"
+action="../backend/post_scholarship.php"
+method="POST"
+>
+
+
+<div class="form-group">
+
+<label>
+Scholarship Title
+</label>
+
+<input
+type="text"
+name="title"
+required
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Provider
+</label>
+
+<input
+type="text"
+name="provider"
+required
+>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<label>
+Application Link
+</label>
+
+<input
+type="url"
+name="application_link"
+placeholder="https://..."
+required
+>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<label>
+Description
+</label>
+
+<textarea
+name="description"
+></textarea>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Education Level
+</label>
+
+<input
+type="text"
+name="education_level"
+placeholder="Bachelor, Master, PhD"
+required
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Eligible Courses
+</label>
+
+<input
+type="text"
+name="eligible_courses"
+placeholder="Computer Science, IT..."
+required
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Minimum GPA
+</label>
+
+<input
+type="number"
+name="minimum_gpa"
+step="0.01"
+min="0"
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Eligible Nationalities
+</label>
+
+<input
+type="text"
+name="eligible_nationalities"
+placeholder="International Students"
+required
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Age Limit
+</label>
+
+<input
+type="number"
+name="age_limit"
+min="0"
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+IELTS Required?
+</label>
+
+<select name="ielts_required">
+
+<option value="0">
+No
+</option>
+
+<option value="1">
+Yes
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Funding Type
+</label>
+
+<select
+name="funding_type"
+required
+>
+
+<option value="">
+Select funding
+</option>
+
+<option value="fully_funded">
+Fully Funded
+</option>
+
+<option value="partially_funded">
+Partially Funded
+</option>
+
+<option value="tuition_only">
+Tuition Only
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Country
+</label>
+
+<input
+type="text"
+name="country"
+required
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+University
+</label>
+
+<input
+type="text"
+name="university"
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Duration
+</label>
+
+<input
+type="text"
+name="duration"
+placeholder="4 Years"
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Deadline
+</label>
+
+<input
+type="date"
+name="deadline"
+required
+>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<label>
+Scholarship Benefits
+</label>
+
+
+<div class="checkbox-group">
+
+<label>
+<input
+type="checkbox"
+name="benefits[]"
+value="tuition"
+>
+Tuition
+</label>
+
+
+<label>
+<input
+type="checkbox"
+name="benefits[]"
+value="accommodation"
+>
+Accommodation
+</label>
+
+
+<label>
+<input
+type="checkbox"
+name="benefits[]"
+value="monthly_stipend"
+>
+Monthly Stipend
+</label>
+
+
+<label>
+<input
+type="checkbox"
+name="benefits[]"
+value="airfare"
+>
+Airfare
+</label>
+
+
+<label>
+<input
+type="checkbox"
+name="benefits[]"
+value="medical_insurance"
+>
+Medical Insurance
+</label>
+
+
+<label>
+<input
+type="checkbox"
+name="benefits[]"
+value="books_allowance"
+>
+Books Allowance
+</label>
+
+</div>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<button
+type="submit"
+class="btn btn-primary"
+>
+Publish Scholarship
+</button>
+
+</div>
+
+
+</form>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script
+src="admin.js"
+defer
+></script>
+
+</body>
+</html>

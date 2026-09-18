@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Admin Settings - Scholarly
+</title>
+
+<link
+rel="stylesheet"
+href="admin.css"
+>
+
+</head>
+
+
+<body data-page="settings">
+
+<div class="admin-app">
+
+
+<aside class="admin-sidebar">
+
+<div class="admin-logo">
+
+<img
+src="../images/logo1.png"
+alt="Scholarly"
+>
+
+<span>scholarly</span>
+
+</div>
+
+<div class="admin-label">
+ADMIN PORTAL
+</div>
+
+
+<nav class="admin-nav">
+
+<a href="dashboard.html">
+▦ Dashboard
+</a>
+
+<a href="scholarships.html">
+🎓 Scholarships
+</a>
+
+<a href="pending.html">
+◷ Pending Reviews
+</a>
+
+<a href="users.html">
+👥 Users
+</a>
+
+<a href="post-scholarship.html">
+＋ Post Scholarship
+</a>
+
+<a href="reports.html">
+▤ Reports
+</a>
+
+<a
+href="settings.html"
+class="active"
+>
+⚙ Settings
+</a>
+
+<a
+href="../backend/logout.php"
+class="logout"
+>
+↪ Logout
+</a>
+
+</nav>
+
+</aside>
+
+
+
+<main class="admin-main">
+
+
+<header class="admin-header">
+
+<div>
+
+<h1>
+Admin Settings
+</h1>
+
+<p>
+Manage your administrator account.
+</p>
+
+</div>
+
+</header>
+
+
+
+<div
+id="admin-message"
+class="admin-message"
+></div>
+
+
+<section class="admin-card">
+
+<h2 class="card-title">
+Change Password
+</h2>
+
+
+<form
+id="admin-password-form"
+class="admin-form"
+>
+
+
+<div class="form-group full">
+
+<label for="current-password">
+Current Password
+</label>
+
+<input
+id="current-password"
+type="password"
+required
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="new-password">
+New Password
+</label>
+
+<input
+id="new-password"
+type="password"
+minlength="8"
+required
+>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="confirm-password">
+Confirm New Password
+</label>
+
+<input
+id="confirm-password"
+type="password"
+minlength="8"
+required
+>
+
+</div>
+
+
+
+<div class="form-group full">
+
+<button
+type="submit"
+class="btn btn-primary"
+>
+Change Password
+</button>
+
+</div>
+
+
+</form>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script
+src="admin.js"
+defer
+></script>
+
+</body>
+</html>

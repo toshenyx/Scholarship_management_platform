@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Scholarship Report
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="report.css"
+    >
+
+</head>
+
+
+<body class="report-page">
+
+    <!-- =====================================================
+         SCREEN TOOLBAR
+    ====================================================== -->
+
+    <div class="report-toolbar no-print">
+
+        <div>
+
+            <a
+                href="dashboard.html"
+                class="report-back-btn"
+            >
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+
+        <div class="report-toolbar-actions">
+
+            <button
+                type="button"
+                id="refresh-report-btn"
+                class="report-secondary-btn"
+            >
+                Refresh Report
+            </button>
+
+            <button
+                type="button"
+                id="print-report-btn"
+                class="report-primary-btn"
+            >
+                Download / Save as PDF
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         LOADING / ERROR
+    ====================================================== -->
+
+    <div
+        id="report-status"
+        class="report-status no-print"
+    >
+        Building your scholarship report...
+    </div>
+
+
+    <!-- =====================================================
+         REPORT
+    ====================================================== -->
+
+    <main
+        id="scholarship-report"
+        class="scholarship-report"
+        hidden
+    >
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="report-header">
+
+            <div class="report-brand">
+
+                <h1>
+                    Scholarship Matching Portal
+                </h1>
+
+                <p>
+                    Personalized Scholarship Report
+                </p>
+
+            </div>
+
+
+            <div class="report-generated">
+
+                <span>
+                    Report generated
+                </span>
+
+                <strong
+                    id="report-generated-date"
+                >
+                    —
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <div class="report-divider"></div>
+
+
+        <!-- =================================================
+             STUDENT
+        ================================================== -->
+
+        <section class="report-section">
+
+            <div class="report-section-heading">
+
+                <div>
+
+                    <span class="report-section-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Student Profile
+                    </h2>
+
+                </div>
+
+                <p>
+                    Information used to personalize
+                    this scholarship report.
+                </p>
+
+            </div>
+
+
+            <div
+                id="report-profile-grid"
+                class="report-profile-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             SUMMARY
+        ================================================== -->
+
+        <section class="report-section">
+
+            <div class="report-section-heading">
+
+                <div>
+
+                    <span class="report-section-number">
+                        02
+                    </span>
+
+                    <h2>
+                        Report Summary
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-summary-grid">
+
+                <article class="report-stat-card">
+
+                    <span
+                        id="report-match-count"
+                        class="report-stat-number"
+                    >
+                        0
+                    </span>
+
+                    <span class="report-stat-label">
+                        Personalized Matches
+                    </span>
+
+                </article>
+
+
+                <article class="report-stat-card">
+
+                    <span
+                        id="report-saved-count"
+                        class="report-stat-number"
+                    >
+                        0
+                    </span>
+
+                    <span class="report-stat-label">
+                        Saved Scholarships
+                    </span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECOMMENDATIONS
+        ================================================== -->
+
+        <section class="report-section">
+
+            <div class="report-section-heading">
+
+                <div>
+
+                    <span class="report-section-number">
+                        03
+                    </span>
+
+                    <h2>
+                        Personalized Scholarship Matches
+                    </h2>
+
+                </div>
+
+                <p>
+                    Scholarships ranked using your
+                    education, field, GPA, nationality
+                    and funding preference.
+                </p>
+
+            </div>
+
+
+            <div
+                id="report-recommendations"
+                class="report-scholarship-list"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             SAVED
+        ================================================== -->
+
+        <section class="report-section">
+
+            <div class="report-section-heading">
+
+                <div>
+
+                    <span class="report-section-number">
+                        04
+                    </span>
+
+                    <h2>
+                        Saved Scholarships
+                    </h2>
+
+                </div>
+
+                <p>
+                    Scholarships you have added to
+                    your shortlist.
+                </p>
+
+            </div>
+
+
+            <div
+                id="report-saved-scholarships"
+                class="report-scholarship-list"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             DISCLAIMER
+        ================================================== -->
+
+        <section
+            class="report-section report-disclaimer"
+        >
+
+            <h2>
+                Important Notice
+            </h2>
+
+            <p>
+                Scholarship match scores indicate how
+                closely the information provided in your
+                student profile aligns with the eligibility
+                information currently stored in the
+                Scholarship Matching Portal.
+            </p>
+
+            <p>
+                A match score does not guarantee admission,
+                funding, shortlisting or selection. Scholarship
+                requirements may change. Applicants should
+                always verify current eligibility requirements,
+                deadlines and application instructions with
+                the official scholarship provider before
+                applying.
+            </p>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="report-footer">
+
+            <span>
+                Scholarship Matching Portal
+            </span>
+
+            <span>
+                Personalized Scholarship Report
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script
+        src="report.js"
+        defer
+    ></script>
+
+</body>
+
+</html>

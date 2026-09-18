@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Users - Scholarly
+</title>
+
+<link
+    rel="stylesheet"
+    href="admin.css"
+>
+
+</head>
+
+
+<body data-page="users">
+
+<div class="admin-app">
+
+
+<aside class="admin-sidebar">
+
+<div class="admin-logo">
+
+<img
+    src="../images/logo1.png"
+    alt="Scholarly"
+>
+
+<span>scholarly</span>
+
+</div>
+
+
+<div class="admin-label">
+ADMIN PORTAL
+</div>
+
+
+<nav class="admin-nav">
+
+<a href="dashboard.html">
+▦ Dashboard
+</a>
+
+<a href="scholarships.html">
+🎓 Scholarships
+</a>
+
+<a href="pending.html">
+◷ Pending Reviews
+</a>
+
+<a
+    href="users.html"
+    class="active"
+>
+👥 Users
+</a>
+
+<a href="post-scholarship.html">
+＋ Post Scholarship
+</a>
+
+<a href="reports.html">
+▤ Reports
+</a>
+
+<a href="settings.html">
+⚙ Settings
+</a>
+
+<a
+    href="../backend/logout.php"
+    class="logout"
+>
+↪ Logout
+</a>
+
+</nav>
+
+</aside>
+
+
+
+<main class="admin-main">
+
+
+<header class="admin-header">
+
+<div>
+
+<h1>
+Registered Users
+</h1>
+
+<p>
+View students and administrators
+registered on the platform.
+</p>
+
+</div>
+
+</header>
+
+
+<section class="admin-card">
+
+
+<div class="toolbar">
+
+<input
+    type="search"
+    id="user-search"
+    placeholder="Search by name, username or email..."
+>
+
+
+<select id="role-filter">
+
+<option value="all">
+All roles
+</option>
+
+<option value="student">
+Students
+</option>
+
+<option value="admin">
+Administrators
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="table-wrap">
+
+<table class="admin-table">
+
+<thead>
+
+<tr>
+
+<th>User</th>
+<th>Email</th>
+<th>Role</th>
+<th>Nationality</th>
+<th>Education</th>
+<th>Course</th>
+<th>Joined</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="users-table">
+
+<tr>
+
+<td colspan="7">
+Loading users...
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script
+src="admin.js"
+defer
+></script>
+
+</body>
+</html>

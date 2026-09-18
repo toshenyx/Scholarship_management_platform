@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Admin Dashboard - Scholarly
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body data-page="dashboard">
+
+<div class="admin-app">
+
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-logo">
+
+            <img
+                src="../images/logo1.png"
+                alt="Scholarly"
+            >
+
+            <span>scholarly</span>
+
+        </div>
+
+
+        <div class="admin-label">
+            ADMIN PORTAL
+        </div>
+
+
+        <nav class="admin-nav">
+
+            <a
+                href="dashboard.html"
+                class="active"
+            >
+                ▦ Dashboard
+            </a>
+
+            <a href="scholarships.html">
+                🎓 Scholarships
+            </a>
+
+            <a href="pending.html">
+                ◷ Pending Reviews
+            </a>
+
+            <a href="users.html">
+                👥 Users
+            </a>
+
+            <a href="post-scholarship.html">
+                ＋ Post Scholarship
+            </a>
+
+            <a href="reports.html">
+                ▤ Reports
+            </a>
+
+            <a href="settings.html">
+                ⚙ Settings
+            </a>
+
+            <a
+                href="../backend/logout.php"
+                class="logout"
+            >
+                ↪ Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <main class="admin-main">
+
+
+        <header class="admin-header">
+
+            <div>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    Manage the Scholarly platform.
+                </p>
+
+            </div>
+
+
+            <div
+                class="admin-user"
+                id="admin-name"
+            >
+                Admin
+            </div>
+
+        </header>
+
+
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>
+                    Students
+                </span>
+
+                <strong id="stat-students">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Scholarships
+                </span>
+
+                <strong id="stat-scholarships">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Pending Reviews
+                </span>
+
+                <strong id="stat-pending">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Approved
+                </span>
+
+                <strong id="stat-approved">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <section class="admin-card">
+
+            <h2 class="card-title">
+                Recent Scholarship Submissions
+            </h2>
+
+
+            <div class="table-wrap">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>Scholarship</th>
+                        <th>Provider</th>
+                        <th>Posted By</th>
+                        <th>Country</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="recent-table">
+
+                    <tr>
+
+                        <td colspan="5">
+                            Loading...
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script
+    src="admin.js"
+    defer
+></script>
+
+</body>
+</html>

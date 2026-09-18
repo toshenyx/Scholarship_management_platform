@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>My Profile</title>
+
+<link
+  rel="stylesheet"
+  href="../home/style.css"
+>
+
+
+<style>
+
+.profile-summary {
+
+    max-width: 1000px;
+
+    margin: 20px auto;
+
+}
+
+
+.success-message {
+
+    display: none;
+
+    background: #e8f7ed;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.summary-section {
+
+    background: white;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+}
+
+
+.summary-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+.summary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+.detail-item strong {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+}
+
+
+.edit-btn {
+
+    text-decoration: none;
+
+    padding: 8px 16px;
+
+    border-radius: 6px;
+
+    background: #6c4fd3;
+
+    color: white;
+
+}
+
+
+.dashboard-btn {
+
+    display: inline-block;
+
+    text-decoration: none;
+
+    padding: 12px 20px;
+
+    background: #6c4fd3;
+
+    color: white;
+
+    border-radius: 7px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="layout">
+
+
+<aside class="sidebar">
+
+
+<div class="logo-box">
+
+<img
+    src="../images/logo1.png"
+    alt="Site logo"
+>
+
+</div>
+
+
+<nav class="nav">
+
+
+<a
+    href="../home/dashboard.html"
+    class="nav-btn"
+>
+<span class="icon">▦</span>
+Dashboard
+</a>
+
+
+<a
+    href="../home/scholarships.html"
+    class="nav-btn"
+>
+<span class="icon">🎓</span>
+Scholarships
+</a>
+
+
+<a
+    href="profile_summary.html"
+    class="nav-btn nav-btn--active"
+>
+
+<span class="icon">◔</span>
+
+Profile
+
+</a>
+
+
+<a
+    href="../home/updates.html"
+    class="nav-btn"
+>
+
+<span class="icon">☰</span>
+
+Updates
+
+</a>
+
+
+<a
+    href="../home/settings.html"
+    class="nav-btn"
+>
+
+<span class="icon">⚙</span>
+
+Settings
+
+</a>
+
+
+<a
+    href="../backend/logout.php"
+    class="nav-btn"
+>
+
+Logout
+
+</a>
+
+
+</nav>
+
+</aside>
+
+
+
+<main class="main">
+
+
+<div class="panel">
+
+
+<div class="profile-summary">
+
+
+<div
+    id="success-message"
+    class="success-message"
+>
+
+<h2>
+✅ Profile completed successfully
+</h2>
+
+<p>
+Your registration information has been saved.
+</p>
+
+</div>
+
+
+
+<h1>My Profile</h1>
+
+
+
+<!-- PERSONAL -->
+
+
+<div class="summary-section">
+
+
+<div class="summary-header">
+
+<h2>Personal Information</h2>
+
+
+<a
+    href="profile1.html?edit=1"
+    class="edit-btn"
+>
+
+Edit
+
+</a>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="detail-item">
+
+<strong>Full Name</strong>
+
+<span id="full-name">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Username</strong>
+
+<span id="username">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Email</strong>
+
+<span id="email">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Phone</strong>
+
+<span id="phone">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Date of Birth</strong>
+
+<span id="dob">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Gender</strong>
+
+<span id="gender">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Nationality</strong>
+
+<span id="nationality">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Residence</strong>
+
+<span id="residence">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Work Experience</strong>
+
+<span id="work-experience">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Achievements</strong>
+
+<span id="personal-achievements">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>Additional Notes</strong>
+
+<span id="notes">
+Loading...
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- EDUCATION -->
+
+
+<div class="summary-section">
+
+
+<div class="summary-header">
+
+<h2>
+Educational Information
+</h2>
+
+
+<a
+    href="profile2.html?edit=1"
+    class="edit-btn"
+>
+
+Edit
+
+</a>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="detail-item">
+
+<strong>
+Education Level
+</strong>
+
+<span id="education-level">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Institution
+</strong>
+
+<span id="institution">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Course / Major
+</strong>
+
+<span id="course">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Graduation Year
+</strong>
+
+<span id="graduation-year">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+GPA
+</strong>
+
+<span id="gpa">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Academic Achievements
+</strong>
+
+<span id="academic-achievements">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Skills</strong>
+
+<span id="skills">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Languages</strong>
+
+<span id="languages">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+IELTS</strong>
+
+<span id="ielts">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+TOEFL</strong>
+
+<span id="toefl">
+Loading...
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- DOCUMENTS -->
+
+
+<div class="summary-section">
+
+
+<div class="summary-header">
+
+<h2>Documents</h2>
+
+
+<a
+    href="profile2.html?edit=1"
+    class="edit-btn"
+>
+
+Edit
+
+</a>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="detail-item">
+
+<strong>
+Transcript
+</strong>
+
+<span id="transcript">
+Not provided
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Certificate
+</strong>
+
+<span id="certificate">
+Not provided
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- PREFERENCES -->
+
+
+<div class="summary-section">
+
+
+<div class="summary-header">
+
+<h2>
+Scholarship Preferences
+</h2>
+
+
+<a
+    href="profile3.html?edit=1"
+    class="edit-btn"
+>
+
+Edit
+
+</a>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="detail-item">
+
+<strong>
+Funding Preference
+</strong>
+
+<span id="funding-preference">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Work Study
+</strong>
+
+<span id="work-study">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Research Grants
+</strong>
+
+<span id="research-grants">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Short Courses
+</strong>
+
+<span id="short-courses">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Exchange Programmes
+</strong>
+
+<span id="exchange-programmes">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Living Stipend
+</strong>
+
+<span id="living-stipend">
+Loading...
+</span>
+
+</div>
+
+
+<div class="detail-item">
+
+<strong>
+Other Requirements
+</strong>
+
+<span id="other-requirements">
+Loading...
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<a
+    href="../home/dashboard.html"
+    class="dashboard-btn"
+>
+
+Go to Dashboard
+
+</a>
+
+
+</div>
+
+</div>
+
+</main>
+
+
+</div>
+
+
+
+<script>
+
+
+function showValue(value) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+
+        return "Not provided";
+
+    }
+
+    return value;
+
+}
+
+
+
+function yesNo(value) {
+
+    return Number(value) === 1
+        ? "Yes"
+        : "No";
+
+}
+
+
+
+function fundingName(value) {
+
+    switch (value) {
+
+        case "fully_funded":
+
+            return "Fully Funded";
+
+
+        case "partially_funded":
+
+            return "Partial Funding";
+
+
+        case "tuition_only":
+
+            return "Tuition Only";
+
+
+        default:
+
+            return "Not selected";
+
+    }
+
+}
+
+
+
+async function loadProfile() {
+
+    try {
+
+        const response = await fetch(
+            "../backend/get_profile_details.php",
+            {
+                credentials: "same-origin"
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.success) {
+
+            window.location.href =
+                "../signin/signin.html";
+
+            return;
+
+        }
+
+
+        const personal =
+            data.personal || {};
+
+
+        const education =
+            data.education || {};
+
+
+        const preferences =
+            data.preferences || {};
+
+
+        document.getElementById(
+            "full-name"
+        ).textContent =
+            showValue(personal.full_name);
+
+
+        document.getElementById(
+            "username"
+        ).textContent =
+            showValue(personal.username);
+
+
+        document.getElementById(
+            "email"
+        ).textContent =
+            showValue(personal.email);
+
+
+        document.getElementById(
+            "phone"
+        ).textContent =
+            showValue(personal.phone);
+
+
+        document.getElementById(
+            "dob"
+        ).textContent =
+            showValue(personal.date_of_birth);
+
+
+        document.getElementById(
+            "gender"
+        ).textContent =
+            showValue(personal.gender);
+
+
+        document.getElementById(
+            "nationality"
+        ).textContent =
+            showValue(personal.nationality);
+
+
+        document.getElementById(
+            "residence"
+        ).textContent =
+            showValue(
+                personal.country_of_residence
+            );
+
+
+        document.getElementById(
+            "work-experience"
+        ).textContent =
+            showValue(
+                personal.work_experience
+            );
+
+
+        document.getElementById(
+            "personal-achievements"
+        ).textContent =
+            showValue(
+                personal.achievements
+            );
+
+
+        document.getElementById(
+            "notes"
+        ).textContent =
+            showValue(
+                personal.additional_notes
+            );
+
+
+        document.getElementById(
+            "education-level"
+        ).textContent =
+            showValue(
+                education.education_level
+            );
+
+
+        document.getElementById(
+            "institution"
+        ).textContent =
+            showValue(
+                education.institution
+            );
+
+
+        document.getElementById(
+            "course"
+        ).textContent =
+            showValue(
+                education.course
+            );
+
+
+        document.getElementById(
+            "graduation-year"
+        ).textContent =
+            showValue(
+                education.graduation_year
+            );
+
+
+        document.getElementById(
+            "gpa"
+        ).textContent =
+            showValue(
+                education.gpa
+            );
+
+
+        document.getElementById(
+            "academic-achievements"
+        ).textContent =
+            showValue(
+                education.academic_achievements
+            );
+
+
+        document.getElementById(
+            "skills"
+        ).textContent =
+            data.skills?.length
+            ? data.skills.join(", ")
+            : "Not provided";
+
+
+        document.getElementById(
+            "languages"
+        ).textContent =
+            data.languages?.length
+            ? data.languages
+                .map(language => language.name)
+                .join(", ")
+            : "Not provided";
+
+
+        document.getElementById(
+            "ielts"
+        ).textContent =
+            showValue(
+                data.tests?.IELTS
+            );
+
+
+        document.getElementById(
+            "toefl"
+        ).textContent =
+            showValue(
+                data.tests?.TOEFL
+            );
+
+
+        document.getElementById(
+            "transcript"
+        ).textContent =
+            showValue(
+                data.documents
+                    ?.transcript
+                    ?.file_name
+            );
+
+
+        document.getElementById(
+            "certificate"
+        ).textContent =
+            showValue(
+                data.documents
+                    ?.certificate
+                    ?.file_name
+            );
+
+
+        document.getElementById(
+            "funding-preference"
+        ).textContent =
+            fundingName(
+                preferences.funding_preference
+            );
+
+
+        document.getElementById(
+            "work-study"
+        ).textContent =
+            yesNo(
+                preferences.work_study
+            );
+
+
+        document.getElementById(
+            "research-grants"
+        ).textContent =
+            yesNo(
+                preferences.research_grants
+            );
+
+
+        document.getElementById(
+            "short-courses"
+        ).textContent =
+            yesNo(
+                preferences.short_courses
+            );
+
+
+        document.getElementById(
+            "exchange-programmes"
+        ).textContent =
+            yesNo(
+                preferences.exchange_programmes
+            );
+
+
+        document.getElementById(
+            "living-stipend"
+        ).textContent =
+            yesNo(
+                preferences.living_stipend
+            );
+
+
+        document.getElementById(
+            "other-requirements"
+        ).textContent =
+            showValue(
+                preferences.other_requirements
+            );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to load your profile."
+        );
+
+    }
+
+}
+
+
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+if (params.get("completed") === "1") {
+
+    document.getElementById(
+        "success-message"
+    ).style.display = "block";
+
+}
+
+
+loadProfile();
+
+
+</script>
+
+
+</body>
+
+</html>

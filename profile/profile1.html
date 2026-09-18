@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<title>Post Scholarship — Complete Registration</title>
-<link rel="stylesheet" href="../home/style.css">
+   <meta charset="UTF-8">
+   <title>Post Scholarship — Complete Registration</title>
+   <link rel="stylesheet" href="../home/style.css">
 </head>
 <body>
 <div class="layout">
@@ -23,24 +23,24 @@
       <a href="../profile/profile1.html" class="nav-btn nav-btn--active">
         <span class="icon">◔</span> Profile
       </a>
-      <a href="../home/updates.html" class="nav-btn">
-        <span class="icon">☰</span> Updates
+      <a
+        href="../home/updates.html"
+        class="nav-btn"
+      >
+        <span class="icon">♥</span>
+        Saved
       </a>
       <a href="../home/settings.html" class="nav-btn">
         <span class="icon">⚙</span> Settings
       </a>
-      <a href="../signin/signin.html" class="nav-btn">Logout</a>
+      <a href="../backend/logout.php" class="nav-btn">Logout</a>
     </nav>
     </aside>
 
  
   <main class="main">
     <div class="panel">
-     <div class="breadcrumb">
-       <a href="postscholarship.html" class="dim-crumb">Post scholarship</a>
-       <span class="divider"></span>
-       <a href="profile1.html" class="active-crumb">Complete registration</a>
-     </div>
+     
       <div class="steps">
         <div class="step current">
           <div class="step-number">1</div>
@@ -67,25 +67,29 @@
         </div>
       </div>
 
-      <form class="form-area">
+      <form 
+        class="form-area"
+        action="../backend/save_profile.php"
+        method="POST"
+      >
         <h2 class="form-heading">Personal Information</h2>
 
         <div class="col-left">
           <div class="field">
             <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullname">
+            <input type="text" id="fullname" name="fullname" required>
           </div>
           <div class="field">
             <label for="email">Email Address</label>
-            <input type="text" id="email" name="email">
+            <input type="text" id="email" name="email" required>
           </div>
           <div class="field">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="+254 *********">
+            <input type="tel" id="phone" name="phone" placeholder="+254 *********" required>
           </div>
           <div class="field">
             <label for="dob">Date of birth</label>
-            <input type="date" id="dob" name="dob">
+            <input type="date" id="dob" name="dob" required>
           </div>
           <div class="field">
             <label for="gender">Gender<span class="optional">(optional)</span></label>
@@ -96,8 +100,8 @@
         <div class="col-right">
           <div class="field">
             <label for="nationality">Nationality</label>
-            <select id="nationality" name="nationality">
-              <option>Select One</option>
+            <select id="nationality" name="nationality" required>
+              <option value="">Select One</option>
               <option>Kenyan</option>
               <option>Ugandan</option>
               <option>Tanzanian</option>
@@ -106,8 +110,8 @@
           </div>
           <div class="field">
             <label for="residence">Country of residence</label>
-            <select id="residence" name="residence">
-              <option>Select One</option>
+            <select id="residence" name="residence" required>
+              <option value="">Select One</option>
               <option>Kenya</option>
               <option>Uganda</option>
               <option>Tanzania</option>
@@ -134,7 +138,7 @@
         </div>
 
         <div class="actions">
-          <a href="profile2.html" class="next-btn">Next</a>
+          <button type="submit" class="next-btn">Next</button>
         </div>
       </form>
     </div>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Manage Scholarships - Scholarly
+</title>
+
+<link
+    rel="stylesheet"
+    href="admin.css"
+>
+
+</head>
+
+
+<body data-page="scholarships">
+
+<div class="admin-app">
+
+
+<aside class="admin-sidebar">
+
+    <div class="admin-logo">
+
+        <img
+            src="../images/logo1.png"
+            alt="Scholarly"
+        >
+
+        <span>scholarly</span>
+
+    </div>
+
+    <div class="admin-label">
+        ADMIN PORTAL
+    </div>
+
+    <nav class="admin-nav">
+
+        <a href="dashboard.html">
+            ▦ Dashboard
+        </a>
+
+        <a
+            href="scholarships.html"
+            class="active"
+        >
+            🎓 Scholarships
+        </a>
+
+        <a href="pending.html">
+            ◷ Pending Reviews
+        </a>
+
+        <a href="users.html">
+            👥 Users
+        </a>
+
+        <a href="post-scholarship.html">
+            ＋ Post Scholarship
+        </a>
+
+        <a href="reports.html">
+            ▤ Reports
+        </a>
+
+        <a href="settings.html">
+            ⚙ Settings
+        </a>
+
+        <a
+            href="../backend/logout.php"
+            class="logout"
+        >
+            ↪ Logout
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<main class="admin-main">
+
+
+<header class="admin-header">
+
+    <div>
+
+        <h1>
+            Scholarships
+        </h1>
+
+        <p>
+            View and manage all scholarships.
+        </p>
+
+    </div>
+
+
+    <a
+        href="post-scholarship.html"
+        class="btn btn-primary"
+    >
+        + Add Scholarship
+    </a>
+
+</header>
+
+
+<div
+    id="admin-message"
+    class="admin-message"
+></div>
+
+
+<section class="admin-card">
+
+
+    <div class="toolbar">
+
+        <input
+            type="search"
+            id="scholarship-search"
+            placeholder="Search scholarships..."
+        >
+
+
+        <select id="status-filter">
+
+            <option value="all">
+                All statuses
+            </option>
+
+            <option value="pending">
+                Pending
+            </option>
+
+            <option value="approved">
+                Approved
+            </option>
+
+            <option value="rejected">
+                Rejected
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table class="admin-table">
+
+            <thead>
+
+            <tr>
+
+                <th>Scholarship</th>
+                <th>Provider</th>
+                <th>Country</th>
+                <th>Deadline</th>
+                <th>Posted By</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+
+            </thead>
+
+
+            <tbody id="scholarships-table">
+
+            <tr>
+
+                <td colspan="7">
+                    Loading scholarships...
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script
+    src="admin.js"
+    defer
+></script>
+
+</body>
+</html>

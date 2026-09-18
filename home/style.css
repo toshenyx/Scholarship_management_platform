@@ -10,7 +10,6 @@ body {
   color: #333;
 }
 
-
 .app {
   display: flex;          
   gap: 24px;
@@ -25,7 +24,6 @@ body {
   flex-direction: column;
   gap: 24px;
 }
-
 
 .card {
   background: #fff;
@@ -70,6 +68,7 @@ body {
 
 .nav-btn:hover {
   background: #e8503a;
+  color: #fff;
 }
 
 .nav-btn--active {
@@ -78,8 +77,26 @@ body {
   border-color: #2f6fed;
 }
 
-.icon {
-  font-size: 1.1rem;
+/* =========================================================
+   ICON FONT FIX (emoji / symbol icons)
+   Ensures icon characters (🎓 💬 🔔 ⚙ ♥ etc.) render as real
+   glyphs instead of tofu boxes / garbled characters.
+========================================================= */
+
+.icon,
+.feature-icon,
+.result-icon,
+.upload-icon,
+.bell,
+.heart-icon,
+.calendar-icon,
+.search button,
+.pw-toggle,
+#dashboard-statistics .feature-icon {
+  font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji",
+    "Apple Color Emoji", "Segoe UI", Arial, sans-serif;
+  font-style: normal;
+  line-height: 1;
 }
 
 .topbar {
@@ -166,7 +183,6 @@ body {
   font-weight: 600;
 }
 
-
 .welcome-card {
   display: flex;
   align-items: center;
@@ -188,7 +204,6 @@ body {
   border-radius: 50%;
   object-fit: cover; 
 }
-
 
 .search-card h2 {
   color: #2f6fed;
@@ -252,7 +267,6 @@ body {
   background: #d1432e;
 }
 
-
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -307,7 +321,6 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-
 @media (max-width: 900px) {
   .app {
     flex-direction: column;
@@ -327,6 +340,7 @@ body {
 }
 
 .panel {
+  flex: 1;
   background: #fff;
   border-radius: 12px;
   overflow: hidden; 
@@ -417,6 +431,7 @@ body {
   margin: 0 32px;
 }
 
+/* Base form area (Personal info) */
 .form-area {
   padding: 32px;
   display: grid;
@@ -523,6 +538,7 @@ body {
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.15s ease;
 }
 
 .next-btn:hover {
@@ -564,11 +580,11 @@ body {
   }
 }
 
-
 .section-box {
   border: 1.5px solid #2f6fed;
   border-radius: 10px;
-  padding: 20px;
+  padding: 24px;
+  background: #fff;
 }
 
 .section-title {
@@ -578,6 +594,7 @@ body {
   margin-bottom: 16px;
 }
 
+/* Scholarships form */
 .form-area--scholarships {
   display: block;
 }
@@ -758,7 +775,6 @@ body {
   background: #d1432e;
 }
 
-
 .complete-btn {
   padding: 16px 36px;
   background: #2f6fed;
@@ -780,13 +796,12 @@ body {
   }
 }
 
-
+/* Upload items */
 .upload-box-wrap {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
 
 .upload-item {
   display: flex;
@@ -795,8 +810,9 @@ body {
   gap: 16px;
   border: 1px solid #cfd6e4;
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 16px 20px;
   cursor: pointer;
+  background: #fff;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 
@@ -813,17 +829,16 @@ body {
 
 .upload-icon {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #cfd6e4;
   border-radius: 6px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   background: #fff;
 }
-
 
 .upload-item.has-file {
   border-color: #2e9e52;
@@ -835,7 +850,7 @@ body {
   color: #2e9e52;
 }
 
-
+/* Post scholarship */
 .form-area--post-scholarship {
   display: block;
 }
@@ -962,7 +977,6 @@ body {
   margin-bottom: 20px;
 }
 
-
 .benefits-label {
   display: block;
   font-size: 0.95rem;
@@ -993,7 +1007,6 @@ body {
   accent-color: #e8503a;
 }
 
-
 .post-btn {
   padding: 16px 40px;
   background: #2f6fed;
@@ -1009,27 +1022,76 @@ body {
   background: #2559c7;
 }
 
-/* ---------- RESPONSIVE: post scholarship page ---------- */
-@media (max-width: 1100px) {
-  .scholarship-info-box .info-grid {
-    grid-template-columns: 1fr;
-  }
-  .eligibility-grid {
-    grid-template-columns: 1fr;
-  }
+.form-group {
+  margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
-  .study-row {
-    flex-direction: column;
-  }
-  .benefits-grid {
-    grid-template-columns: 1fr;
-  }
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
 }
 
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #cfd6e4;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
 
+.form-group input:focus {
+  outline: none;
+  border-color: #2f6fed;
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.1);
+}
 
+.btn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: #333;
+  border: 1px solid #cfd6e4;
+}
+
+.btn--ghost:hover {
+  background: #f5f7fa;
+}
+
+.btn--primary {
+  background: #2f6fed;
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: #2559c7;
+}
+
+.btn--dark {
+  background: #1a2b4c;
+}
+
+.btn--dark:hover {
+  background: #0f1a30;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
 
 .updates-header {
   display: flex;
@@ -1037,7 +1099,6 @@ body {
   justify-content: space-between;
   margin-bottom: 24px;
 }
-
 
 .updates-title {
   font-family: Georgia, "Times New Roman", serif;
@@ -1112,7 +1173,6 @@ body {
   background: #2559c7;
 }
 
-/* ---------- RESPONSIVE: updates page ---------- */
 @media (max-width: 600px) {
   .updates-header {
     flex-direction: column;
@@ -1120,7 +1180,6 @@ body {
     gap: 12px;
   }
 }
-
 
 .search-filter-title {
   text-align: center;
@@ -1199,7 +1258,6 @@ body {
   opacity: 1;
 }
 
-
 .pill-btn--active {
   opacity: 1;
   box-shadow: 0 0 0 2px rgba(232, 80, 58, 0.35);
@@ -1229,7 +1287,6 @@ body {
   border: 1px solid #e8503a;
   accent-color: #e8503a;
 }
-
 
 .results-grid {
   display: grid;
@@ -1326,7 +1383,188 @@ body {
   text-align: center;
 }
 
-/* ---------- RESPONSIVE: scholarships page ---------- */
+.pw-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.pw-wrapper input {
+  width: 100%;
+  padding-right: 45px;
+  box-sizing: border-box; 
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #555;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* =========================================================
+   SCHOLARSHIP RECOMMENDATIONS PAGE
+========================================================= */
+
+.recommendation-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.recommendation-profile-item {
+  border: 1px solid #cfd6e4;
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: #f7f9fd;
+}
+
+.recommendation-profile-item strong {
+  display: block;
+  color: #2f6fed;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.recommendation-profile-item span {
+  display: block;
+  font-size: 0.95rem;
+  color: #1a2b4c;
+  font-weight: 600;
+}
+
+.recommendation-card {
+  border-left: 4px solid #2f6fed;
+}
+
+.recommendation-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.match-score {
+  flex-shrink: 0;
+  text-align: center;
+  background: #eef4ff;
+  border: 1px solid #2f6fed;
+  border-radius: 12px;
+  padding: 8px 18px;
+  min-width: 90px;
+}
+
+.match-score strong {
+  display: block;
+  font-size: 1.3rem;
+  color: #2f6fed;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.match-score span {
+  display: block;
+  font-size: 0.68rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.recommendation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin: 16px 0;
+  padding: 14px 0;
+  border-top: 1px solid #e4e8f0;
+  border-bottom: 1px solid #e4e8f0;
+}
+
+.recommendation-meta span {
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.recommendation-meta strong {
+  color: #1a2b4c;
+  margin-right: 4px;
+}
+
+.match-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.match-details strong {
+  display: block;
+  font-size: 0.85rem;
+  color: #1a2b4c;
+  margin-bottom: 8px;
+}
+
+.match-details ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.match-reason {
+  font-size: 0.85rem;
+  color: #1c7c3f;
+}
+
+.match-warning {
+  font-size: 0.85rem;
+  color: #b3541e;
+}
+
+.recommendation-card .save-recommendation-btn {
+  background: #fff;
+  color: #2f6fed;
+  border: 2px solid #2f6fed;
+  cursor: pointer;
+}
+
+.recommendation-card .save-recommendation-btn:hover {
+  background: #eef4ff;
+}
+
+.recommendation-card .save-recommendation-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.recommendation-card .update-actions {
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .recommendation-card-head {
+    flex-direction: column;
+  }
+
+  .match-score {
+    align-self: flex-start;
+  }
+}
+
 @media (max-width: 900px) {
   .results-grid {
     grid-template-columns: 1fr;
@@ -1337,5 +1575,255 @@ body {
   .destination-row {
     flex-direction: column;
     gap: 8px;
+  }
+}
+
+/* Dashboard Statistics */
+#dashboard-statistics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+#dashboard-statistics .feature-card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 15px;
+  padding: 22px;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#dashboard-statistics .feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
+}
+
+#dashboard-statistics .feature-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+#dashboard-statistics .feature-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f3ff;
+  border-radius: 12px;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+#dashboard-statistics h3 {
+  margin: 0 0 7px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #555555;
+}
+
+#dashboard-statistics .feature-sub {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  color: #222222;
+}
+
+@media (max-width: 900px) {
+  #dashboard-statistics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  #dashboard-statistics {
+    padding: 15px;
+    gap: 12px;
+  }
+  #dashboard-statistics .feature-card {
+    padding: 18px;
+  }
+}
+
+.post-scholarship-btn {
+  font-family: inherit;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.post-scholarship-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.post-scholarship-btn:active {
+  transform: translateY(0);
+}
+
+/* Feature Status */
+.feature-status {
+  margin-top: 14px;
+  margin-bottom: 14px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.feature-status--available {
+  background: rgba(34, 197, 94, 0.10);
+  color: #15803d;
+}
+
+.feature-status--locked {
+  background: rgba(245, 158, 11, 0.12);
+  color: #92400e;
+}
+
+.feature-card--locked {
+  position: relative;
+  opacity: 0.82;
+}
+
+.feature-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* =========================================================
+   EDUCATION PAGE LAYOUT & INNER GRIDS (FIXED)
+========================================================= */
+
+/* Main form container: stacks sections vertically in 100% full width */
+.form-area--education {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+  width: 100%;
+  padding: 32px;
+}
+
+.form-area--education .form-heading {
+  grid-column: unset;
+  margin-bottom: 0;
+  color: #2f6fed;
+}
+
+.form-area--education .section-box {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Section 1: Academic details 2-column grid */
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+  width: 100%;
+}
+
+/* Section 2: Document uploads */
+.upload-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.upload-item input[type="file"] {
+  display: none;
+}
+
+.upload-hint {
+  color: #8a93a6;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+/* Section 3: Languages & Skills 2-column grid */
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+  width: 100%;
+}
+
+/* English proficiency test: IELTS & TOEFL side-by-side */
+.field--proficiency {
+  width: 100%;
+}
+
+.proficiency-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.proficiency-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Form Actions Button */
+.form-area--education .actions {
+  grid-column: unset;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* Utility: screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .section-grid,
+  .languages-grid,
+  .upload-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .proficiency-row {
+    flex-direction: column;
+  }
+
+  .form-area--education {
+    padding: 20px;
+    gap: 20px !important;
+  }
+
+  .form-area--education .next-btn {
+    width: 100%;
   }
 }

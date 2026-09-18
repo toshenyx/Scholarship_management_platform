@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Admin Reports - Scholarly
+</title>
+
+<link
+rel="stylesheet"
+href="admin.css"
+>
+
+</head>
+
+
+<body data-page="reports">
+
+<div class="admin-app">
+
+
+<aside class="admin-sidebar">
+
+<div class="admin-logo">
+
+<img
+src="../images/logo1.png"
+alt="Scholarly"
+>
+
+<span>scholarly</span>
+
+</div>
+
+<div class="admin-label">
+ADMIN PORTAL
+</div>
+
+
+<nav class="admin-nav">
+
+<a href="dashboard.html">
+▦ Dashboard
+</a>
+
+<a href="scholarships.html">
+🎓 Scholarships
+</a>
+
+<a href="pending.html">
+◷ Pending Reviews
+</a>
+
+<a href="users.html">
+👥 Users
+</a>
+
+<a href="post-scholarship.html">
+＋ Post Scholarship
+</a>
+
+<a
+href="reports.html"
+class="active"
+>
+▤ Reports
+</a>
+
+<a href="settings.html">
+⚙ Settings
+</a>
+
+<a
+href="../backend/logout.php"
+class="logout"
+>
+↪ Logout
+</a>
+
+</nav>
+
+</aside>
+
+
+
+<main class="admin-main">
+
+
+<header class="admin-header">
+
+<div>
+
+<h1>
+System Report
+</h1>
+
+<p>
+Platform statistics and activity.
+</p>
+
+</div>
+
+
+<button
+class="btn btn-primary no-print"
+onclick="window.print()"
+>
+Print / Save PDF
+</button>
+
+</header>
+
+
+
+<section
+class="admin-card"
+id="report-content"
+>
+
+<p>
+Loading report...
+</p>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script
+src="admin.js"
+defer
+></script>
+
+</body>
+</html>

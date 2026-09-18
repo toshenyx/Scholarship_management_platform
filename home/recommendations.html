@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Saved Scholarships</title>
+    <title>My Scholarship Matches</title>
 
     <link
         rel="stylesheet"
@@ -22,6 +22,7 @@
 
 <body>
 
+
 <div class="app">
 
 
@@ -30,6 +31,7 @@
     ====================================================== -->
 
     <aside class="sidebar">
+
 
         <div class="logo-box">
 
@@ -55,7 +57,7 @@
 
             <a
                 href="scholarships.html"
-                class="nav-btn"
+                class="nav-btn nav-btn--active"
             >
                 <span class="icon">🎓</span>
                 Scholarships
@@ -74,7 +76,7 @@
 
             <a
                 href="updates.html"
-                class="nav-btn nav-btn--active"
+                class="nav-btn"
             >
                 <span class="icon">♥</span>
                 Saved
@@ -100,50 +102,67 @@
 
         </nav>
 
+
     </aside>
 
 
 
     <!-- =====================================================
-         MAIN CONTENT
+         MAIN
     ====================================================== -->
 
     <div class="main">
 
 
         <!-- =================================================
-             TOP BAR
+             TOPBAR
         ================================================== -->
 
         <header class="topbar">
 
 
-            <!-- SEARCH SAVED SCHOLARSHIPS -->
-
             <div class="search">
+
 
                 <input
                     type="text"
-                    id="saved-search"
-                    placeholder="Search saved scholarships"
+                    id="recommendation-search"
+                    placeholder="Search recommendations"
                 >
 
 
                 <button
                     type="button"
-                    id="saved-search-btn"
-                    aria-label="Search saved scholarships"
+                    id="recommendation-search-btn"
+                    aria-label="Search"
                 >
                     🔍
                 </button>
+
 
             </div>
 
 
 
-            <!-- USER INFORMATION -->
-
             <div class="topbar-right">
+
+
+                <button
+                    type="button"
+                    class="bell"
+                    aria-label="Notifications"
+                >
+
+                    🔔
+
+                    <span
+                        class="badge"
+                        id="notification-count"
+                    >
+                        0
+                    </span>
+
+                </button>
 
 
                 <img
@@ -154,6 +173,7 @@
 
 
                 <div class="user-info">
+
 
                     <div
                         class="user-name"
@@ -167,8 +187,9 @@
                         class="user-role"
                         id="page-role"
                     >
-                        Loading...
+                        Student
                     </div>
+
 
                 </div>
 
@@ -181,29 +202,26 @@
 
 
         <!-- =================================================
-             SAVED SCHOLARSHIPS
+             PAGE HEADER
         ================================================== -->
 
-        <section class="card saved-scholarships-card">
+        <section class="card">
 
 
-            <!-- PAGE HEADER -->
-
-            <div class="saved-page-header">
+            <div class="updates-header">
 
 
                 <div>
 
-                    <h2 class="updates-title">
-                        Saved Scholarships
-                    </h2>
+                    <h1>
+                        My Scholarship Matches
+                    </h1>
 
 
-                    <p class="saved-page-description">
-
-                        Scholarships you have saved
-                        will appear here.
-
+                    <p>
+                        Personalized recommendations based
+                        on your profile and scholarship
+                        preferences.
                     </p>
 
                 </div>
@@ -211,57 +229,115 @@
 
                 <a
                     href="scholarships.html"
-                    class="updates-scholarship-link"
+                    class="update-btn"
                 >
-                    Browse Scholarships →
+                    Browse All Scholarships
                 </a>
 
 
             </div>
 
 
+        </section>
 
-            <!-- =================================================
-                 STATUS / ERROR MESSAGE
-            ================================================== -->
+
+
+        <!-- =================================================
+             PROFILE SUMMARY
+        ================================================== -->
+
+        <section
+            class="card"
+            id="recommendation-profile-summary"
+        >
+
+
+            <h2>
+                Matching Your Profile
+            </h2>
+
 
             <div
-                id="saved-scholarships-message"
-                style="display: none;"
-            ></div>
+                id="matching-profile-details"
+                class="recommendation-profile-grid"
+            >
+
+                <p>
+                    Loading profile information...
+                </p>
+
+            </div>
+
+
+        </section>
 
 
 
-            <!-- =================================================
-                 DATABASE COUNT
-            ================================================== -->
+        <!-- =================================================
+             MATCH INFORMATION
+        ================================================== -->
 
-            <div class="saved-results-summary">
+        <section class="card">
 
-                <span id="saved-results-count">
-                    Loading...
-                </span>
+
+            <div class="updates-header">
+
+
+                <div>
+
+                    <h2>
+                        Recommended Scholarships
+                    </h2>
+
+
+                    <p
+                        id="recommendation-count-text"
+                    >
+                        Finding your best matches...
+                    </p>
+
+                </div>
+
+
+                <select
+                    id="recommendation-sort"
+                    aria-label="Sort recommendations"
+                >
+
+                    <option value="match">
+                        Highest Match
+                    </option>
+
+                    <option value="deadline">
+                        Deadline
+                    </option>
+
+                    <option value="country">
+                        Country
+                    </option>
+
+                </select>
+
 
             </div>
 
 
 
-            <!-- =================================================
-                 DATABASE RESULTS
-            ================================================== -->
+            <div
+                id="recommendation-message"
+                style="display: none;"
+            ></div>
+
+
 
             <div
-                class="saved-scholarship-list"
-                id="saved-scholarships-results"
+                id="recommendation-results"
+                class="update-list"
             >
 
-                <div class="saved-loading">
-
-                    <p>
-                        Loading your saved scholarships...
-                    </p>
-
-                </div>
+                <p>
+                    Calculating scholarship matches...
+                </p>
 
             </div>
 
@@ -271,12 +347,13 @@
 
     </div>
 
+
 </div>
 
 
 
 <script
-    src="saved_scholarships.js"
+    src="script.js"
     defer
 ></script>
 

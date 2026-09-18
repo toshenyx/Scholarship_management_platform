@@ -1,187 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post Scholarship — Scholarship Filtering Preferences</title>
-  <link rel="stylesheet" href="../home/style.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Scholarship Filtering Preferences
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="../home/style.css"
+  >
+
 </head>
+
+
 <body>
+
 <div class="layout">
 
+
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
+
   <aside class="sidebar">
+
     <div class="logo-box">
-      <img src="../images/logo1.png" alt="Site logo">
+
+      <img
+        src="../images/logo1.png"
+        alt="Site logo"
+      >
+
     </div>
+
 
     <nav class="nav">
-      <a href="../home/dashboard.html" class="nav-btn">
-        <span class="icon">▦</span> Dashboard
+
+      <a
+        href="../home/dashboard.html"
+        class="nav-btn"
+      >
+        <span class="icon">▦</span>
+        Dashboard
       </a>
-      <a href="../home/scholarships.html" class="nav-btn">
-        <span class="icon">🎓</span> Scholarships
+
+
+      <a
+        href="../home/scholarships.html"
+        class="nav-btn"
+      >
+        <span class="icon">🎓</span>
+        Scholarships
       </a>
-      <a href="../profile/profile1.html" class="nav-btn nav-btn--active">
-        <span class="icon">◔</span> Profile
+
+
+      <a
+        href="../profile/profile1.html"
+        class="nav-btn nav-btn--active"
+      >
+        <span class="icon">◔</span>
+        Profile
       </a>
-      <a href="../home/updates.html" class="nav-btn">
-        <span class="icon">☰</span> Updates
+
+
+      <a
+        href="../home/updates.html"
+        class="nav-btn"
+      >
+        <span class="icon">♥</span>
+        Saved
       </a>
-      <a href="../home/settings.html" class="nav-btn">
-        <span class="icon">⚙</span> Settings
+
+
+      <a
+        href="../home/settings.html"
+        class="nav-btn"
+      >
+        <span class="icon">⚙</span>
+        Settings
       </a>
-      <a href="../signin/signin.html" class="nav-btn">Logout</a>
+
+
+      <a
+        href="../backend/logout.php"
+        class="nav-btn"
+      >
+        Logout
+      </a>
+
     </nav>
+
   </aside>
 
+
+
+  <!-- =====================================================
+       MAIN CONTENT
+  ====================================================== -->
+
   <main class="main">
+
     <div class="panel">
+
+
+      <!-- =================================================
+           BREADCRUMB
+      ================================================== -->
+
       <div class="breadcrumb">
-        <span class="active-crumb">Complete registration</span>
+
+        <span class="active-crumb">
+          Complete registration
+        </span>
+
       </div>
+
+
+
+      <!-- =================================================
+           REGISTRATION STEPS
+      ================================================== -->
 
       <div class="steps">
+
+
         <div class="step done">
-          <div class="step-number">1</div>
-          <div>
-            <div class="step-title link">Personal Information</div>
-            <div class="step-sub">Fill in your full personal details</div>
+
+          <div class="step-number">
+            1
           </div>
+
+          <div>
+
+            <div class="step-title link">
+              Personal Information
+            </div>
+
+            <div class="step-sub">
+              Fill in your full personal details
+            </div>
+
+          </div>
+
         </div>
+
+
         <div class="step-sep"></div>
+
+
         <div class="step done">
-          <div class="step-number">2</div>
-          <div>
-            <div class="step-title link">Educational Information</div>
-            <div class="step-sub">Education,languages,skills</div>
+
+          <div class="step-number">
+            2
           </div>
+
+          <div>
+
+            <div class="step-title link">
+              Educational Information
+            </div>
+
+            <div class="step-sub">
+              Education, languages, skills
+            </div>
+
+          </div>
+
         </div>
+
+
         <div class="step-sep"></div>
+
+
         <div class="step current">
-          <div class="step-number">3</div>
-          <div>
-            <div class="step-title link">Scholarship filtering preferences</div>
-            <div class="step-sub">Scholarship data</div>
+
+          <div class="step-number">
+            3
           </div>
+
+          <div>
+
+            <div class="step-title link">
+              Scholarship filtering preferences
+            </div>
+
+            <div class="step-sub">
+              Tell us what scholarship opportunities
+              interest you
+            </div>
+
+          </div>
+
         </div>
+
+
       </div>
 
-      <form class="form-area form-area--scholarships">
-        <h2 class="form-heading">Scholarships</h2>
 
-       
+
+      <!-- =================================================
+           FORM
+      ================================================== -->
+
+      <form
+        class="form-area form-area--scholarships"
+        action="../backend/save_preferences.php"
+        method="POST"
+      >
+
+
+        <h2 class="form-heading">
+          Scholarship Preferences
+        </h2>
+
+
+        <p class="form-description">
+
+          These preferences help us recommend scholarships
+          that better match your academic goals and funding
+          needs.
+
+        </p>
+
+
+
         <div class="section-box scholarship-box">
+
+
           <div class="scholarship-grid">
 
-            
+
+            <!-- =================================================
+                 LEFT COLUMN
+            ================================================== -->
+
             <div class="scholarship-col">
 
+
+              <!-- ===============================================
+                   FUNDING PREFERENCE
+              ================================================ -->
+
               <div class="field">
-                <label for="pref">Scholarship preference</label>
+
+                <label for="pref">
+
+                  Scholarship preference
+
+                  <span class="required">
+                    *
+                  </span>
+
+                </label>
+
 
                 <div class="multiselect">
-                  <button type="button" class="multiselect-trigger" id="pref">
-                    <span class="multiselect-placeholder">Select preferences</span>
-                    <span class="multiselect-arrow">▾</span>
+
+
+                  <button
+                    type="button"
+                    class="multiselect-trigger"
+                    id="pref"
+                  >
+
+                    <span class="multiselect-placeholder">
+                      Select preferences
+                    </span>
+
+                    <span class="multiselect-arrow">
+                      ▾
+                    </span>
+
                   </button>
 
+
                   <div class="multiselect-panel">
+
+
                     <label class="multiselect-option">
-                      <input type="checkbox" name="preference" value="fully-funded">
+
+                      <input
+                        type="checkbox"
+                        name="preference[]"
+                        value="fully-funded"
+                      >
+
                       Fully funded
+
                     </label>
+
+
                     <label class="multiselect-option">
-                      <input type="checkbox" name="preference" value="partial-funding">
+
+                      <input
+                        type="checkbox"
+                        name="preference[]"
+                        value="partial-funding"
+                      >
+
                       Partial funding
+
                     </label>
+
+
                     <label class="multiselect-option">
-                      <input type="checkbox" name="preference" value="tuition-only">
+
+                      <input
+                        type="checkbox"
+                        name="preference[]"
+                        value="tuition-only"
+                      >
+
                       Tuition funding only
+
                     </label>
+
+
                   </div>
+
                 </div>
+
               </div>
 
-              <fieldset class="radio-field">
-                <legend>Work study</legend>
-                <label class="radio-option">
-                  Yes <input type="radio" name="work-study" value="yes">
-                </label>
-                <label class="radio-option">
-                  No <input type="radio" name="work-study" value="no">
-                </label>
-              </fieldset>
 
-              <fieldset class="radio-field">
-                <legend>Would you want Research grants</legend>
-                <label class="radio-option">
-                  Yes <input type="radio" name="research-grants" value="yes">
-                </label>
-                <label class="radio-option">
-                  No <input type="radio" name="research-grants" value="no">
-                </label>
-              </fieldset>
 
-              <fieldset class="radio-field">
-                <legend>Are you interested in short courses</legend>
-                <label class="radio-option">
-                  Yes <input type="radio" name="short-courses" value="yes">
-                </label>
-                <label class="radio-option">
-                  No <input type="radio" name="short-courses" value="no">
-                </label>
-            
-              </fieldset>
-
-            </div>
-
-        
-            <div class="scholarship-col">
-
-              <fieldset class="radio-field">
-                <legend>Are you interested in exchange programmes?</legend>
-                <label class="radio-option">
-                  Yes <input type="radio" name="exchange-programmes" value="yes">
-                </label>
-                <label class="radio-option">
-                  No <input type="radio" name="exchange-programmes" value="no">
-                </label>
-              </fieldset>
-
-              <fieldset class="radio-field">
-                <legend>Should the scholarship provide a living stipend?</legend>
-                <label class="radio-option">
-                  Yes <input type="radio" name="living-stipend" value="yes">
-                </label>
-                <label class="radio-option">
-                  No <input type="radio" name="living-stipend" value="no">
-                </label>
-              </fieldset>
+              <!-- ===============================================
+                   PREFERRED FIELD
+              ================================================ -->
 
               <div class="field">
-                <label for="other-requirements">
-                  Other requirements<span class="optional">(optional)</span>
+
+                <label for="preferred-field">
+
+                  Preferred field of study
+
+                  <span class="required">
+                    *
+                  </span>
+
                 </label>
-                <textarea id="other-requirements" name="other-requirements"></textarea>
+
+
+                <input
+                  type="text"
+                  id="preferred-field"
+                  name="preferred-field"
+                  placeholder="e.g. Computer Science, Medicine, Engineering"
+                  required
+                >
+
+
+                <small class="field-help">
+
+                  Enter the field you would prefer to pursue
+                  through a scholarship.
+
+                </small>
+
               </div>
 
-              <div class="save-row">
-                <button type="button" class="save-btn">SAVE</button>
-              </div>
+
+
+              <!-- ===============================================
+                   WORK STUDY
+              ================================================ -->
+
+              <fieldset class="radio-field">
+
+                <legend>
+                  Work study
+                </legend>
+
+
+                <label class="radio-option">
+
+                  Yes
+
+                  <input
+                    type="radio"
+                    name="work-study"
+                    value="yes"
+                  >
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  No
+
+                  <input
+                    type="radio"
+                    name="work-study"
+                    value="no"
+                  >
+
+                </label>
+
+              </fieldset>
+
+
+
+              <!-- ===============================================
+                   RESEARCH GRANTS
+              ================================================ -->
+
+              <fieldset class="radio-field">
+
+                <legend>
+                  Would you want Research grants
+                </legend>
+
+
+                <label class="radio-option">
+
+                  Yes
+
+                  <input
+                    type="radio"
+                    name="research-grants"
+                    value="yes"
+                  >
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  No
+
+                  <input
+                    type="radio"
+                    name="research-grants"
+                    value="no"
+                  >
+
+                </label>
+
+              </fieldset>
+
+
+
+              <!-- ===============================================
+                   SHORT COURSES
+              ================================================ -->
+
+              <fieldset class="radio-field">
+
+                <legend>
+                  Are you interested in short courses
+                </legend>
+
+
+                <label class="radio-option">
+
+                  Yes
+
+                  <input
+                    type="radio"
+                    name="short-courses"
+                    value="yes"
+                  >
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  No
+
+                  <input
+                    type="radio"
+                    name="short-courses"
+                    value="no"
+                  >
+
+                </label>
+
+              </fieldset>
+
 
             </div>
 
+
+
+            <!-- =================================================
+                 RIGHT COLUMN
+            ================================================== -->
+
+            <div class="scholarship-col">
+
+
+              <!-- ===============================================
+                   EXCHANGE PROGRAMMES
+              ================================================ -->
+
+              <fieldset class="radio-field">
+
+                <legend>
+                  Are you interested in exchange programmes?
+                </legend>
+
+
+                <label class="radio-option">
+
+                  Yes
+
+                  <input
+                    type="radio"
+                    name="exchange-programmes"
+                    value="yes"
+                  >
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  No
+
+                  <input
+                    type="radio"
+                    name="exchange-programmes"
+                    value="no"
+                  >
+
+                </label>
+
+              </fieldset>
+
+
+
+              <!-- ===============================================
+                   LIVING STIPEND
+              ================================================ -->
+
+              <fieldset class="radio-field">
+
+                <legend>
+                  Should the scholarship provide a living stipend?
+                </legend>
+
+
+                <label class="radio-option">
+
+                  Yes
+
+                  <input
+                    type="radio"
+                    name="living-stipend"
+                    value="yes"
+                  >
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  No
+
+                  <input
+                    type="radio"
+                    name="living-stipend"
+                    value="no"
+                  >
+
+                </label>
+
+              </fieldset>
+
+
+
+              <!-- ===============================================
+                   COUNTRY EXPLANATION
+              ================================================ -->
+
+              <div class="field">
+
+                <label>
+                  Scholarship destinations
+                </label>
+
+
+                <div class="preference-info-box">
+
+                  🌍 Recommendations will include
+                  opportunities from all available
+                  countries.
+
+                </div>
+
+
+                <small class="field-help">
+
+                  You do not need to choose a preferred
+                  country. Scholarships will be recommended
+                  based on your eligibility and other
+                  preferences.
+
+                </small>
+
+              </div>
+
+
+
+              <!-- ===============================================
+                   OTHER REQUIREMENTS
+              ================================================ -->
+
+              <div class="field">
+
+                <label for="other-requirements">
+
+                  Other requirements
+
+                  <span class="optional">
+                    (optional)
+                  </span>
+
+                </label>
+
+
+                <textarea
+                  id="other-requirements"
+                  name="other-requirements"
+                  placeholder="Add any other scholarship preferences or requirements..."
+                ></textarea>
+
+              </div>
+
+
+            </div>
+
+
           </div>
+
         </div>
+
+
+
+        <!-- =================================================
+             ACTIONS
+        ================================================== -->
 
         <div class="actions">
-          <button type="submit" class="complete-btn">Complete registration</button>
+
+          <button
+            type="submit"
+            name="action"
+            value="complete"
+            class="complete-btn"
+          >
+            Complete registration
+          </button>
+
         </div>
+
+
       </form>
+
+
     </div>
+
   </main>
 
+
 </div>
-<script src="../home/script.js" defer></script>
+
+
+<script
+  src="../home/script.js"
+  defer
+></script>
+
+
 </body>
+
 </html>

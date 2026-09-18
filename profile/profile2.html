@@ -1,15 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Post Scholarship — Educational Information</title>
   <link rel="stylesheet" href="../home/style.css">
+  <style>
+    /* =========================================================
+       EDUCATION PAGE FIX: STACKED FULL-WIDTH SECTIONS
+       ========================================================= */
+    .form-area.form-area--education {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 28px !important;
+      width: 100% !important;
+      padding: 32px !important;
+      box-sizing: border-box !important;
+    }
+
+    .form-area--education .form-heading {
+      grid-column: unset !important;
+      margin: 0 0 4px 0 !important;
+      color: #2f6fed;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .form-area--education .section-box {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      border: 1.5px solid #2f6fed;
+      border-radius: 10px;
+      padding: 24px !important;
+      background: #ffffff;
+      margin: 0 !important;
+    }
+
+    .form-area--education .section-title {
+      color: #2f6fed;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    /* Section 1: Academic details (2 equal columns) */
+    .form-area--education .section-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 20px 28px !important;
+      width: 100% !important;
+    }
+
+    /* Section 2: Upload documents (2 equal columns) */
+    .form-area--education .upload-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 20px !important;
+      width: 100% !important;
+    }
+
+    .form-area--education .upload-item {
+      position: relative;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 16px;
+      border: 1px solid #cfd6e4;
+      border-radius: 8px;
+      padding: 16px 20px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .form-area--education .upload-item:hover {
+      border-color: #2f6fed;
+      background: #f7f9ff;
+    }
+
+    /* HIDE default browser file picker button */
+    .form-area--education .upload-item input[type="file"] {
+      display: none !important;
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .form-area--education .upload-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.92rem;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .form-area--education .upload-hint {
+      margin-top: 4px;
+      color: #8a93a6;
+      font-size: 0.78rem;
+      font-weight: normal;
+    }
+
+    .form-area--education .upload-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #cfd6e4;
+      border-radius: 6px;
+      font-size: 1.25rem;
+      background: #fff;
+    }
+
+    /* Section 3: Languages & Skills (2 equal columns) */
+    .form-area--education .languages-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 20px 28px !important;
+      width: 100% !important;
+    }
+
+    .form-area--education .field {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .form-area--education .field label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .form-area--education .field input,
+    .form-area--education .field select {
+      display: block;
+      width: 100% !important;
+      min-width: 0 !important;
+      padding: 12px 14px;
+      border: 1px solid #e8503a;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      background: #fff;
+      color: #333;
+      box-sizing: border-box;
+    }
+
+    .form-area--education .field input:focus,
+    .form-area--education .field select:focus {
+      outline: none;
+      border-color: #2f6fed;
+      box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+    }
+
+    /* Proficiency IELTS + TOEFL side-by-side */
+    .form-area--education .field--proficiency {
+      width: 100%;
+    }
+
+    .form-area--education .proficiency-row {
+      display: flex !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+
+    .form-area--education .proficiency-row input {
+      flex: 1 !important;
+      min-width: 0 !important;
+    }
+
+    /* Form Actions */
+    .form-area--education .actions {
+      grid-column: unset !important;
+      display: flex !important;
+      justify-content: flex-end !important;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .form-area--education .next-btn {
+      padding: 16px 48px;
+      background: #2f6fed;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .form-area--education .next-btn:hover {
+      background: #2559c7;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .form-area--education .section-grid,
+      .form-area--education .upload-grid,
+      .form-area--education .languages-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-area.form-area--education {
+        padding: 20px !important;
+        gap: 20px !important;
+      }
+
+      .form-area--education .proficiency-row {
+        flex-direction: column !important;
+      }
+
+      .form-area--education .next-btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 <div class="layout">
 
   <aside class="sidebar">
     <div class="logo-box">
-      <img src="/images/logo1.png" alt="Site logo">
+      <img src="../images/logo1.png" alt="Site logo">
     </div>
 
     <nav class="nav">
@@ -22,13 +243,17 @@
       <a href="../profile/profile1.html" class="nav-btn nav-btn--active">
         <span class="icon">◔</span> Profile
       </a>
-      <a href="../home/updates.html" class="nav-btn">
-        <span class="icon">☰</span> Updates
+      <a
+        href="../home/updates.html"
+        class="nav-btn"
+      >
+        <span class="icon">♥</span>
+        Saved
       </a>
       <a href="../home/settings.html" class="nav-btn">
         <span class="icon">⚙</span> Settings
       </a>
-      <a href="../signin/signin.html" class="nav-btn">Logout</a>
+      <a href="../backend/logout.php" class="nav-btn">Logout</a>
     </nav>
   </aside>
 
@@ -51,7 +276,7 @@
           <div class="step-number">2</div>
           <div>
             <div class="step-title link">Educational Information</div>
-            <div class="step-sub">Education,languages,skills</div>
+            <div class="step-sub">Education, languages, skills</div>
           </div>
         </div>
         <div class="step-sep"></div>
@@ -64,69 +289,82 @@
         </div>
       </div>
 
-      <form class="form-area form-area--education">
+      <form 
+        class="form-area form-area--education" 
+        action="../backend/save_education.php" 
+        method="POST" 
+        enctype="multipart/form-data"
+      >
         <h2 class="form-heading">Education</h2>
 
-        
+        <!-- SECTION 1: Academic Details -->
         <div class="section-box edu-box">
+          <h3 class="section-title">Academic details</h3>
           <div class="section-grid">
             <div class="field">
               <label for="edu-level">Current education level</label>
               <select id="edu-level" name="edu-level">
-                <option>Select One</option>
-                <option>High School</option>
-                <option>Undergraduate</option>
-                <option>Postgraduate</option>
-                <option>PhD</option>
+                <option value="">Select One</option>
+                <option value="High School">High School</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Postgraduate">Postgraduate</option>
+                <option value="PhD">PhD</option>
               </select>
             </div>
+
             <div class="field">
               <label for="grad-year">Expected year of graduation</label>
-              <input type="text" id="grad-year" name="grad-year">
+              <input type="text" id="grad-year" name="grad-year" placeholder="e.g. 2026">
             </div>
 
             <div class="field">
               <label for="institution">Institution of study</label>
-              <input type="text" id="institution" name="institution">
-            </div>
-            <div class="field">
-              <label for="gpa">Current GPA/CGPA</label>
-              <input type="text" id="gpa" name="gpa">
+              <input type="text" id="institution" name="institution" placeholder="University or school name">
             </div>
 
             <div class="field">
-              <label for="course">Course /major of study</label>
-              <input type="text" id="course" name="course">
+              <label for="gpa">Current GPA/CGPA</label>
+              <input type="text" id="gpa" name="gpa" placeholder="e.g. 3.8 / 4.0">
             </div>
+
+            <div class="field">
+              <label for="course">Course / major of study</label>
+              <input type="text" id="course" name="course" placeholder="e.g. Computer Science">
+            </div>
+
             <div class="field">
               <label for="achievements">Academic achievements</label>
-              <input type="text" id="achievements" name="achievements">
+              <input type="text" id="achievements" name="achievements" placeholder="Honors, awards, publications...">
             </div>
           </div>
         </div>
 
-        
+        <!-- SECTION 2: Document Uploads -->
         <div class="section-box upload-box-wrap">
-          <h3 class="section-title">Upload docx</h3>
+          <h3 class="section-title">Upload Documents</h3>
 
-          <label class="upload-item">
-            <input type="file" name="transcript" hidden>
-            <span class="upload-text">
-              Academic transcript<br>pdf/docx
-            </span>
-            <span class="upload-icon">📄</span>
-          </label>
+          <div class="upload-grid">
+            <label class="upload-item">
+              <input type="file" name="transcript" accept=".pdf,.doc,.docx">
+              <span class="upload-text">
+                Academic transcript
+                <span class="upload-hint">PDF or DOCX</span>
+              </span>
+              <span class="upload-icon">📄</span>
+            </label>
 
-          <label class="upload-item">
-            <input type="file" name="certificate" hidden>
-            <span class="upload-text">
-              Graduation certificate<br>or<br>certificate of completion
-            </span>
-            <span class="upload-icon">📄</span>
-          </label>
+            <label class="upload-item">
+              <input type="file" name="certificate" accept=".pdf,.doc,.docx">
+              <span class="upload-text">
+                Graduation certificate or completion certificate
+                <span class="upload-hint">PDF or DOCX</span>
+              </span>
+              <span class="upload-icon">📄</span>
+            </label>
+          </div>
         </div>
 
-        
+        <!-- SECTION 3: Languages & Skills -->
         <div class="section-box languages-box">
           <h3 class="section-title">Languages and skills</h3>
 
@@ -134,48 +372,44 @@
             <div class="field">
               <label for="languages">Languages spoken</label>
               <select id="languages" name="languages">
-                <option>Select .....</option>
-                <option>English</option>
-                <option>Swahili</option>
-                <option>French</option>
-                <option>Other</option>
+                <option value="">Select .....</option>
+                <option value="English">English</option>
+                <option value="Swahili">Swahili</option>
+                <option value="French">French</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="field">
               <label for="skills">Skills</label>
               <select id="skills" name="skills">
-                <option>Select .....</option>
-                <option>Research</option>
-                <option>Leadership</option>
-                <option>Programming</option>
-                <option>Other</option>
+                <option value="">Select .....</option>
+                <option value="Research">Research</option>
+                <option value="Leadership">Leadership</option>
+                <option value="Programming">Programming</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="field field--proficiency">
-              <label>English proficiency test<span class="optional">(if applicable)</span></label>
+              <label>English proficiency test <span class="optional">(if applicable)</span></label>
               <div class="proficiency-row">
-                <input type="text" placeholder="IELTS Score" name="ielts"><br><br>
+                <input type="text" placeholder="IELTS Score" name="ielts">
                 <input type="text" placeholder="TOEFL Score" name="toefl">
               </div>
             </div>
 
             <div class="field field--other-langs">
-              <label for="other-langs" class="sr-only">Any other languages / certifications</label>
-              <input type="text" placeholder="Enter if any..." name="ielts">
+              <label for="other-langs">Any other languages / certifications <span class="optional">(optional)</span></label>
+              <input type="text" id="other-langs" placeholder="Enter if any..." name="other_languages">
             </div>
-          </div><br><br>
-
-          <div class="save-row">
-            <button type="button" class="save-btn">SAVE</button>
           </div>
         </div>
 
-        <div class="actions">
-          <a href="profile3.html" class="next-btn">Next</a>
+        <!-- Form Actions -->
+        <div class="actions"> 
+          <button type="submit" name="action" value="next" class="next-btn"> Next </button> 
         </div>
-        
       </form>
     </div>
   </main>

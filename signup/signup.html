@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
     <head>
         <title>Signup page</title>
         <link rel="stylesheet" href="signup.css">
     </head>
     <body>
         <h1>Sign Up</h1>
-        <form>
-            <label>Username/Email</label><br>
-            <input type="text"><br><br>
+        
+        <!-- FIXED: Single form tag with action and method -->
+        <form action="../backend/signup.php" method="POST">
+            <label>Email</label><br>
+            <input type="email" name="email" required><br><br>
 
-            <label>Password</label><br>
-            <input type="password"><br><br>
+            <label>Username</label><br>
+            <input type="text" name="username" required><br><br>
 
-            <input type="submit" value="Login"><br><br><br>
+            <label>Enter Password</label><br>
+            <input type="password" name="password" required><br><br>
+
+            <label>Confirm Password</label><br>
+            <input type="password" name="confirm_password" required><br><br>
+
+            <input type="submit" value="Signup"><br><br><br>
         </form>
         
-        <a href="../signin/signin.html">Already have an account?Signin</a>
+        <a href="../signin/signin.html">Already have an account? Sign in</a>
 
         <script src="../home/script.js" defer></script>
     </body>
