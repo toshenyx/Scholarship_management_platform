@@ -570,12 +570,25 @@ function initPasswordToggles() {
 // 8. DASHBOARD
 async function loadDashboard() {
 
-    const usernameElement =
+    const welcomeUsername =
+        document.getElementById(
+            'welcome-username'
+        );
+
+    const dashboardUsername =
         document.getElementById(
             'dashboard-username'
         );
 
-    if (!usernameElement) {
+    const roleElement =
+        document.getElementById(
+            'dashboard-role'
+        );
+
+    if (
+        !welcomeUsername &&
+        !dashboardUsername
+    ) {
         return;
     }
 
@@ -601,6 +614,11 @@ async function loadDashboard() {
         const data =
             await response.json();
 
+        console.log(
+            'Dashboard data:',
+            data
+        );
+
         if (
             !data.success ||
             !data.logged_in
@@ -612,24 +630,17 @@ async function loadDashboard() {
             return;
         }
 
-        const welcomeUsername =
-            document.getElementById(
-                'welcome-username'
-            );
-
-        usernameElement.textContent =
-            data.username;
-
         if (welcomeUsername) {
 
             welcomeUsername.textContent =
-                data.username;
+                data.username || 'User';
         }
 
-        const roleElement =
-            document.getElementById(
-                'dashboard-role'
-            );
+        if (dashboardUsername) {
+
+            dashboardUsername.textContent =
+                data.username || 'User';
+        }
 
         if (roleElement) {
 
@@ -690,8 +701,17 @@ async function loadDashboard() {
             error
         );
 
-        usernameElement.textContent =
-            'User';
+        if (welcomeUsername) {
+
+            welcomeUsername.textContent =
+                'User';
+        }
+
+        if (dashboardUsername) {
+
+            dashboardUsername.textContent =
+                'User';
+        }
     }
 }
 
