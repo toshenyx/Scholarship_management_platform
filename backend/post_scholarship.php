@@ -391,7 +391,7 @@ try {
     if ($role === 'admin') {
 
         header(
-            "Location: ../home/scholarships.html?posted=1"
+            "Location: ../admin/scholarships.html?posted=1"
         );
 
     } else {
