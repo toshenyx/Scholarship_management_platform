@@ -4,16 +4,14 @@ document.addEventListener(
         loadSavedScholarships();
         loadSavedPageUser();
         setupSavedSearch();
+        setupCollapsibleSidebar();
     }
 );
 
 
 let savedScholarships = [];
 
-
-/* =========================================================
-   GET SAVED SCHOLARSHIPS FROM PHP / MYSQL
-========================================================= */
+// GET SAVED SCHOLARSHIPS FROM PHP / MYSQL
 
 async function loadSavedScholarships() {
 
@@ -99,15 +97,6 @@ async function loadSavedScholarships() {
         }
 
 
-        /*
-         * PHP returns:
-         *
-         * {
-         *     success: true,
-         *     saved_scholarships: [...]
-         * }
-         */
-
         savedScholarships =
             Array.isArray(
                 data.saved_scholarships
@@ -152,8 +141,8 @@ async function loadSavedScholarships() {
 
                 <p>
                     ${escapeSavedHtml(
-                        error.message
-                    )}
+            error.message
+        )}
                 </p>
 
                 <button
@@ -181,9 +170,7 @@ async function loadSavedScholarships() {
 }
 
 
-/* =========================================================
-   DISPLAY DATABASE RESULTS
-========================================================= */
+// DISPLAY DATABASE RESULTS
 
 function renderSavedScholarships(
     scholarships
@@ -211,17 +198,14 @@ function renderSavedScholarships(
     if (count) {
 
         count.textContent =
-            `${scholarships.length} saved scholarship${
-                scholarships.length === 1
-                    ? ''
-                    : 's'
+            `${scholarships.length} saved scholarship${scholarships.length === 1
+                ? ''
+                : 's'
             }`;
     }
 
 
-    /* =====================================================
-       DATABASE RETURNED ZERO ROWS
-    ===================================================== */
+    // DATABASE RETURNED ZERO ROWS
 
     if (
         scholarships.length === 0
@@ -255,9 +239,7 @@ function renderSavedScholarships(
     }
 
 
-    /* =====================================================
-       CREATE A CARD FROM EACH DATABASE ROW
-    ===================================================== */
+    // CREATE A CARD FROM EACH DATABASE ROW
 
     scholarships.forEach(
         scholarship => {
@@ -287,18 +269,18 @@ function renderSavedScholarships(
                         <h3 class="update-title">
 
                             ${escapeSavedHtml(
-                                scholarship.title ||
-                                'Scholarship'
-                            )}
+                scholarship.title ||
+                'Scholarship'
+            )}
 
                         </h3>
 
                         <p class="update-text">
 
                             ${escapeSavedHtml(
-                                scholarship.provider ||
-                                'Provider not specified'
-                            )}
+                scholarship.provider ||
+                'Provider not specified'
+            )}
 
                         </p>
 
@@ -310,9 +292,9 @@ function renderSavedScholarships(
                 <p class="update-text">
 
                     ${escapeSavedHtml(
-                        scholarship.description ||
-                        'No description available.'
-                    )}
+                scholarship.description ||
+                'No description available.'
+            )}
 
                 </p>
 
@@ -322,65 +304,65 @@ function renderSavedScholarships(
                     <p>
                         <strong>Country:</strong>
                         ${escapeSavedHtml(
-                            scholarship.country ||
-                            'Not specified'
-                        )}
+                scholarship.country ||
+                'Not specified'
+            )}
                     </p>
 
 
                     <p>
                         <strong>University:</strong>
                         ${escapeSavedHtml(
-                            scholarship.university ||
-                            'Not specified'
-                        )}
+                scholarship.university ||
+                'Not specified'
+            )}
                     </p>
 
 
                     <p>
                         <strong>Education level:</strong>
                         ${escapeSavedHtml(
-                            scholarship.education_level ||
-                            'Not specified'
-                        )}
+                scholarship.education_level ||
+                'Not specified'
+            )}
                     </p>
 
 
                     <p>
                         <strong>Eligible courses:</strong>
                         ${escapeSavedHtml(
-                            scholarship.eligible_courses ||
-                            'Not specified'
-                        )}
+                scholarship.eligible_courses ||
+                'Not specified'
+            )}
                     </p>
 
 
                     <p>
                         <strong>Funding:</strong>
                         ${escapeSavedHtml(
-                            formatFunding(
-                                scholarship.funding_type
-                            )
-                        )}
+                formatFunding(
+                    scholarship.funding_type
+                )
+            )}
                     </p>
 
 
                     <p>
                         <strong>Minimum GPA:</strong>
                         ${escapeSavedHtml(
-                            scholarship.minimum_gpa ??
-                            'Not specified'
-                        )}
+                scholarship.minimum_gpa ??
+                'Not specified'
+            )}
                     </p>
 
 
                     <p>
                         <strong>Deadline:</strong>
                         ${escapeSavedHtml(
-                            formatDate(
-                                scholarship.deadline
-                            )
-                        )}
+                formatDate(
+                    scholarship.deadline
+                )
+            )}
                     </p>
 
                 </div>
@@ -392,21 +374,20 @@ function renderSavedScholarships(
                         type="button"
                         class="update-btn remove-saved"
                         data-id="${Number(
-                            scholarship.scholarship_id
-                        )}"
+                scholarship.scholarship_id
+            )}"
                     >
                         Remove
                     </button>
 
 
-                    ${
-                        applicationLink
-                            ? `
+                    ${applicationLink
+                    ? `
 
                             <a
                                 href="${escapeSavedHtml(
-                                    applicationLink
-                                )}"
+                        applicationLink
+                    )}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="update-btn"
@@ -415,8 +396,8 @@ function renderSavedScholarships(
                             </a>
 
                             `
-                            : ''
-                    }
+                    : ''
+                }
 
                 </div>
 
@@ -452,9 +433,7 @@ function renderSavedScholarships(
 }
 
 
-/* =========================================================
-   REMOVE SAVED SCHOLARSHIP
-========================================================= */
+// REMOVE SAVED SCHOLARSHIP
 
 async function removeSavedScholarship(
     scholarshipId,
@@ -533,13 +512,6 @@ async function removeSavedScholarship(
         }
 
 
-        /*
-         * Do NOT just hide the HTML card.
-         *
-         * Fetch MySQL again so the screen
-         * reflects the database.
-         */
-
         await loadSavedScholarships();
 
 
@@ -564,9 +536,7 @@ async function removeSavedScholarship(
 }
 
 
-/* =========================================================
-   SEARCH
-========================================================= */
+// SEARCH
 
 function setupSavedSearch() {
 
@@ -655,9 +625,7 @@ function filterSavedScholarships() {
 }
 
 
-/* =========================================================
-   LOAD USER INFORMATION
-========================================================= */
+// LOAD USER INFORMATION
 
 async function loadSavedPageUser() {
 
@@ -741,9 +709,7 @@ async function loadSavedPageUser() {
 }
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
+// HELPERS
 
 function formatFunding(value) {
 
@@ -842,7 +808,7 @@ function capitalize(value) {
 
     return value
         ? value.charAt(0).toUpperCase() +
-          value.slice(1)
+        value.slice(1)
         : '';
 }
 
@@ -883,4 +849,49 @@ function escapeSavedHtml(value) {
             /'/g,
             '&#039;'
         );
+}
+
+function setupCollapsibleSidebar() {
+
+    const sidebar =
+        document.getElementById('sidebar');
+
+    const toggleButton =
+        document.getElementById('sidebar-toggle');
+
+    if (!sidebar || !toggleButton) {
+        return;
+    }
+
+
+    // Restore previous sidebar state
+    const sidebarCollapsed =
+        localStorage.getItem('sidebarCollapsed');
+
+    if (sidebarCollapsed === 'true') {
+        sidebar.classList.add('collapsed');
+        toggleButton.textContent = '☰';
+    }
+
+
+    toggleButton.addEventListener('click', () => {
+
+        sidebar.classList.toggle('collapsed');
+
+        const collapsed =
+            sidebar.classList.contains('collapsed');
+
+        localStorage.setItem(
+            'sidebarCollapsed',
+            collapsed
+        );
+
+        toggleButton.setAttribute(
+            'aria-label',
+            collapsed
+                ? 'Expand sidebar'
+                : 'Collapse sidebar'
+        );
+
+    });
 }

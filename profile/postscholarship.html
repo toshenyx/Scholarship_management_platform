@@ -10,392 +10,305 @@
 
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-    <!-- =========================================================
-         SIDEBAR
-    ========================================================== -->
-    <aside class="sidebar">
-        <div class="logo-box">
-            <img src="../images/logo1.png" alt="Site logo">
-        </div>
+        <!-- SIDEBAR-->
+        <aside class="sidebar" id="sidebar">
 
-        <nav class="nav">
-            <a href="../home/dashboard.html" class="nav-btn">
-                <span class="icon">▦</span> Dashboard
-            </a>
+            <div class="sidebar-header">
+                <div class="logo-box">
+                    <img src="../images/logo1.png" alt="Scholarly">
+                    <span class="logo-name">scholarly</span>
+                </div>
 
-            <a href="../home/scholarships.html" class="nav-btn nav-btn--active">
-                <span class="icon">🎓</span> Scholarships
-            </a>
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar">
+                    ☰
+                </button>
+            </div>
 
-            <a href="#" class="nav-btn" onclick="openProfile(); return false;">
-                <span class="icon">◔</span> Profile
-            </a>
+            <div class="sidebar-label">
+                STUDENT PORTAL
+            </div>
 
-            <a href="../home/updates.html" class="nav-btn">
-                <span class="icon">☰</span> Updates
-            </a>
+            <nav class="nav">
 
-            <a href="../home/settings.html" class="nav-btn">
-                <span class="icon">⚙</span> Settings
-            </a>
+                <a href="../home/dashboard.html" class="nav-btn">
+                    <span class="icon">▦</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
 
-            <a href="../backend/logout.php" class="nav-btn">
-                Logout
-            </a>
-        </nav>
-    </aside>
+                <a href="../home/scholarships.html" class="nav-btn">
+                    <span class="icon">🎓</span>
+                    <span class="nav-text">Scholarships</span>
+                </a>
 
-    <!-- =========================================================
-         MAIN CONTENT
-    ========================================================== -->
-    <main class="main">
-        <div class="panel">
+                <a href="#" class="nav-btn nav-btn--active" onclick="openProfile(); return false;">
+                    <span class="icon">◔</span>
+                    <span class="nav-text">Profile</span>
+                </a>
 
-            <!-- =====================================================
-                 POST SCHOLARSHIP FORM
-            ====================================================== -->
-            <form
-                class="form-area form-area--post-scholarship"
-                action="../backend/post_scholarship.php"
-                method="POST"
-                id="post-scholarship-form"
-            >
-                <h2 class="form-heading">
-                    Post Scholarship
-                </h2>
+                <a href="../home/updates.html" class="nav-btn">
+                    <span class="icon">♥</span>
+                    <span class="nav-text">Saved</span>
+                </a>
 
-                <!-- =================================================
-                     BASIC SCHOLARSHIP INFORMATION
-                ================================================== -->
-                <div class="section-box scholarship-info-box">
-                    <div class="info-grid">
+                <a href="../backend/logout.php" class="nav-btn logout-btn">
+                    <span class="icon">↪</span>
+                    <span class="nav-text">Logout</span>
+                </a>
 
-                        <!-- LEFT COLUMN -->
-                        <div class="scholarship-col">
-                            <!-- TITLE -->
-                            <div class="field">
-                                <label for="title">
-                                    Scholarship title
-                                </label>
-                                <input
-                                    type="text"
-                                    id="title"
-                                    name="title"
-                                    placeholder="e.g. Mastercard Foundation Scholarship"
-                                    required
-                                >
+            </nav>
+
+        </aside>
+
+        <main class="main">
+            <div class="panel">
+
+                <form class="form-area form-area--post-scholarship" action="../backend/post_scholarship.php"
+                    method="POST" id="post-scholarship-form">
+                    <h2 class="form-heading">
+                        Post Scholarship
+                    </h2>
+
+                    <div class="section-box scholarship-info-box">
+                        <div class="info-grid">
+
+                            <div class="scholarship-col">
+                                <div class="field">
+                                    <label for="title">
+                                        Scholarship title
+                                    </label>
+                                    <input type="text" id="title" name="title"
+                                        placeholder="e.g. Mastercard Foundation Scholarship" required>
+                                </div>
+
+
+                                <div class="field">
+                                    <label for="provider">
+                                        Scholarship provider / organization
+                                    </label>
+                                    <input type="text" id="provider" name="provider"
+                                        placeholder="e.g. Mastercard Foundation" required>
+                                </div>
+
+
+                                <div class="field">
+                                    <label for="application-link">
+                                        Scholarship application link
+                                    </label>
+                                    <input type="url" id="application-link" name="application_link"
+                                        placeholder="https://example.com/apply" required>
+                                </div>
+
+
+                                <div class="field">
+                                    <label for="deadline">
+                                        Scholarship application deadline
+                                    </label>
+                                    <input type="date" id="deadline" name="deadline" required>
+                                </div>
                             </div>
 
-                            <!-- PROVIDER -->
-                            <div class="field">
-                                <label for="provider">
-                                    Scholarship provider / organization
-                                </label>
-                                <input
-                                    type="text"
-                                    id="provider"
-                                    name="provider"
-                                    placeholder="e.g. Mastercard Foundation"
-                                    required
-                                >
+
+                            <div class="scholarship-col">
+
+                                <div class="field field--full-height">
+                                    <label for="description">
+                                        Brief description of the scholarship
+                                        <span class="optional">(optional)</span>
+                                    </label>
+                                    <textarea id="description" name="description"
+                                        placeholder="Give a short description of the scholarship..."></textarea>
+                                </div>
                             </div>
 
-                            <!-- APPLICATION LINK -->
-                            <div class="field">
-                                <label for="application-link">
-                                    Scholarship application link
-                                </label>
-                                <input
-                                    type="url"
-                                    id="application-link"
-                                    name="application_link"
-                                    placeholder="https://example.com/apply"
-                                    required
-                                >
-                            </div>
+                        </div>
+                    </div>
 
-                            <!-- DEADLINE -->
-                            <div class="field">
-                                <label for="deadline">
-                                    Scholarship application deadline
-                                </label>
-                                <input
-                                    type="date"
-                                    id="deadline"
-                                    name="deadline"
-                                    required
-                                >
+                    <!-- ELIGIBILITY REQUIREMENTS -->
+                    <h2 class="form-heading form-heading--spaced">
+                        Eligibility Requirements
+                    </h2>
+
+                    <div class="eligibility-grid">
+
+                        <!-- LEFT ELIGIBILITY CARD -->
+                        <div class="section-box eligibility-box">
+                            <div class="scholarship-col">
+
+                                <!-- EDUCATION LEVEL -->
+                                <div class="field">
+                                    <label for="education-level">
+                                        Education level
+                                    </label>
+                                    <select id="education-level" name="education_level" required>
+                                        <option value="">Select education level</option>
+                                        <option value="Certificate">Certificate</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="Undergraduate">Undergraduate</option>
+                                        <option value="Masters">Masters</option>
+                                        <option value="PhD">PhD</option>
+                                        <option value="Any">Any level</option>
+                                    </select>
+                                </div>
+
+                                <!-- ELIGIBLE COURSES -->
+                                <div class="field">
+                                    <label for="eligible-courses">
+                                        Eligible courses / fields of study
+                                    </label>
+                                    <input type="text" id="eligible-courses" name="eligible_courses"
+                                        placeholder="e.g. Medicine, Technology, Business" required>
+                                </div>
+
+                                <!-- GPA -->
+                                <div class="field">
+                                    <label for="minimum-gpa">
+                                        Minimum GPA requirement
+                                        <span class="optional">(if applicable)</span>
+                                    </label>
+                                    <input type="number" id="minimum-gpa" name="minimum_gpa" min="0" max="4" step="0.01"
+                                        placeholder="e.g. 3.00">
+                                </div>
+
+                                <!-- NATIONALITIES -->
+                                <div class="field">
+                                    <label for="eligible-nationalities">
+                                        Eligible nationalities
+                                    </label>
+                                    <input type="text" id="eligible-nationalities" name="eligible_nationalities"
+                                        placeholder="e.g. Kenya, Uganda, All international students" required>
+                                </div>
+
+                                <!-- AGE + IELTS -->
+                                <div class="age-ielts-row">
+                                    <div class="field">
+                                        <label for="age-limit">
+                                            Age limit
+                                            <span class="optional">(if any)</span>
+                                        </label>
+                                        <input type="number" id="age-limit" name="age_limit" min="1" max="100"
+                                            placeholder="e.g. 35">
+                                    </div>
+
+                                    <fieldset class="radio-field">
+                                        <legend>Is IELTS required?</legend>
+                                        <label class="radio-option">
+                                            <input type="radio" name="ielts_required" value="1">
+                                            Yes
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="ielts_required" value="0" checked>
+                                            No
+                                        </label>
+                                    </fieldset>
+                                </div>
+
                             </div>
                         </div>
 
                         <!-- RIGHT COLUMN -->
-                        <div class="scholarship-col">
-                            <!-- DESCRIPTION -->
-                            <div class="field field--full-height">
-                                <label for="description">
-                                    Brief description of the scholarship
-                                    <span class="optional">(optional)</span>
-                                </label>
-                                <textarea
-                                    id="description"
-                                    name="description"
-                                    placeholder="Give a short description of the scholarship..."
-                                ></textarea>
-                            </div>
-                        </div>
+                        <div class="side-col">
 
-                    </div>
-                </div>
+                            <!-- FUNDING DETAILS -->
+                            <div class="section-box funding-box">
+                                <h3 class="section-title">Funding Details</h3>
 
-                <!-- =================================================
-                     ELIGIBILITY REQUIREMENTS
-                ================================================== -->
-                <h2 class="form-heading form-heading--spaced">
-                    Eligibility Requirements
-                </h2>
-
-                <div class="eligibility-grid">
-
-                    <!-- LEFT ELIGIBILITY CARD -->
-                    <div class="section-box eligibility-box">
-                        <div class="scholarship-col">
-
-                            <!-- EDUCATION LEVEL -->
-                            <div class="field">
-                                <label for="education-level">
-                                    Education level
-                                </label>
-                                <select
-                                    id="education-level"
-                                    name="education_level"
-                                    required
-                                >
-                                    <option value="">Select education level</option>
-                                    <option value="Certificate">Certificate</option>
-                                    <option value="Diploma">Diploma</option>
-                                    <option value="Undergraduate">Undergraduate</option>
-                                    <option value="Masters">Masters</option>
-                                    <option value="PhD">PhD</option>
-                                    <option value="Any">Any level</option>
-                                </select>
-                            </div>
-
-                            <!-- ELIGIBLE COURSES -->
-                            <div class="field">
-                                <label for="eligible-courses">
-                                    Eligible courses / fields of study
-                                </label>
-                                <input
-                                    type="text"
-                                    id="eligible-courses"
-                                    name="eligible_courses"
-                                    placeholder="e.g. Medicine, Technology, Business"
-                                    required
-                                >
-                            </div>
-
-                            <!-- GPA -->
-                            <div class="field">
-                                <label for="minimum-gpa">
-                                    Minimum GPA requirement
-                                    <span class="optional">(if applicable)</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    id="minimum-gpa"
-                                    name="minimum_gpa"
-                                    min="0"
-                                    max="4"
-                                    step="0.01"
-                                    placeholder="e.g. 3.00"
-                                >
-                            </div>
-
-                            <!-- NATIONALITIES -->
-                            <div class="field">
-                                <label for="eligible-nationalities">
-                                    Eligible nationalities
-                                </label>
-                                <input
-                                    type="text"
-                                    id="eligible-nationalities"
-                                    name="eligible_nationalities"
-                                    placeholder="e.g. Kenya, Uganda, All international students"
-                                    required
-                                >
-                            </div>
-
-                            <!-- AGE + IELTS -->
-                            <div class="age-ielts-row">
-                                <div class="field">
-                                    <label for="age-limit">
-                                        Age limit
-                                        <span class="optional">(if any)</span>
-                                    </label>
-                                    <input
-                                        type="number"
-                                        id="age-limit"
-                                        name="age_limit"
-                                        min="1"
-                                        max="100"
-                                        placeholder="e.g. 35"
-                                    >
-                                </div>
-
-                                <fieldset class="radio-field">
-                                    <legend>Is IELTS required?</legend>
-                                    <label class="radio-option">
-                                        <input
-                                            type="radio"
-                                            name="ielts_required"
-                                            value="1"
-                                        >
-                                        Yes
-                                    </label>
-                                    <label class="radio-option">
-                                        <input
-                                            type="radio"
-                                            name="ielts_required"
-                                            value="0"
-                                            checked
-                                        >
-                                        No
-                                    </label>
-                                </fieldset>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN -->
-                    <div class="side-col">
-
-                        <!-- FUNDING DETAILS -->
-                        <div class="section-box funding-box">
-                            <h3 class="section-title">Funding Details</h3>
-
-                            <div class="inline-field">
-                                <label for="funding-type">Funding type</label>
-                                <select
-                                    id="funding-type"
-                                    name="funding_type"
-                                    required
-                                >
-                                    <option value="">Select funding type</option>
-                                    <option value="fully_funded">Fully Funded</option>
-                                    <option value="partially_funded">Partially Funded</option>
-                                    <option value="tuition_only">Tuition Only</option>
-                                </select>
-                            </div>
-
-                            <div class="benefits-block">
-                                <span class="benefits-label">Benefits</span>
-                                <div class="benefits-grid">
-                                    <label class="benefit-option">
-                                        <input type="checkbox" name="benefits[]" value="tuition">
-                                        <span>Tuition</span>
-                                    </label>
-
-                                    <label class="benefit-option">
-                                        <input type="checkbox" name="benefits[]" value="accommodation">
-                                        <span>Accommodation</span>
-                                    </label>
-
-                                    <label class="benefit-option">
-                                        <input type="checkbox" name="benefits[]" value="monthly_stipend">
-                                        <span>Monthly stipend</span>
-                                    </label>
-
-                                    <label class="benefit-option">
-                                        <input type="checkbox" name="benefits[]" value="airfare">
-                                        <span>Airfare</span>
-                                    </label>
-
-                                    <label class="benefit-option">
-                                        <input type="checkbox" name="benefits[]" value="medical_insurance">
-                                        <span>Medical insurance</span>
-                                    </label>
-
-                                    <label class="benefit-option">
-                                        <input type="checkbox" name="benefits[]" value="books_allowance">
-                                        <span>Books / research allowance</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- STUDY INFORMATION -->
-                        <div class="section-box study-info-box">
-                            <h3 class="section-title">Study Information</h3>
-
-                            <div class="study-row">
                                 <div class="inline-field">
-                                    <label for="country">Country</label>
-                                    <input
-                                        type="text"
-                                        id="country"
-                                        name="country"
-                                        placeholder="e.g. United Kingdom"
-                                        required
-                                    >
+                                    <label for="funding-type">Funding type</label>
+                                    <select id="funding-type" name="funding_type" required>
+                                        <option value="">Select funding type</option>
+                                        <option value="fully_funded">Fully Funded</option>
+                                        <option value="partially_funded">Partially Funded</option>
+                                        <option value="tuition_only">Tuition Only</option>
+                                    </select>
+                                </div>
+
+                                <div class="benefits-block">
+                                    <span class="benefits-label">Benefits</span>
+                                    <div class="benefits-grid">
+                                        <label class="benefit-option">
+                                            <input type="checkbox" name="benefits[]" value="tuition">
+                                            <span>Tuition</span>
+                                        </label>
+
+                                        <label class="benefit-option">
+                                            <input type="checkbox" name="benefits[]" value="accommodation">
+                                            <span>Accommodation</span>
+                                        </label>
+
+                                        <label class="benefit-option">
+                                            <input type="checkbox" name="benefits[]" value="monthly_stipend">
+                                            <span>Monthly stipend</span>
+                                        </label>
+
+                                        <label class="benefit-option">
+                                            <input type="checkbox" name="benefits[]" value="airfare">
+                                            <span>Airfare</span>
+                                        </label>
+
+                                        <label class="benefit-option">
+                                            <input type="checkbox" name="benefits[]" value="medical_insurance">
+                                            <span>Medical insurance</span>
+                                        </label>
+
+                                        <label class="benefit-option">
+                                            <input type="checkbox" name="benefits[]" value="books_allowance">
+                                            <span>Books / research allowance</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STUDY INFORMATION -->
+                            <div class="section-box study-info-box">
+                                <h3 class="section-title">Study Information</h3>
+
+                                <div class="study-row">
+                                    <div class="inline-field">
+                                        <label for="country">Country</label>
+                                        <input type="text" id="country" name="country" placeholder="e.g. United Kingdom"
+                                            required>
+                                    </div>
+
+                                    <div class="inline-field">
+                                        <label for="duration">Duration</label>
+                                        <input type="text" id="duration" name="duration" placeholder="e.g. 4 years">
+                                    </div>
                                 </div>
 
                                 <div class="inline-field">
-                                    <label for="duration">Duration</label>
-                                    <input
-                                        type="text"
-                                        id="duration"
-                                        name="duration"
-                                        placeholder="e.g. 4 years"
-                                    >
+                                    <label for="university">University</label>
+                                    <input type="text" id="university" name="university"
+                                        placeholder="e.g. University of Oxford">
                                 </div>
                             </div>
 
-                            <div class="inline-field">
-                                <label for="university">University</label>
-                                <input
-                                    type="text"
-                                    id="university"
-                                    name="university"
-                                    placeholder="e.g. University of Oxford"
-                                >
-                            </div>
                         </div>
 
                     </div>
 
-                </div>
+                    <!-- SUBMIT ACTIONS -->
+                    <div class="actions">
+                        <button type="button" class="save-btn"
+                            onclick="window.location.href='../home/scholarships.html'">
+                            Cancel
+                        </button>
 
-                <!-- SUBMIT ACTIONS -->
-                <div class="actions">
-                    <button
-                        type="button"
-                        class="save-btn"
-                        onclick="window.location.href='../home/scholarships.html'"
-                    >
-                        Cancel
-                    </button>
+                        <button type="submit" class="post-btn" name="action" value="post">
+                            Post Scholarship
+                        </button>
+                    </div>
 
-                    <button
-                        type="submit"
-                        class="post-btn"
-                        name="action"
-                        value="post"
-                    >
-                        Post Scholarship
-                    </button>
-                </div>
+                </form>
 
-            </form>
+            </div>
+        </main>
 
-        </div>
-    </main>
+    </div>
 
-</div>
-
-<script src="../home/script.js" defer></script>
+    <script src="../home/script.js" defer></script>
 
 </body>
+
 </html>

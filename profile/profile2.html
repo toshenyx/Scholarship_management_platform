@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,6 +203,7 @@
 
     /* Responsive */
     @media (max-width: 900px) {
+
       .form-area--education .section-grid,
       .form-area--education .upload-grid,
       .form-area--education .languages-grid {
@@ -225,196 +227,214 @@
     }
   </style>
 </head>
+
 <body>
-<div class="layout">
+  <div class="layout">
 
-  <aside class="sidebar">
-    <div class="logo-box">
-      <img src="../images/logo1.png" alt="Site logo">
-    </div>
+    <aside class="sidebar" id="sidebar">
 
-    <nav class="nav">
-      <a href="../home/dashboard.html" class="nav-btn">
-        <span class="icon">▦</span> Dashboard
-      </a>
-      <a href="../home/scholarships.html" class="nav-btn">
-        <span class="icon">🎓</span> Scholarships
-      </a>
-      <a href="../profile/profile1.html" class="nav-btn nav-btn--active">
-        <span class="icon">◔</span> Profile
-      </a>
-      <a
-        href="../home/updates.html"
-        class="nav-btn"
-      >
-        <span class="icon">♥</span>
-        Saved
-      </a>
-      <a href="../home/settings.html" class="nav-btn">
-        <span class="icon">⚙</span> Settings
-      </a>
-      <a href="../backend/logout.php" class="nav-btn">Logout</a>
-    </nav>
-  </aside>
+      <div class="sidebar-header">
+        <div class="logo-box">
+          <img src="../images/logo1.png" alt="Scholarly">
+          <span class="logo-name">scholarly</span>
+        </div>
 
-  <main class="main">
-    <div class="panel">
-      <div class="breadcrumb">
-        <span class="active-crumb">Complete registration</span>
+        <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar">
+          ☰
+        </button>
       </div>
 
-      <div class="steps">
-        <div class="step done">
-          <div class="step-number">1</div>
-          <div>
-            <div class="step-title link">Personal Information</div>
-            <div class="step-sub">Fill in your full personal details</div>
-          </div>
-        </div>
-        <div class="step-sep"></div>
-        <div class="step current">
-          <div class="step-number">2</div>
-          <div>
-            <div class="step-title link">Educational Information</div>
-            <div class="step-sub">Education, languages, skills</div>
-          </div>
-        </div>
-        <div class="step-sep"></div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <div>
-            <div class="step-title dim">Scholarship filtering preferences</div>
-            <div class="step-sub">Scholarship data</div>
-          </div>
-        </div>
+      <div class="sidebar-label">
+        STUDENT PORTAL
       </div>
 
-      <form 
-        class="form-area form-area--education" 
-        action="../backend/save_education.php" 
-        method="POST" 
-        enctype="multipart/form-data"
-      >
-        <h2 class="form-heading">Education</h2>
+      <nav class="nav">
 
-        <!-- SECTION 1: Academic Details -->
-        <div class="section-box edu-box">
-          <h3 class="section-title">Academic details</h3>
-          <div class="section-grid">
-            <div class="field">
-              <label for="edu-level">Current education level</label>
-              <select id="edu-level" name="edu-level">
-                <option value="">Select One</option>
-                <option value="High School">High School</option>
-                <option value="Undergraduate">Undergraduate</option>
-                <option value="Postgraduate">Postgraduate</option>
-                <option value="PhD">PhD</option>
-              </select>
+        <a href="../home/dashboard.html" class="nav-btn">
+          <span class="icon">▦</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+
+        <a href="../home/scholarships.html" class="nav-btn">
+          <span class="icon">🎓</span>
+          <span class="nav-text">Scholarships</span>
+        </a>
+
+        <a href="#" class="nav-btn nav-btn--active" onclick="openProfile(); return false;">
+          <span class="icon">◔</span>
+          <span class="nav-text">Profile</span>
+        </a>
+
+        <a href="../home/updates.html" class="nav-btn">
+          <span class="icon">♥</span>
+          <span class="nav-text">Saved</span>
+        </a>
+
+        <a href="../backend/logout.php" class="nav-btn logout-btn">
+          <span class="icon">↪</span>
+          <span class="nav-text">Logout</span>
+        </a>
+
+      </nav>
+
+    </aside>
+
+    <main class="main">
+      <div class="panel">
+        <div class="breadcrumb">
+          <span class="active-crumb">Complete registration</span>
+        </div>
+
+        <div class="steps">
+          <div class="step done">
+            <div class="step-number">1</div>
+            <div>
+              <div class="step-title link">Personal Information</div>
+              <div class="step-sub">Fill in your full personal details</div>
             </div>
-
-            <div class="field">
-              <label for="grad-year">Expected year of graduation</label>
-              <input type="text" id="grad-year" name="grad-year" placeholder="e.g. 2026">
+          </div>
+          <div class="step-sep"></div>
+          <div class="step current">
+            <div class="step-number">2</div>
+            <div>
+              <div class="step-title link">Educational Information</div>
+              <div class="step-sub">Education, languages, skills</div>
             </div>
-
-            <div class="field">
-              <label for="institution">Institution of study</label>
-              <input type="text" id="institution" name="institution" placeholder="University or school name">
-            </div>
-
-            <div class="field">
-              <label for="gpa">Current GPA/CGPA</label>
-              <input type="text" id="gpa" name="gpa" placeholder="e.g. 3.8 / 4.0">
-            </div>
-
-            <div class="field">
-              <label for="course">Course / major of study</label>
-              <input type="text" id="course" name="course" placeholder="e.g. Computer Science">
-            </div>
-
-            <div class="field">
-              <label for="achievements">Academic achievements</label>
-              <input type="text" id="achievements" name="achievements" placeholder="Honors, awards, publications...">
+          </div>
+          <div class="step-sep"></div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div>
+              <div class="step-title dim">Scholarship filtering preferences</div>
+              <div class="step-sub">Scholarship data</div>
             </div>
           </div>
         </div>
 
-        <!-- SECTION 2: Document Uploads -->
-        <div class="section-box upload-box-wrap">
-          <h3 class="section-title">Upload Documents</h3>
+        <form class="form-area form-area--education" action="../backend/save_education.php" method="POST"
+          enctype="multipart/form-data">
+          <h2 class="form-heading">Education</h2>
 
-          <div class="upload-grid">
-            <label class="upload-item">
-              <input type="file" name="transcript" accept=".pdf,.doc,.docx">
-              <span class="upload-text">
-                Academic transcript
-                <span class="upload-hint">PDF or DOCX</span>
-              </span>
-              <span class="upload-icon">📄</span>
-            </label>
+          <!-- SECTION 1: Academic Details -->
+          <div class="section-box edu-box">
+            <h3 class="section-title">Academic details</h3>
+            <div class="section-grid">
+              <div class="field">
+                <label for="edu-level">Current education level</label>
+                <select id="edu-level" name="edu-level">
+                  <option value="">Select One</option>
+                  <option value="High School">High School</option>
+                  <option value="Undergraduate">Undergraduate</option>
+                  <option value="Postgraduate">Postgraduate</option>
+                  <option value="PhD">PhD</option>
+                </select>
+              </div>
 
-            <label class="upload-item">
-              <input type="file" name="certificate" accept=".pdf,.doc,.docx">
-              <span class="upload-text">
-                Graduation certificate or completion certificate
-                <span class="upload-hint">PDF or DOCX</span>
-              </span>
-              <span class="upload-icon">📄</span>
-            </label>
-          </div>
-        </div>
+              <div class="field">
+                <label for="grad-year">Expected year of graduation</label>
+                <input type="text" id="grad-year" name="grad-year" placeholder="e.g. 2026">
+              </div>
 
-        <!-- SECTION 3: Languages & Skills -->
-        <div class="section-box languages-box">
-          <h3 class="section-title">Languages and skills</h3>
+              <div class="field">
+                <label for="institution">Institution of study</label>
+                <input type="text" id="institution" name="institution" placeholder="University or school name">
+              </div>
 
-          <div class="languages-grid">
-            <div class="field">
-              <label for="languages">Languages spoken</label>
-              <select id="languages" name="languages">
-                <option value="">Select .....</option>
-                <option value="English">English</option>
-                <option value="Swahili">Swahili</option>
-                <option value="French">French</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
+              <div class="field">
+                <label for="gpa">Current GPA/CGPA</label>
+                <input type="text" id="gpa" name="gpa" placeholder="e.g. 3.8 / 4.0">
+              </div>
 
-            <div class="field">
-              <label for="skills">Skills</label>
-              <select id="skills" name="skills">
-                <option value="">Select .....</option>
-                <option value="Research">Research</option>
-                <option value="Leadership">Leadership</option>
-                <option value="Programming">Programming</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
+              <div class="field">
+                <label for="course">Course / major of study</label>
+                <input type="text" id="course" name="course" placeholder="e.g. Computer Science">
+              </div>
 
-            <div class="field field--proficiency">
-              <label>English proficiency test <span class="optional">(if applicable)</span></label>
-              <div class="proficiency-row">
-                <input type="text" placeholder="IELTS Score" name="ielts">
-                <input type="text" placeholder="TOEFL Score" name="toefl">
+              <div class="field">
+                <label for="achievements">Academic achievements</label>
+                <input type="text" id="achievements" name="achievements" placeholder="Honors, awards, publications...">
               </div>
             </div>
+          </div>
 
-            <div class="field field--other-langs">
-              <label for="other-langs">Any other languages / certifications <span class="optional">(optional)</span></label>
-              <input type="text" id="other-langs" placeholder="Enter if any..." name="other_languages">
+          <!-- SECTION 2: Document Uploads -->
+          <div class="section-box upload-box-wrap">
+            <h3 class="section-title">Upload Documents</h3>
+
+            <div class="upload-grid">
+              <label class="upload-item">
+                <input type="file" name="transcript" accept=".pdf,.doc,.docx">
+                <span class="upload-text">
+                  Academic transcript
+                  <span class="upload-hint">PDF or DOCX</span>
+                </span>
+                <span class="upload-icon">📄</span>
+              </label>
+
+              <label class="upload-item">
+                <input type="file" name="certificate" accept=".pdf,.doc,.docx">
+                <span class="upload-text">
+                  Graduation certificate or completion certificate
+                  <span class="upload-hint">PDF or DOCX</span>
+                </span>
+                <span class="upload-icon">📄</span>
+              </label>
             </div>
           </div>
-        </div>
 
-        <!-- Form Actions -->
-        <div class="actions"> 
-          <button type="submit" name="action" value="next" class="next-btn"> Next </button> 
-        </div>
-      </form>
-    </div>
-  </main>
+          <!-- SECTION 3: Languages & Skills -->
+          <div class="section-box languages-box">
+            <h3 class="section-title">Languages and skills</h3>
 
-</div>
-<script src="../home/script.js" defer></script>
+            <div class="languages-grid">
+              <div class="field">
+                <label for="languages">Languages spoken</label>
+                <select id="languages" name="languages">
+                  <option value="">Select .....</option>
+                  <option value="English">English</option>
+                  <option value="Swahili">Swahili</option>
+                  <option value="French">French</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="skills">Skills</label>
+                <select id="skills" name="skills">
+                  <option value="">Select .....</option>
+                  <option value="Research">Research</option>
+                  <option value="Leadership">Leadership</option>
+                  <option value="Programming">Programming</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="field field--proficiency">
+                <label>English proficiency test <span class="optional">(if applicable)</span></label>
+                <div class="proficiency-row">
+                  <input type="text" placeholder="IELTS Score" name="ielts">
+                  <input type="text" placeholder="TOEFL Score" name="toefl">
+                </div>
+              </div>
+
+              <div class="field field--other-langs">
+                <label for="other-langs">Any other languages / certifications <span
+                    class="optional">(optional)</span></label>
+                <input type="text" id="other-langs" placeholder="Enter if any..." name="other_languages">
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="actions">
+            <button type="submit" name="action" value="next" class="next-btn"> Next </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+  </div>
+  <script src="../home/script.js" defer></script>
 </body>
+
 </html>

@@ -7,14 +7,9 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . '/db.php';
 
 
-/*
-|--------------------------------------------------------------------------
-| ADMIN SECURITY GUARD
-|--------------------------------------------------------------------------
-|
+/*ADMIN SECURITY GUARD
 | This file is INCLUDED by protected admin PHP endpoints.
 | It does not output JSON itself.
-|
 */
 
 
@@ -51,11 +46,7 @@ if (
 }
 
 
-/*
-|--------------------------------------------------------------------------
-| ADMIN INFORMATION
-|--------------------------------------------------------------------------
-*/
+/*ADMIN INFORMATION*/
 
 $admin_id =
     (int) $_SESSION['user_id'];

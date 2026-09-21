@@ -1,91 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="app">
+    <div class="app">
 
-    <aside class="sidebar">
-      <div class="logo-box">
-        <img src="../images/logo1.png" alt="Site logo">
-      </div>
+        <aside class="sidebar" id="sidebar">
 
-      <nav class="nav">
-        <a href="../home/dashboard.html" class="nav-btn">
-          <span class="icon">▦</span> Dashboard
-        </a>
-        <a href="scholarships.html" class="nav-btn">
-          <span class="icon">🎓</span> Scholarships
-        </a>
-        <a href="#" class="nav-btn" onclick="openProfile(); return false;">
-           <span class="icon">◔</span> Profile
-        </a>
-        <a
-                     href="../home/updates.html"
-                     class="nav-btn"
-                >
-                     <span class="icon">♥</span>
-                    Saved
+            <div class="sidebar-header">
+                <div class="logo-box">
+                    <img src="../images/logo1.png" alt="Scholarly">
+                    <span class="logo-name">scholarly</span>
+                </div>
+
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar">
+                    ☰
+                </button>
+            </div>
+
+            <div class="sidebar-label">
+                STUDENT PORTAL
+            </div>
+
+            <nav class="nav">
+
+                <a href="dashboard.html" class="nav-btn">
+                    <span class="icon">▦</span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
-        <a href="../home/settings.html" class="nav-btn nav-btn--active">
-          <span class="icon">⚙</span> Settings
-        </a>
-        <a href="../signin/signin.html" class="nav-btn">Logout</a>
-      </nav>
-    </aside>
 
-    
-    <div class="main">
+                <a href="scholarships.html" class="nav-btn">
+                    <span class="icon">🎓</span>
+                    <span class="nav-text">Scholarships</span>
+                </a>
+
+                <a href="#" class="nav-btn" onclick="openProfile(); return false;">
+                    <span class="icon">◔</span>
+                    <span class="nav-text">Profile</span>
+                </a>
+
+                <a href="updates.html" class="nav-btn">
+                    <span class="icon">♥</span>
+                    <span class="nav-text">Saved</span>
+                </a>
+
+                <a href="settings.html" class="nav-btn nav-btn--active">
+                    <span class="icon">⚙</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+
+                <a href="../backend/logout.php" class="nav-btn logout-btn">
+                    <span class="icon">↪</span>
+                    <span class="nav-text">Logout</span>
+                </a>
+
+            </nav>
+
+        </aside>
 
 
-      
-      <section class="card settings-card">
+        <div class="main">
 
 
-        <h2 class="settings-heading settings-heading--spaced">Change Password</h2>
 
-        <!-- Password Inputs Updated with visibility toggles -->
-        <div class="form-group">
-          <label for="current-pw">Current Password</label>
-          <div class="pw-wrapper">
-            <input id="current-pw" type="password" placeholder="**********">
-            <button type="button" class="pw-toggle" aria-label="Toggle password visibility">👁️</button>
-          </div>
+            <section class="card settings-card">
+
+                <h2 class="settings-heading settings-heading--spaced">
+                    Change Password
+                </h2>
+
+                <form id="change-password-form">
+
+                    <div class="form-group">
+                        <label for="current-pw">
+                            Current Password
+                        </label>
+
+                        <div class="pw-wrapper">
+                            <input id="current-pw" name="current_password" type="password" placeholder="**********"
+                                required>
+
+                            <button type="button" class="pw-toggle" aria-label="Toggle password visibility">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="new-pw">
+                            New Password
+                        </label>
+
+                        <div class="pw-wrapper">
+                            <input id="new-pw" name="new_password" type="password" placeholder="**********"
+                                minlength="8" required>
+
+                            <button type="button" class="pw-toggle" aria-label="Toggle password visibility">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="confirm-pw">
+                            Confirm New Password
+                        </label>
+
+                        <div class="pw-wrapper">
+                            <input id="confirm-pw" name="confirm_password" type="password" placeholder="**********"
+                                minlength="8" required>
+
+                            <button type="button" class="pw-toggle" aria-label="Toggle password visibility">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div id="password-message" class="settings-message"></div>
+
+
+                    <hr class="divider">
+
+
+                    <div class="card-actions">
+
+                        <button type="button" class="btn btn--ghost" id="cancel-password-change">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="btn btn--primary" id="save-password">
+                            Save
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
         </div>
-
-        <div class="form-group">
-          <label for="new-pw">New Password</label>
-          <div class="pw-wrapper">
-            <input id="new-pw" type="password" placeholder="**********">
-            <button type="button" class="pw-toggle" aria-label="Toggle password visibility">👁️</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="confirm-pw">Confirm new Password</label>
-          <div class="pw-wrapper">
-            <input id="confirm-pw" type="password" placeholder="**********">
-            <button type="button" class="pw-toggle" aria-label="Toggle password visibility">👁️</button>
-          </div>
-        </div>
-
-        <hr class="divider">
-
-        <div class="card-actions">
-          <button class="btn btn--ghost">Cancel</button>
-          <button class="btn btn--primary">Save</button>
-        </div>
-      </section>
-
-      
     </div>
-  </div>
-     <script src="script.js" defer></script>
-    
-  </body>
+    <script src="script.js" defer></script>
+
+</body>
+
 </html>

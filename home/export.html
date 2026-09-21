@@ -5,42 +5,26 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
         Scholarship Report
     </title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
-    <link
-        rel="stylesheet"
-        href="report.css"
-    >
+    <link rel="stylesheet" href="report.css">
 
 </head>
 
 
 <body class="report-page">
 
-    <!-- =====================================================
-         SCREEN TOOLBAR
-    ====================================================== -->
-
     <div class="report-toolbar no-print">
 
         <div>
 
-            <a
-                href="dashboard.html"
-                class="report-back-btn"
-            >
+            <a href="dashboard.html" class="report-back-btn">
                 ← Back to Dashboard
             </a>
 
@@ -49,19 +33,11 @@
 
         <div class="report-toolbar-actions">
 
-            <button
-                type="button"
-                id="refresh-report-btn"
-                class="report-secondary-btn"
-            >
+            <button type="button" id="refresh-report-btn" class="report-secondary-btn">
                 Refresh Report
             </button>
 
-            <button
-                type="button"
-                id="print-report-btn"
-                class="report-primary-btn"
-            >
+            <button type="button" id="print-report-btn" class="report-primary-btn">
                 Download / Save as PDF
             </button>
 
@@ -70,32 +46,16 @@
     </div>
 
 
-    <!-- =====================================================
-         LOADING / ERROR
-    ====================================================== -->
+    <!-- LOADING / ERROR-->
 
-    <div
-        id="report-status"
-        class="report-status no-print"
-    >
+    <div id="report-status" class="report-status no-print">
         Building your scholarship report...
     </div>
 
 
-    <!-- =====================================================
-         REPORT
-    ====================================================== -->
+    <!-- REPORT -->
 
-    <main
-        id="scholarship-report"
-        class="scholarship-report"
-        hidden
-    >
-
-
-        <!-- =================================================
-             HEADER
-        ================================================== -->
+    <main id="scholarship-report" class="scholarship-report" hidden>
 
         <header class="report-header">
 
@@ -118,9 +78,7 @@
                     Report generated
                 </span>
 
-                <strong
-                    id="report-generated-date"
-                >
+                <strong id="report-generated-date">
                     —
                 </strong>
 
@@ -131,10 +89,6 @@
 
         <div class="report-divider"></div>
 
-
-        <!-- =================================================
-             STUDENT
-        ================================================== -->
 
         <section class="report-section">
 
@@ -160,17 +114,10 @@
             </div>
 
 
-            <div
-                id="report-profile-grid"
-                class="report-profile-grid"
-            ></div>
+            <div id="report-profile-grid" class="report-profile-grid"></div>
 
         </section>
 
-
-        <!-- =================================================
-             SUMMARY
-        ================================================== -->
 
         <section class="report-section">
 
@@ -195,10 +142,7 @@
 
                 <article class="report-stat-card">
 
-                    <span
-                        id="report-match-count"
-                        class="report-stat-number"
-                    >
+                    <span id="report-match-count" class="report-stat-number">
                         0
                     </span>
 
@@ -211,10 +155,7 @@
 
                 <article class="report-stat-card">
 
-                    <span
-                        id="report-saved-count"
-                        class="report-stat-number"
-                    >
+                    <span id="report-saved-count" class="report-stat-number">
                         0
                     </span>
 
@@ -228,10 +169,6 @@
 
         </section>
 
-
-        <!-- =================================================
-             RECOMMENDATIONS
-        ================================================== -->
 
         <section class="report-section">
 
@@ -258,17 +195,10 @@
             </div>
 
 
-            <div
-                id="report-recommendations"
-                class="report-scholarship-list"
-            ></div>
+            <div id="report-recommendations" class="report-scholarship-list"></div>
 
         </section>
 
-
-        <!-- =================================================
-             SAVED
-        ================================================== -->
 
         <section class="report-section">
 
@@ -294,21 +224,14 @@
             </div>
 
 
-            <div
-                id="report-saved-scholarships"
-                class="report-scholarship-list"
-            ></div>
+            <div id="report-saved-scholarships" class="report-scholarship-list"></div>
 
         </section>
 
 
-        <!-- =================================================
-             DISCLAIMER
-        ================================================== -->
+        <!-- DISCLAIMER-->
 
-        <section
-            class="report-section report-disclaimer"
-        >
+        <section class="report-section report-disclaimer">
 
             <h2>
                 Important Notice
@@ -335,10 +258,6 @@
         </section>
 
 
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
-
         <footer class="report-footer">
 
             <span>
@@ -354,10 +273,7 @@
     </main>
 
 
-    <script
-        src="report.js"
-        defer
-    ></script>
+    <script src="report.js" defer></script>
 
 </body>
 

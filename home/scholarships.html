@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Scholarships</title>
 
@@ -18,205 +14,80 @@
 
     <div class="app">
 
-        <!-- =========================================================
-             SIDEBAR
-        ========================================================== -->
+        <aside class="sidebar" id="sidebar">
 
-        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-box">
+                    <img src="../images/logo1.png" alt="Scholarly">
+                    <span class="logo-name">scholarly</span>
+                </div>
 
-            <div class="logo-box">
-
-                <img
-                    src="../images/logo1.png"
-                    alt="Site logo"
-                >
-
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar">
+                    ☰
+                </button>
             </div>
 
+            <div class="sidebar-label">
+                STUDENT PORTAL
+            </div>
 
             <nav class="nav">
 
-                <a
-                    href="dashboard.html"
-                    class="nav-btn"
-                >
+                <a href="dashboard.html" class="nav-btn">
                     <span class="icon">▦</span>
-                    Dashboard
+                    <span class="nav-text">Dashboard</span>
                 </a>
 
-
-                <a
-                    href="scholarships.html"
-                    class="nav-btn nav-btn--active"
-                >
+                <a href="scholarships.html" class="nav-btn nav-btn--active">
                     <span class="icon">🎓</span>
-                    Scholarships
+                    <span class="nav-text">Scholarships</span>
                 </a>
 
-
-                <a
-                    href="#"
-                    class="nav-btn"
-                    onclick="openProfile(); return false;"
-                >
+                <a href="#" class="nav-btn" onclick="openProfile(); return false;">
                     <span class="icon">◔</span>
-                    Profile
+                    <span class="nav-text">Profile</span>
                 </a>
 
-
-                <a
-                     href="../home/updates.html"
-                     class="nav-btn"
-                >
-                     <span class="icon">♥</span>
-                    Saved
+                <a href="updates.html" class="nav-btn">
+                    <span class="icon">♥</span>
+                    <span class="nav-text">Saved</span>
                 </a>
 
-
-                <a
-                    href="settings.html"
-                    class="nav-btn"
-                >
-                    <span class="icon">⚙</span>
-                    Settings
-                </a>
-
-
-                <a
-                    href="../backend/logout.php"
-                    class="nav-btn"
-                >
-                    Logout
+                <a href="../backend/logout.php" class="nav-btn logout-btn">
+                    <span class="icon">↪</span>
+                    <span class="nav-text">Logout</span>
                 </a>
 
             </nav>
 
         </aside>
 
-
-        <!-- =========================================================
-             MAIN CONTENT
-        ========================================================== -->
-
         <div class="main">
 
 
-            <!-- =====================================================
-                 TOP BAR
-            ====================================================== -->
-
-            <header class="topbar">
-
-                <div class="search">
-
-                    <input
-                        type="text"
-                        id="global-search"
-                        placeholder="Search here"
-                    >
-
-                    <button
-                        type="button"
-                        aria-label="Search"
-                        id="global-search-btn"
-                    >
-                        🔍
-                    </button>
-
-                </div>
-
-
-                <div class="topbar-right">
-
-                    <button
-                        type="button"
-                        class="bell"
-                        aria-label="Notifications"
-                        id="notification-button"
-                    >
-                        🔔
-
-                        <span
-                            class="badge"
-                            id="notification-count"
-                        >
-                            0
-                        </span>
-                    </button>
-
-
-                    <img
-                        class="avatar"
-                        src="../images/logo1.png"
-                        alt="User avatar"
-                    >
-
-
-                    <div class="user-info">
-
-                        <div
-                            class="user-name"
-                            id="page-username"
-                        >
-                            Loading...
-                        </div>
-
-                        <div
-                            class="user-role"
-                            id="page-role"
-                        >
-                            User
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </header>
-
             <div class="post-scholarship-row">
-    <button
-        type="button"
-        class="post-scholarship-btn"
-        onclick="window.location.href='../profile/postscholarship.html'"
-    >
-        + Post Scholarship
-    </button>
-</div>
-            
+                <button type="button" class="post-scholarship-btn"
+                    onclick="window.location.href='../profile/postscholarship.html'">
+                    + Post Scholarship
+                </button>
+            </div>
 
-                <!-- =================================================
-                     STATUS / MESSAGE
-                ================================================== -->
-
-                <div
-                    id="scholarship-message"
-                    style="
+            <div id="scholarship-message" style="
                         display:none;
                         margin:20px 0;
                         padding:12px 16px;
                         background:#ffffff;
                         border-radius:10px;
-                    "
-                >
-                </div>
+                    ">
+            </div>
 
+            <div class="results-grid" id="scholarship-results">
 
-                <!-- =================================================
-                     SCHOLARSHIP RESULTS
-                     JavaScript will add cards here
-                ================================================== -->
+                <p id="scholarships-loading">
+                    Loading scholarships...
+                </p>
 
-                <div
-                    class="results-grid"
-                    id="scholarship-results"
-                >
-
-                    <p id="scholarships-loading">
-                        Loading scholarships...
-                    </p>
-
-                </div>
+            </div>
 
             </section>
 
@@ -230,4 +101,3 @@
 </body>
 
 </html>
-

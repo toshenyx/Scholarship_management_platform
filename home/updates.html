@@ -5,280 +5,139 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Saved Scholarships</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 
 <body>
 
-<div class="app">
+    <div class="app">
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+                <div class="logo-box">
+                    <img src="../images/logo1.png" alt="Scholarly">
+                    <span class="logo-name">scholarly</span>
+                </div>
+
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar">
+                    ☰
+                </button>
+            </div>
+
+            <div class="sidebar-label">
+                STUDENT PORTAL
+            </div>
+
+            <nav class="nav">
+
+                <a href="dashboard.html" class="nav-btn">
+                    <span class="icon">▦</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <a href="scholarships.html" class="nav-btn">
+                    <span class="icon">🎓</span>
+                    <span class="nav-text">Scholarships</span>
+                </a>
+
+                <a href="#" class="nav-btn" onclick="openProfile(); return false;">
+                    <span class="icon">◔</span>
+                    <span class="nav-text">Profile</span>
+                </a>
+
+                <a href="updates.html" class="nav-btn nav-btn--active">
+                    <span class="icon">♥</span>
+                    <span class="nav-text">Saved</span>
+                </a>
+
+                <a href="../backend/logout.php" class="nav-btn logout-btn">
+                    <span class="icon">↪</span>
+                    <span class="nav-text">Logout</span>
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <div class="main">
+
+            <section class="card saved-scholarships-card">
+
+                <div class="saved-page-header">
 
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
+                    <div>
 
-    <aside class="sidebar">
+                        <h2 class="updates-title">
+                            Saved Scholarships
+                        </h2>
 
-        <div class="logo-box">
 
-            <img
-                src="../images/logo1.png"
-                alt="Site logo"
-            >
+                        <p class="saved-page-description">
+
+                            Scholarships you have saved
+                            will appear here.
+
+                        </p>
+
+                    </div>
+
+
+                    <a href="scholarships.html" class="updates-scholarship-link">
+                        Browse Scholarships →
+                    </a>
+
+
+                </div>
+
+                <div id="saved-scholarships-message" style="display: none;"></div>
+
+
+
+                <!--DATABASE COUNT-->
+
+                <div class="saved-results-summary">
+
+                    <span id="saved-results-count">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+
+                <!--DATABASE RESULTS-->
+
+                <div class="saved-scholarship-list" id="saved-scholarships-results">
+
+                    <div class="saved-loading">
+
+                        <p>
+                            Loading your saved scholarships...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
 
         </div>
 
-
-        <nav class="nav">
-
-
-            <a
-                href="dashboard.html"
-                class="nav-btn"
-            >
-                <span class="icon">▦</span>
-                Dashboard
-            </a>
-
-
-            <a
-                href="scholarships.html"
-                class="nav-btn"
-            >
-                <span class="icon">🎓</span>
-                Scholarships
-            </a>
-
-
-            <a
-                href="#"
-                class="nav-btn"
-                onclick="openProfile(); return false;"
-            >
-                <span class="icon">◔</span>
-                Profile
-            </a>
-
-
-            <a
-                href="updates.html"
-                class="nav-btn nav-btn--active"
-            >
-                <span class="icon">♥</span>
-                Saved
-            </a>
-
-
-            <a
-                href="settings.html"
-                class="nav-btn"
-            >
-                <span class="icon">⚙</span>
-                Settings
-            </a>
-
-
-            <a
-                href="../backend/logout.php"
-                class="nav-btn"
-            >
-                Logout
-            </a>
-
-
-        </nav>
-
-    </aside>
-
-
-
-    <!-- =====================================================
-         MAIN CONTENT
-    ====================================================== -->
-
-    <div class="main">
-
-
-        <!-- =================================================
-             TOP BAR
-        ================================================== -->
-
-        <header class="topbar">
-
-
-            <!-- SEARCH SAVED SCHOLARSHIPS -->
-
-            <div class="search">
-
-                <input
-                    type="text"
-                    id="saved-search"
-                    placeholder="Search saved scholarships"
-                >
-
-
-                <button
-                    type="button"
-                    id="saved-search-btn"
-                    aria-label="Search saved scholarships"
-                >
-                    🔍
-                </button>
-
-            </div>
-
-
-
-            <!-- USER INFORMATION -->
-
-            <div class="topbar-right">
-
-
-                <img
-                    class="avatar"
-                    src="../images/logo1.png"
-                    alt="User avatar"
-                >
-
-
-                <div class="user-info">
-
-                    <div
-                        class="user-name"
-                        id="page-username"
-                    >
-                        Loading...
-                    </div>
-
-
-                    <div
-                        class="user-role"
-                        id="page-role"
-                    >
-                        Loading...
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-        </header>
-
-
-
-        <!-- =================================================
-             SAVED SCHOLARSHIPS
-        ================================================== -->
-
-        <section class="card saved-scholarships-card">
-
-
-            <!-- PAGE HEADER -->
-
-            <div class="saved-page-header">
-
-
-                <div>
-
-                    <h2 class="updates-title">
-                        Saved Scholarships
-                    </h2>
-
-
-                    <p class="saved-page-description">
-
-                        Scholarships you have saved
-                        will appear here.
-
-                    </p>
-
-                </div>
-
-
-                <a
-                    href="scholarships.html"
-                    class="updates-scholarship-link"
-                >
-                    Browse Scholarships →
-                </a>
-
-
-            </div>
-
-
-
-            <!-- =================================================
-                 STATUS / ERROR MESSAGE
-            ================================================== -->
-
-            <div
-                id="saved-scholarships-message"
-                style="display: none;"
-            ></div>
-
-
-
-            <!-- =================================================
-                 DATABASE COUNT
-            ================================================== -->
-
-            <div class="saved-results-summary">
-
-                <span id="saved-results-count">
-                    Loading...
-                </span>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 DATABASE RESULTS
-            ================================================== -->
-
-            <div
-                class="saved-scholarship-list"
-                id="saved-scholarships-results"
-            >
-
-                <div class="saved-loading">
-
-                    <p>
-                        Loading your saved scholarships...
-                    </p>
-
-                </div>
-
-            </div>
-
-
-        </section>
-
-
     </div>
 
-</div>
 
 
-
-<script
-    src="saved_scholarships.js"
-    defer
-></script>
+    <script src="saved_scholarships.js" defer></script>
 
 
 </body>

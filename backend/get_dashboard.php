@@ -9,9 +9,7 @@ header(
 require_once "db.php";
 
 
-/* =========================================================
-   RESPONSE HELPER
-========================================================= */
+/*RESPONSE HELPER*/
 
 function sendDashboardResponse(
     $data,
@@ -29,9 +27,7 @@ function sendDashboardResponse(
 }
 
 
-/* =========================================================
-   LOGIN CHECK
-========================================================= */
+/* LOGIN CHECK*/
 
 if (
     !isset($_SESSION['user_id']) ||
@@ -51,9 +47,7 @@ $user_id =
     (int) $_SESSION['user_id'];
 
 
-/* =========================================================
-   GET USER DETAILS
-========================================================= */
+/* GET USER DETAILS*/
 
 $stmt =
     $conn->prepare("
@@ -113,9 +107,7 @@ if (!$user) {
 }
 
 
-/* =========================================================
-   SAVED SCHOLARSHIPS COUNT
-========================================================= */
+/* SAVED SCHOLARSHIPS COUNT*/
 
 $stmt =
     $conn->prepare("
@@ -151,9 +143,7 @@ $saved_scholarships =
 $stmt->close();
 
 
-/* =========================================================
-   APPLICATION COUNT
-========================================================= */
+/*APPLICATION COUNT*/
 
 $stmt =
     $conn->prepare("
@@ -189,9 +179,7 @@ $applications =
 $stmt->close();
 
 
-/* =========================================================
-   UNREAD NOTIFICATIONS
-========================================================= */
+/*UNREAD NOTIFICATIONS*/
 
 $stmt =
     $conn->prepare("
@@ -229,25 +217,7 @@ $unread_notifications =
 $stmt->close();
 
 
-/* =========================================================
-   RECOMMENDED SCHOLARSHIPS
-========================================================= */
-
-/*
-|--------------------------------------------------------------------------
-| IMPORTANT
-|--------------------------------------------------------------------------
-|
-| Recommended Scholarships means:
-|
-| Scholarships that match THIS logged-in student's
-| completed matching profile.
-|
-| If the profile is incomplete:
-|
-|     recommended_scholarships = 0
-|
-*/
+/* RECOMMENDED SCHOLARSHIPS */
 
 
 $recommended_scholarships = 0;
@@ -255,9 +225,7 @@ $recommended_scholarships = 0;
 $profile_complete = false;
 
 
-/* =========================================================
-   GET STUDENT MATCHING PROFILE
-========================================================= */
+/* GET STUDENT MATCHING PROFILE*/
 
 $profileStmt =
     $conn->prepare("
@@ -330,9 +298,7 @@ if ($profileStmt) {
     $profileStmt->close();
 
 
-    /* =====================================================
-       CHECK PROFILE COMPLETION
-    ===================================================== */
+    /* CHECK PROFILE COMPLETION*/
 
     if ($profile) {
 
@@ -382,29 +348,16 @@ if ($profileStmt) {
             }
         }
 
-
-        /*
-        Preferred country is intentionally
-        NOT required.
-
-        Blank preferred country means:
-        recommend scholarships from all
-        countries.
-        */
     }
 
 
-    /* =====================================================
-       ONLY MATCH IF PROFILE COMPLETE
-    ===================================================== */
+    /* ONLY MATCH IF PROFILE COMPLETE*/
 
     if (
         $profile_complete === true
     ) {
 
-        /* =================================================
-           NORMALIZATION HELPERS
-        ================================================= */
+        /* NORMALIZATION HELPERS*/
 
         $normalizeEducation =
             function ($level) {
@@ -506,9 +459,7 @@ if ($profileStmt) {
             };
 
 
-        /* =================================================
-           STUDENT DATA
-        ================================================= */
+        /*STUDENT DATA*/
 
         $studentEducation =
             $normalizeEducation(
@@ -565,9 +516,7 @@ if ($profileStmt) {
             );
 
 
-        /* =================================================
-           GET ACTIVE APPROVED SCHOLARSHIPS
-        ================================================= */
+        /* GET ACTIVE APPROVED SCHOLARSHIPS*/
 
         $scholarshipStmt =
             $conn->prepare("
@@ -613,18 +562,12 @@ if ($profileStmt) {
                         ->fetch_assoc()
             ) {
 
-                /*
-                ---------------------------------------------
-                MATCH SCORE
-                ---------------------------------------------
-                */
+                /*MATCH SCORE*/
 
                 $score = 0;
 
 
-                /* =========================================
-                   EDUCATION LEVEL — 25
-                ========================================= */
+                /* education level - 25 */
 
                 $scholarshipEducation =
                     $normalizeEducation(
@@ -644,9 +587,7 @@ if ($profileStmt) {
                 }
 
 
-                /* =========================================
-                   FIELD / COURSE — 25
-                ========================================= */
+                /* field / course - 25 */
 
                 $eligibleCourses =
                     strtolower(
@@ -725,9 +666,7 @@ if ($profileStmt) {
                 }
 
 
-                /* =========================================
-                   GPA — 20
-                ========================================= */
+                /* gpa - 20*/
 
                 $minimumGpa =
                     $scholarship[
@@ -746,9 +685,7 @@ if ($profileStmt) {
                 }
 
 
-                /* =========================================
-                   NATIONALITY — 20
-                ========================================= */
+                /* nationality - 20 */
 
                 $eligibleNationalities =
                     strtolower(
@@ -784,9 +721,7 @@ if ($profileStmt) {
                 }
 
 
-                /* =========================================
-                   FUNDING — 10
-                ========================================= */
+                /* funding -10 */
 
                 $scholarshipFunding =
                     strtolower(
@@ -809,9 +744,7 @@ if ($profileStmt) {
                 }
 
 
-                /* =========================================
-                   RECOMMENDATION THRESHOLD
-                ========================================= */
+                /* recommendation */
 
                 if ($score >= 55) {
 
@@ -826,9 +759,7 @@ if ($profileStmt) {
 }
 
 
-/* =========================================================
-   RETURN DASHBOARD DATA
-========================================================= */
+/* RETURN DASHBOARD DATA */
 
 echo json_encode([
 

@@ -8,9 +8,7 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   INITIALIZE REPORT
-========================================================= */
+//INITIALIZE REPORT
 
 function initScholarshipReport() {
 
@@ -65,9 +63,7 @@ function initScholarshipReport() {
 }
 
 
-/* =========================================================
-   LOAD REPORT
-========================================================= */
+//LOAD REPORT
 
 async function loadScholarshipReport() {
 
@@ -126,11 +122,7 @@ async function loadScholarshipReport() {
         );
 
 
-        /*
-        -----------------------------------------------------
-        LOGIN
-        -----------------------------------------------------
-        */
+        //LOGIN
 
         if (
             data.logged_in === false
@@ -143,11 +135,7 @@ async function loadScholarshipReport() {
         }
 
 
-        /*
-        -----------------------------------------------------
-        PROFILE INCOMPLETE
-        -----------------------------------------------------
-        */
+        // PROFILE INCOMPLETE
 
         if (
             data.profile_complete === false
@@ -163,11 +151,7 @@ async function loadScholarshipReport() {
         }
 
 
-        /*
-        -----------------------------------------------------
-        ERROR
-        -----------------------------------------------------
-        */
+        // ERROR
 
         if (
             !response.ok ||
@@ -181,11 +165,7 @@ async function loadScholarshipReport() {
         }
 
 
-        /*
-        -----------------------------------------------------
-        RENDER
-        -----------------------------------------------------
-        */
+        //RENDER
 
         renderScholarshipReport(
             data.report
@@ -226,9 +206,9 @@ async function loadScholarshipReport() {
 
                 <span>
                     ${escapeReportHtml(
-                        error.message ||
-                        'Please try again.'
-                    )}
+                error.message ||
+                'Please try again.'
+            )}
                 </span>
             `;
         }
@@ -236,9 +216,7 @@ async function loadScholarshipReport() {
 }
 
 
-/* =========================================================
-   RENDER COMPLETE REPORT
-========================================================= */
+// RENDER COMPLETE REPORT
 
 function renderScholarshipReport(
     reportData
@@ -283,9 +261,7 @@ function renderScholarshipReport(
 }
 
 
-/* =========================================================
-   REPORT DATE
-========================================================= */
+// REPORT DATE
 
 function renderReportDate(
     dateValue
@@ -348,9 +324,7 @@ function renderReportDate(
 }
 
 
-/* =========================================================
-   STUDENT PROFILE
-========================================================= */
+// STUDENT PROFILE
 
 function renderStudentProfile(
     student
@@ -463,14 +437,14 @@ function renderStudentProfile(
 
                         <span>
                             ${escapeReportHtml(
-                                label
-                            )}
+                    label
+                )}
                         </span>
 
                         <strong>
                             ${escapeReportHtml(
-                                value
-                            )}
+                    value
+                )}
                         </strong>
 
                     </div>
@@ -481,9 +455,7 @@ function renderStudentProfile(
 }
 
 
-/* =========================================================
-   STATISTICS
-========================================================= */
+// STATISTICS
 
 function renderReportStatistics(
     statistics
@@ -521,9 +493,7 @@ function renderReportStatistics(
 }
 
 
-/* =========================================================
-   RECOMMENDATIONS
-========================================================= */
+// RECOMMENDATIONS
 
 function renderReportRecommendations(
     scholarships
@@ -604,20 +574,19 @@ function renderReportRecommendations(
 
                             <ul>
 
-                                ${
-                                    reasons
-                                        .map(
-                                            reason => `
+                                ${reasons
+                        .map(
+                            reason => `
                                                 <li>
                                                     ✓
                                                     ${escapeReportHtml(
-                                                        reason
-                                                    )}
+                                reason
+                            )}
                                                 </li>
                                             `
-                                        )
-                                        .join('')
-                                }
+                        )
+                        .join('')
+                    }
 
                             </ul>
 
@@ -637,19 +606,18 @@ function renderReportRecommendations(
 
                             <ul>
 
-                                ${
-                                    warnings
-                                        .map(
-                                            warning => `
+                                ${warnings
+                        .map(
+                            warning => `
                                                 <li>
                                                     ${escapeReportHtml(
-                                                        warning
-                                                    )}
+                                warning
+                            )}
                                                 </li>
                                             `
-                                        )
-                                        .join('')
-                                }
+                        )
+                        .join('')
+                    }
 
                             </ul>
 
@@ -670,16 +638,16 @@ function renderReportRecommendations(
 
                         <h3>
                             ${escapeReportHtml(
-                                scholarship.title ||
-                                'Untitled Scholarship'
-                            )}
+                scholarship.title ||
+                'Untitled Scholarship'
+            )}
                         </h3>
 
                         <p>
                             ${escapeReportHtml(
-                                scholarship.provider ||
-                                'Provider not specified'
-                            )}
+                scholarship.provider ||
+                'Provider not specified'
+            )}
                         </p>
 
                     </div>
@@ -689,16 +657,16 @@ function renderReportRecommendations(
 
                         <strong>
                             ${Number(
-                                scholarship.match_score
-                                ?? 0
-                            )}%
+                scholarship.match_score
+                ?? 0
+            )}%
                         </strong>
 
                         <span>
                             ${escapeReportHtml(
-                                scholarship.match_label ||
-                                'Match'
-                            )}
+                scholarship.match_label ||
+                'Match'
+            )}
                         </span>
 
                     </div>
@@ -709,9 +677,9 @@ function renderReportRecommendations(
                 <p class="report-scholarship-description">
 
                     ${escapeReportHtml(
-                        scholarship.description ||
-                        'No description provided.'
-                    )}
+                scholarship.description ||
+                'No description provided.'
+            )}
 
                 </p>
 
@@ -719,53 +687,53 @@ function renderReportRecommendations(
                 <div class="report-scholarship-meta">
 
                     ${reportMetaItem(
-                        'Country',
-                        scholarship.country
-                    )}
+                'Country',
+                scholarship.country
+            )}
 
                     ${reportMetaItem(
-                        'University',
-                        scholarship.university
-                    )}
+                'University',
+                scholarship.university
+            )}
 
                     ${reportMetaItem(
-                        'Education Level',
-                        scholarship.education_level
-                    )}
+                'Education Level',
+                scholarship.education_level
+            )}
 
                     ${reportMetaItem(
-                        'Eligible Courses',
-                        scholarship.eligible_courses
-                    )}
+                'Eligible Courses',
+                scholarship.eligible_courses
+            )}
 
                     ${reportMetaItem(
-                        'Minimum GPA',
-                        scholarship.minimum_gpa
-                    )}
+                'Minimum GPA',
+                scholarship.minimum_gpa
+            )}
 
                     ${reportMetaItem(
-                        'Eligible Nationalities',
-                        scholarship.eligible_nationalities
-                    )}
+                'Eligible Nationalities',
+                scholarship.eligible_nationalities
+            )}
 
                     ${reportMetaItem(
-                        'Funding',
-                        formatReportFunding(
-                            scholarship.funding_type
-                        )
-                    )}
+                'Funding',
+                formatReportFunding(
+                    scholarship.funding_type
+                )
+            )}
 
                     ${reportMetaItem(
-                        'Duration',
-                        scholarship.duration
-                    )}
+                'Duration',
+                scholarship.duration
+            )}
 
                     ${reportMetaItem(
-                        'Deadline',
-                        formatReportDate(
-                            scholarship.deadline
-                        )
-                    )}
+                'Deadline',
+                formatReportDate(
+                    scholarship.deadline
+                )
+            )}
 
                 </div>
 
@@ -775,11 +743,10 @@ function renderReportRecommendations(
                 ${warningsHtml}
 
 
-                ${
-                    safeReportUrl(
-                        scholarship.application_link
-                    )
-                        ? `
+                ${safeReportUrl(
+                scholarship.application_link
+            )
+                    ? `
                             <div class="report-application-link">
 
                                 <strong>
@@ -788,21 +755,21 @@ function renderReportRecommendations(
 
                                 <a
                                     href="${escapeReportHtml(
-                                        safeReportUrl(
-                                            scholarship.application_link
-                                        )
-                                    )}"
+                        safeReportUrl(
+                            scholarship.application_link
+                        )
+                    )}"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     ${escapeReportHtml(
-                                        scholarship.application_link
-                                    )}
+                        scholarship.application_link
+                    )}
                                 </a>
 
                             </div>
                         `
-                        : ''
+                    : ''
                 }
 
             `;
@@ -817,9 +784,7 @@ function renderReportRecommendations(
 }
 
 
-/* =========================================================
-   SAVED SCHOLARSHIPS
-========================================================= */
+// SAVED SCHOLARSHIPS
 
 function renderSavedScholarships(
     scholarships
@@ -884,16 +849,16 @@ function renderSavedScholarships(
 
                         <h3>
                             ${escapeReportHtml(
-                                scholarship.title ||
-                                'Untitled Scholarship'
-                            )}
+                scholarship.title ||
+                'Untitled Scholarship'
+            )}
                         </h3>
 
                         <p>
                             ${escapeReportHtml(
-                                scholarship.provider ||
-                                'Provider not specified'
-                            )}
+                scholarship.provider ||
+                'Provider not specified'
+            )}
                         </p>
 
                     </div>
@@ -904,9 +869,9 @@ function renderSavedScholarships(
                 <p class="report-scholarship-description">
 
                     ${escapeReportHtml(
-                        scholarship.description ||
-                        'No description provided.'
-                    )}
+                scholarship.description ||
+                'No description provided.'
+            )}
 
                 </p>
 
@@ -914,49 +879,48 @@ function renderSavedScholarships(
                 <div class="report-scholarship-meta">
 
                     ${reportMetaItem(
-                        'Country',
-                        scholarship.country
-                    )}
+                'Country',
+                scholarship.country
+            )}
 
                     ${reportMetaItem(
-                        'University',
-                        scholarship.university
-                    )}
+                'University',
+                scholarship.university
+            )}
 
                     ${reportMetaItem(
-                        'Education Level',
-                        scholarship.education_level
-                    )}
+                'Education Level',
+                scholarship.education_level
+            )}
 
                     ${reportMetaItem(
-                        'Funding',
-                        formatReportFunding(
-                            scholarship.funding_type
-                        )
-                    )}
+                'Funding',
+                formatReportFunding(
+                    scholarship.funding_type
+                )
+            )}
 
                     ${reportMetaItem(
-                        'Deadline',
-                        formatReportDate(
-                            scholarship.deadline
-                        )
-                    )}
+                'Deadline',
+                formatReportDate(
+                    scholarship.deadline
+                )
+            )}
 
                     ${reportMetaItem(
-                        'Saved',
-                        formatReportDateTime(
-                            scholarship.saved_at
-                        )
-                    )}
+                'Saved',
+                formatReportDateTime(
+                    scholarship.saved_at
+                )
+            )}
 
                 </div>
 
 
-                ${
-                    safeReportUrl(
-                        scholarship.application_link
-                    )
-                        ? `
+                ${safeReportUrl(
+                scholarship.application_link
+            )
+                    ? `
                             <div class="report-application-link">
 
                                 <strong>
@@ -965,21 +929,21 @@ function renderSavedScholarships(
 
                                 <a
                                     href="${escapeReportHtml(
-                                        safeReportUrl(
-                                            scholarship.application_link
-                                        )
-                                    )}"
+                        safeReportUrl(
+                            scholarship.application_link
+                        )
+                    )}"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     ${escapeReportHtml(
-                                        scholarship.application_link
-                                    )}
+                        scholarship.application_link
+                    )}
                                 </a>
 
                             </div>
                         `
-                        : ''
+                    : ''
                 }
 
             `;
@@ -994,9 +958,7 @@ function renderSavedScholarships(
 }
 
 
-/* =========================================================
-   PROFILE INCOMPLETE
-========================================================= */
+// PROFILE INCOMPLETE
 
 function displayReportAccessError(
     message,
@@ -1050,21 +1012,20 @@ function displayReportAccessError(
 
         <span>
             ${escapeReportHtml(
-                message
-            )}
+        message
+    )}
         </span>
 
-        ${
-            fields.length > 0
-                ? `
+        ${fields.length > 0
+            ? `
                     <span>
                         Missing:
                         ${escapeReportHtml(
-                            fields.join(', ')
-                        )}
+                fields.join(', ')
+            )}
                     </span>
                 `
-                : ''
+            : ''
         }
 
         <a
@@ -1078,9 +1039,7 @@ function displayReportAccessError(
 }
 
 
-/* =========================================================
-   META ITEM
-========================================================= */
+// META ITEM
 
 function reportMetaItem(
     label,
@@ -1108,14 +1067,14 @@ function reportMetaItem(
 
             <span>
                 ${escapeReportHtml(
-                    label
-                )}
+        label
+    )}
             </span>
 
             <strong>
                 ${escapeReportHtml(
-                    displayValue
-                )}
+        displayValue
+    )}
             </strong>
 
         </div>
@@ -1124,9 +1083,7 @@ function reportMetaItem(
 }
 
 
-/* =========================================================
-   FUNDING FORMAT
-========================================================= */
+// FUNDING FORMAT
 
 function formatReportFunding(
     funding
@@ -1166,9 +1123,7 @@ function formatReportFunding(
 }
 
 
-/* =========================================================
-   DATE
-========================================================= */
+// DATE
 
 function formatReportDate(
     dateValue
@@ -1206,9 +1161,7 @@ function formatReportDate(
 }
 
 
-/* =========================================================
-   DATE + TIME
-========================================================= */
+// DATE + TIME
 
 function formatReportDateTime(
     value
@@ -1249,9 +1202,7 @@ function formatReportDateTime(
 }
 
 
-/* =========================================================
-   SAFE APPLICATION URL
-========================================================= */
+// SAFE APPLICATION URL
 
 function safeReportUrl(
     value
@@ -1289,9 +1240,7 @@ function safeReportUrl(
 }
 
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+// ESCAPE HTML
 
 function escapeReportHtml(
     value

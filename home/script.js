@@ -1,41 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // GENERAL PAGE FEATURES
     initMultiselects();
     initFileUploads();
     initFilterPills();
     initShortlistHearts();
-    initSettingsForms();
     initAuthForms();
-    initDarkMode();
     initPasswordToggles();
 
-    // BACKEND PAGE LOADERS
+
     loadDashboard();
     loadPageUser();
     initScholarshipsPage();
+    setupCollapsibleSidebar();
 
 
-    function applyDarkMode(enabled){
 
-document.body.classList.toggle("dark",enabled);
+    function applyDarkMode(enabled) {
 
-}
+        document.body.classList.toggle("dark", enabled);
 
-(async()=>{
+    }
 
-try{
+    (async () => {
 
-const res=await fetch("../backend/get_settings.php");
-const json=await res.json();
+        try {
 
-if(json.success){
-applyDarkMode(json.data.dark_mode==1);
-}
+            const res = await fetch("../backend/get_settings.php");
+            const json = await res.json();
 
-}catch(e){}
+            if (json.success) {
+                applyDarkMode(json.data.dark_mode == 1);
+            }
 
-})();
+        } catch (e) { }
+
+    })();
 
     // Only initialize Saved Scholarships
     // if the function currently exists.
@@ -60,9 +59,9 @@ applyDarkMode(json.data.dark_mode==1);
     }
 
     if (
-         typeof initUpdatesPage === 'function'
+        typeof initUpdatesPage === 'function'
     ) {
-         initUpdatesPage();
+        initUpdatesPage();
     }
 
     if (
@@ -70,14 +69,12 @@ applyDarkMode(json.data.dark_mode==1);
     ) {
         initQuickScholarshipSearch();
     }
-    
+
 
 });
 
 
-/* =========================================================
-   1. MULTISELECT DROPDOWNS
-========================================================= */
+// 1. MULTISELECT DROPDOWNS
 
 function initMultiselects() {
 
@@ -184,9 +181,7 @@ function initMultiselects() {
 }
 
 
-/* =========================================================
-   2. FILE UPLOAD BOXES
-========================================================= */
+//2. FILE UPLOAD BOXES
 
 function initFileUploads() {
 
@@ -249,9 +244,7 @@ function initFileUploads() {
 }
 
 
-/* =========================================================
-   3. FILTER PILLS
-========================================================= */
+// 3. FILTER PILLS
 
 function initFilterPills() {
 
@@ -312,9 +305,7 @@ function initFilterPills() {
 }
 
 
-/* =========================================================
-   4. SHORTLIST HEART TOGGLE
-========================================================= */
+// 4. SHORTLIST HEART TOGGLE
 
 function initShortlistHearts() {
 
@@ -362,118 +353,8 @@ function initShortlistHearts() {
 }
 
 
-/* =========================================================
-   5. SETTINGS PAGE
-========================================================= */
 
-function initSettingsForms() {
-
-    const cards =
-        document.querySelectorAll(
-            '.settings-card'
-        );
-
-    if (cards.length === 0) {
-        return;
-    }
-
-    cards.forEach((card) => {
-
-        const cancelBtn =
-            card.querySelector(
-                '.btn--ghost'
-            );
-
-        const toggles =
-            card.querySelectorAll(
-                '.toggle input[type="checkbox"]'
-            );
-
-        const passwordInputs =
-            card.querySelectorAll(
-                'input[type="password"]'
-            );
-
-        const initialToggleStates =
-            new Map();
-
-        toggles.forEach((toggle) => {
-
-            initialToggleStates.set(
-                toggle,
-                toggle.checked
-            );
-        });
-
-        if (cancelBtn) {
-
-            cancelBtn.addEventListener(
-                'click',
-                (event) => {
-
-                    event.preventDefault();
-
-                    passwordInputs.forEach(
-                        (input) => {
-
-                            input.value = '';
-                            input.style.borderColor = '';
-                        }
-                    );
-
-                    toggles.forEach(
-                        (toggle) => {
-
-                            toggle.checked =
-                                initialToggleStates.get(
-                                    toggle
-                                );
-                        }
-                    );
-                }
-            );
-        }
-
-        const newPw =
-            card.querySelector('#new-pw');
-
-        const confirmPw =
-            card.querySelector('#confirm-pw');
-
-        if (
-            newPw &&
-            confirmPw
-        ) {
-
-            const checkMatch = () => {
-
-                const mismatch =
-                    confirmPw.value.length > 0 &&
-                    confirmPw.value !== newPw.value;
-
-                confirmPw.style.borderColor =
-                    mismatch
-                        ? '#e8503a'
-                        : '';
-            };
-
-            newPw.addEventListener(
-                'input',
-                checkMatch
-            );
-
-            confirmPw.addEventListener(
-                'input',
-                checkMatch
-            );
-        }
-    });
-}
-
-
-/* =========================================================
-   6. SIGN IN / SIGN UP VALIDATION
-========================================================= */
+// 5. SIGN IN / SIGN UP VALIDATION
 
 function initAuthForms() {
 
@@ -554,9 +435,7 @@ function initAuthForms() {
 }
 
 
-/* =========================================================
-   7. PROFILE ROUTING
-========================================================= */
+// 6. PROFILE ROUTING
 
 async function openProfile() {
 
@@ -640,76 +519,9 @@ async function openProfile() {
 window.openProfile = openProfile;
 
 
-/* =========================================================
-   8. DARK MODE
-========================================================= */
-
-function initDarkMode() {
-
-    const body =
-        document.body;
-
-    const currentTheme =
-        localStorage.getItem('theme');
-
-    if (currentTheme === 'dark') {
-
-        body.classList.add(
-            'dark-theme'
-        );
-
-    } else {
-
-        body.classList.remove(
-            'dark-theme'
-        );
-    }
-
-    const darkModeToggle =
-        document.getElementById(
-            'dark-mode-toggle'
-        );
-
-    if (darkModeToggle) {
-
-        darkModeToggle.checked =
-            currentTheme === 'dark';
-
-        darkModeToggle.addEventListener(
-            'change',
-            function () {
-
-                if (this.checked) {
-
-                    body.classList.add(
-                        'dark-theme'
-                    );
-
-                    localStorage.setItem(
-                        'theme',
-                        'dark'
-                    );
-
-                } else {
-
-                    body.classList.remove(
-                        'dark-theme'
-                    );
-
-                    localStorage.setItem(
-                        'theme',
-                        'light'
-                    );
-                }
-            }
-        );
-    }
-}
 
 
-/* =========================================================
-   9. PASSWORD TOGGLE
-========================================================= */
+// 7. PASSWORD TOGGLE
 
 function initPasswordToggles() {
 
@@ -755,10 +567,7 @@ function initPasswordToggles() {
 }
 
 
-/* =========================================================
-   10. DASHBOARD
-========================================================= */
-
+// 8. DASHBOARD
 async function loadDashboard() {
 
     const usernameElement =
@@ -887,9 +696,7 @@ async function loadDashboard() {
 }
 
 
-/* =========================================================
-   11. LOAD USER ON SCHOLARSHIPS / OTHER HOME PAGES
-========================================================= */
+// 9. LOAD USER ON SCHOLARSHIPS / OTHER HOME PAGES
 
 async function loadPageUser() {
 
@@ -975,9 +782,7 @@ async function loadPageUser() {
 }
 
 
-/* =========================================================
-   12. SCHOLARSHIPS PAGE
-========================================================= */
+// 10. SCHOLARSHIPS PAGE
 
 let allScholarships = [];
 
@@ -1000,7 +805,7 @@ function initScholarshipsPage() {
 
     const searchInput =
         document.getElementById(
-            'scholarship-search-input'
+            'global-search'
         );
 
     const destination =
@@ -1034,6 +839,33 @@ function initScholarshipsPage() {
         searchInput.addEventListener(
             'input',
             applyScholarshipFilters
+        );
+    }
+    const globalSearchButton =
+        document.getElementById(
+            'global-search-btn'
+        );
+
+    if (globalSearchButton) {
+
+        globalSearchButton.addEventListener(
+            'click',
+            applyScholarshipFilters
+        );
+    }
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            'keydown',
+            event => {
+
+                if (event.key === 'Enter') {
+
+                    event.preventDefault();
+
+                    applyScholarshipFilters();
+                }
+            }
         );
     }
 
@@ -1079,9 +911,9 @@ function initScholarshipsPage() {
 }
 
 
-/* =========================================================
-   13. FETCH SCHOLARSHIPS FROM DATABASE
-========================================================= */
+
+
+// 11. FETCH SCHOLARSHIPS FROM DATABASE
 
 async function loadScholarships() {
 
@@ -1172,9 +1004,7 @@ async function loadScholarships() {
 }
 
 
-/* =========================================================
-   14. DISPLAY SCHOLARSHIP CARDS
-========================================================= */
+// 12. DISPLAY SCHOLARSHIP CARDS
 
 function displayScholarships(
     scholarships
@@ -1272,16 +1102,16 @@ function displayScholarships(
 
                             <h3 class="result-title">
                                 ${escapeHtml(
-                                    scholarship.title ||
-                                    'Untitled scholarship'
-                                )}
+                scholarship.title ||
+                'Untitled scholarship'
+            )}
                             </h3>
 
                             <p class="result-provider">
                                 ${escapeHtml(
-                                    scholarship.provider ||
-                                    'Provider not specified'
-                                )}
+                scholarship.provider ||
+                'Provider not specified'
+            )}
                             </p>
 
                         </div>
@@ -1289,8 +1119,8 @@ function displayScholarships(
                         <span class="funding-badge">
 
                             ${escapeHtml(
-                                fundingLabel
-                            )}
+                fundingLabel
+            )}
 
                         </span>
 
@@ -1300,9 +1130,9 @@ function displayScholarships(
                     <p class="result-description">
 
                         ${escapeHtml(
-                            scholarship.description ||
-                            'No description provided.'
-                        )}
+                scholarship.description ||
+                'No description provided.'
+            )}
 
                     </p>
 
@@ -1315,9 +1145,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.country ||
-                                'Not specified'
-                            )}
+                scholarship.country ||
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1327,9 +1157,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.university ||
-                                'Not specified'
-                            )}
+                scholarship.university ||
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1339,9 +1169,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.education_level ||
-                                'Not specified'
-                            )}
+                scholarship.education_level ||
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1351,9 +1181,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.eligible_courses ||
-                                'Not specified'
-                            )}
+                scholarship.eligible_courses ||
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1363,9 +1193,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.minimum_gpa ??
-                                'Not specified'
-                            )}
+                scholarship.minimum_gpa ??
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1375,9 +1205,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.eligible_nationalities ||
-                                'Not specified'
-                            )}
+                scholarship.eligible_nationalities ||
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1387,9 +1217,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.age_limit ??
-                                'Not specified'
-                            )}
+                scholarship.age_limit ??
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1399,8 +1229,8 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                ieltsLabel
-                            )}
+                ieltsLabel
+            )}
                         </p>
 
 
@@ -1410,9 +1240,9 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                scholarship.duration ||
-                                'Not specified'
-                            )}
+                scholarship.duration ||
+                'Not specified'
+            )}
                         </p>
 
 
@@ -1422,43 +1252,41 @@ function displayScholarships(
                             </strong>
 
                             ${escapeHtml(
-                                deadlineLabel
-                            )}
+                deadlineLabel
+            )}
                         </p>
 
 
-                        ${
-                            benefits.length > 0
-                                ? `
+                        ${benefits.length > 0
+                    ? `
                                 <p>
                                     <strong>
                                         Benefits:
                                     </strong>
 
                                     ${escapeHtml(
-                                        benefits.join(', ')
-                                    )}
+                        benefits.join(', ')
+                    )}
                                 </p>
                                 `
-                                : ''
-                        }
+                    : ''
+                }
 
 
-                        ${
-                            statusLabel
-                                ? `
+                        ${statusLabel
+                    ? `
                                 <p>
                                     <strong>
                                         Status:
                                     </strong>
 
                                     ${escapeHtml(
-                                        statusLabel
-                                    )}
+                        statusLabel
+                    )}
                                 </p>
                                 `
-                                : ''
-                        }
+                    : ''
+                }
 
                     </div>
 
@@ -1469,20 +1297,19 @@ function displayScholarships(
                             type="button"
                             class="save-scholarship-btn"
                             data-scholarship-id="${Number(
-                                scholarship.scholarship_id
-                            )}"
+                    scholarship.scholarship_id
+                )}"
                         >
                             Save
                         </button>
 
 
-                        ${
-                            scholarship.application_link
-                                ? `
+                        ${scholarship.application_link
+                    ? `
                                 <a
                                     href="${escapeHtml(
-                                        scholarship.application_link
-                                    )}"
+                        scholarship.application_link
+                    )}"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="apply-scholarship-btn"
@@ -1490,8 +1317,8 @@ function displayScholarships(
                                     Apply
                                 </a>
                                 `
-                                : ''
-                        }
+                    : ''
+                }
 
                     </div>
 
@@ -1507,18 +1334,18 @@ function displayScholarships(
 
             if (saveButton) {
 
-              saveButton.addEventListener(
-        'click',
-        async () => {
+                saveButton.addEventListener(
+                    'click',
+                    async () => {
 
-            await saveScholarship(
-                scholarship.scholarship_id,
-                saveButton
-            );
+                        await saveScholarship(
+                            scholarship.scholarship_id,
+                            saveButton
+                        );
 
-        }
-    );
-}
+                    }
+                );
+            }
 
 
             resultsContainer.appendChild(
@@ -1529,9 +1356,7 @@ function displayScholarships(
 }
 
 
-/* =========================================================
-   15. SCHOLARSHIP FILTERING
-========================================================= */
+// 13. SCHOLARSHIP FILTERING
 
 function applyScholarshipFilters() {
 
@@ -1541,7 +1366,7 @@ function applyScholarshipFilters() {
 
     const searchInput =
         document.getElementById(
-            'scholarship-search-input'
+            'global-search'
         );
 
 
@@ -1764,9 +1589,7 @@ function applyScholarshipFilters() {
 }
 
 
-/* =========================================================
-   16. SAVE SCHOLARSHIP
-========================================================= */
+// 14. SAVE SCHOLARSHIP
 
 async function saveScholarship(
     scholarshipId,
@@ -1807,11 +1630,7 @@ async function saveScholarship(
             );
 
 
-        /*
-        -----------------------------------------------------
-        Read response
-        -----------------------------------------------------
-        */
+        // Read response
 
         const responseText =
             await response.text();
@@ -1846,11 +1665,7 @@ async function saveScholarship(
         );
 
 
-        /*
-        -----------------------------------------------------
-        LOGIN
-        -----------------------------------------------------
-        */
+        // LOGIN
 
         if (
             data.logged_in === false
@@ -1863,12 +1678,7 @@ async function saveScholarship(
         }
 
 
-        /*
-        -----------------------------------------------------
-        ERROR
-        -----------------------------------------------------
-        */
-
+        // if error
         if (
             !response.ok ||
             !data.success
@@ -1881,11 +1691,7 @@ async function saveScholarship(
         }
 
 
-        /*
-        -----------------------------------------------------
-        SUCCESS
-        -----------------------------------------------------
-        */
+        //if success
 
         if (button) {
 
@@ -1936,9 +1742,7 @@ async function saveScholarship(
     }
 }
 
-/* =========================================================
-   17. SCHOLARSHIP POST SUCCESS MESSAGE
-========================================================= */
+// 15. SCHOLARSHIP POST SUCCESS MESSAGE
 
 function showScholarshipPostMessage() {
 
@@ -1970,9 +1774,7 @@ function showScholarshipPostMessage() {
 }
 
 
-/* =========================================================
-   18. SCHOLARSHIP MESSAGE
-========================================================= */
+// 16. SCHOLARSHIP MESSAGE
 
 function showScholarshipMessage(
     message,
@@ -2023,9 +1825,7 @@ function showScholarshipMessage(
 }
 
 
-/* =========================================================
-   19. FORMAT FUNDING TYPE
-========================================================= */
+//17. FORMAT FUNDING TYPE
 
 function formatFundingType(type) {
 
@@ -2053,9 +1853,7 @@ function formatFundingType(type) {
 }
 
 
-/* =========================================================
-   20. FORMAT BENEFITS
-========================================================= */
+// 18. FORMAT BENEFITS
 
 function formatBenefitType(type) {
 
@@ -2093,9 +1891,7 @@ function formatBenefitType(type) {
 }
 
 
-/* =========================================================
-   21. FORMAT DATE
-========================================================= */
+//19. FORMAT DATE
 
 function formatScholarshipDate(
     dateValue
@@ -2134,9 +1930,7 @@ function formatScholarshipDate(
 }
 
 
-/* =========================================================
-   22. CAPITALIZE FIRST LETTER
-========================================================= */
+// 20. CAPITALIZE FIRST LETTER
 
 function capitalizeFirstLetter(text) {
 
@@ -2151,9 +1945,7 @@ function capitalizeFirstLetter(text) {
 }
 
 
-/* =========================================================
-   23. ESCAPE HTML
-========================================================= */
+// 21. ESCAPE HTML
 
 function escapeHtml(value) {
 
@@ -2195,9 +1987,7 @@ function escapeHtml(value) {
 }
 
 
-/* =========================================================
-   MAKE FUNCTIONS AVAILABLE TO HTML
-========================================================= */
+// MAKE FUNCTIONS AVAILABLE TO HTML
 
 window.openProfile =
     openProfile;
@@ -2211,9 +2001,7 @@ window.applyScholarshipFilters =
 window.saveScholarship =
     saveScholarship;
 
-/* =========================================================
-   DASHBOARD PREMIUM FEATURES
-========================================================= */
+// DASHBOARD PREMIUM FEATURES
 
 function initDashboardFeatures() {
 
@@ -2248,9 +2036,7 @@ function initDashboardFeatures() {
 }
 
 
-/* =========================================================
-   CHECK DASHBOARD PROFILE ACCESS
-========================================================= */
+// CHECK DASHBOARD PROFILE ACCESS
 
 async function checkDashboardProfileAccess() {
 
@@ -2361,10 +2147,7 @@ async function checkDashboardProfileAccess() {
 }
 
 
-/* =========================================================
-   UNLOCK DASHBOARD FEATURES
-========================================================= */
-
+// UNLOCK DASHBOARD FEATURES
 function unlockDashboardFeatures() {
 
     const matchingCard =
@@ -2453,9 +2236,7 @@ function unlockDashboardFeatures() {
 }
 
 
-/* =========================================================
-   LOCK DASHBOARD FEATURES
-========================================================= */
+//LOCK DASHBOARD FEATURES
 
 function lockDashboardFeatures(
     missingFields = []
@@ -2560,9 +2341,7 @@ function lockDashboardFeatures(
 }
 
 
-/* =========================================================
-   STUDENT COMMUNITY
-========================================================= */
+// STUDENT COMMUNITY
 
 function openStudentCommunity() {
 
@@ -2574,7 +2353,7 @@ function openStudentCommunity() {
     const discordInvite =
         'https://discord.gg/THNBweKWq';
 
-    
+
     window.open(
         discordInvite,
         '_blank',
@@ -2583,16 +2362,12 @@ function openStudentCommunity() {
 }
 
 
-/* =========================================================
-   SCHOLARSHIP RECOMMENDATIONS
-========================================================= */
+// SCHOLARSHIP RECOMMENDATIONS
 
 let scholarshipRecommendations = [];
 
 
-/* =========================================================
-   INITIALIZE RECOMMENDATIONS PAGE
-========================================================= */
+// INITIALIZE RECOMMENDATIONS PAGE
 
 function initRecommendationsPage() {
 
@@ -2650,9 +2425,7 @@ function initRecommendationsPage() {
 
 
 
-/* =========================================================
-   LOAD RECOMMENDATIONS
-========================================================= */
+// LOAD RECOMMENDATIONS
 
 async function loadRecommendations() {
 
@@ -2704,11 +2477,7 @@ async function loadRecommendations() {
         );
 
 
-        /*
-        -----------------------------------------------------
-        NOT LOGGED IN
-        -----------------------------------------------------
-        */
+        // if not logged in
 
         if (
             data.logged_in === false
@@ -2723,11 +2492,7 @@ async function loadRecommendations() {
 
 
 
-        /*
-        -----------------------------------------------------
-        PROFILE INCOMPLETE
-        -----------------------------------------------------
-        */
+        // if profile is incomplete
 
         if (
             data.profile_complete === false
@@ -2743,11 +2508,7 @@ async function loadRecommendations() {
 
 
 
-        /*
-        -----------------------------------------------------
-        ERROR
-        -----------------------------------------------------
-        */
+        //error message
 
         if (!data.success) {
 
@@ -2760,11 +2521,7 @@ async function loadRecommendations() {
 
 
 
-        /*
-        -----------------------------------------------------
-        STORE RESULTS
-        -----------------------------------------------------
-        */
+        //store results
 
         scholarshipRecommendations =
             Array.isArray(
@@ -2775,11 +2532,8 @@ async function loadRecommendations() {
 
 
 
-        /*
-        -----------------------------------------------------
-        PROFILE SUMMARY
-        -----------------------------------------------------
-        */
+        //PROFILE SUMMARY
+
 
         displayMatchingProfile(
             data.student
@@ -2787,11 +2541,7 @@ async function loadRecommendations() {
 
 
 
-        /*
-        -----------------------------------------------------
-        SCHOLARSHIPS
-        -----------------------------------------------------
-        */
+        //scholarships
 
         displayRecommendations(
             scholarshipRecommendations
@@ -2829,9 +2579,7 @@ async function loadRecommendations() {
 
 
 
-/* =========================================================
-   DISPLAY PROFILE USED FOR MATCHING
-========================================================= */
+// DISPLAY PROFILE USED FOR MATCHING
 
 function displayMatchingProfile(
     student
@@ -2861,8 +2609,8 @@ function displayMatchingProfile(
 
             <span>
                 ${escapeHtml(
-                    student.education_level || 'Not specified'
-                )}
+        student.education_level || 'Not specified'
+    )}
             </span>
 
         </div>
@@ -2876,8 +2624,8 @@ function displayMatchingProfile(
 
             <span>
                 ${escapeHtml(
-                    student.course || 'Not specified'
-                )}
+        student.course || 'Not specified'
+    )}
             </span>
 
         </div>
@@ -2891,10 +2639,10 @@ function displayMatchingProfile(
 
             <span>
                 ${escapeHtml(
-                    String(
-                        student.gpa ?? 'Not specified'
-                    )
-                )}
+        String(
+            student.gpa ?? 'Not specified'
+        )
+    )}
             </span>
 
         </div>
@@ -2908,8 +2656,8 @@ function displayMatchingProfile(
 
             <span>
                 ${escapeHtml(
-                    student.nationality || 'Not specified'
-                )}
+        student.nationality || 'Not specified'
+    )}
             </span>
 
         </div>
@@ -2923,8 +2671,8 @@ function displayMatchingProfile(
 
             <span>
                 ${escapeHtml(
-                    student.preferred_country || 'Any'
-                )}
+        student.preferred_country || 'Any'
+    )}
             </span>
 
         </div>
@@ -2938,10 +2686,10 @@ function displayMatchingProfile(
 
             <span>
                 ${escapeHtml(
-                    formatFundingType(
-                        student.funding_preference
-                    )
-                )}
+        formatFundingType(
+            student.funding_preference
+        )
+    )}
             </span>
 
         </div>
@@ -2952,9 +2700,7 @@ function displayMatchingProfile(
 
 
 
-/* =========================================================
-   DISPLAY RECOMMENDATIONS
-========================================================= */
+// DISPLAY RECOMMENDATIONS
 
 function displayRecommendations(
     recommendations
@@ -2983,21 +2729,16 @@ function displayRecommendations(
     if (countText) {
 
         countText.textContent =
-            `${recommendations.length} matching scholarship${
-                recommendations.length === 1
-                    ? ''
-                    : 's'
+            `${recommendations.length} matching scholarship${recommendations.length === 1
+                ? ''
+                : 's'
             } found`;
 
     }
 
 
 
-    /*
-    ---------------------------------------------------------
-    NO MATCHES
-    ---------------------------------------------------------
-    */
+    // if there are no matches
 
     if (
         !recommendations ||
@@ -3044,11 +2785,7 @@ function displayRecommendations(
 
 
 
-    /*
-    ---------------------------------------------------------
-    CREATE CARDS
-    ---------------------------------------------------------
-    */
+    // CREATE CARDS
 
     recommendations.forEach(
         (scholarship) => {
@@ -3065,11 +2802,7 @@ function displayRecommendations(
 
 
 
-            /*
-            -------------------------------------------------
-            SEARCH DATA
-            -------------------------------------------------
-            */
+            // SEARCH DATA
 
             card.dataset.search = `
 
@@ -3087,11 +2820,7 @@ function displayRecommendations(
 
 
 
-            /*
-            -------------------------------------------------
-            MATCH REASONS
-            -------------------------------------------------
-            */
+            // MATCH REASONS
 
             const reasons =
                 Array.isArray(
@@ -3138,11 +2867,7 @@ function displayRecommendations(
 
 
 
-            /*
-            -------------------------------------------------
-            CARD
-            -------------------------------------------------
-            */
+            // CARD
 
             card.innerHTML = `
 
@@ -3154,9 +2879,9 @@ function displayRecommendations(
                         <h3 class="update-title">
 
                             ${escapeHtml(
-                                scholarship.title ||
-                                'Untitled Scholarship'
-                            )}
+                scholarship.title ||
+                'Untitled Scholarship'
+            )}
 
                         </h3>
 
@@ -3164,9 +2889,9 @@ function displayRecommendations(
                         <p class="update-text">
 
                             ${escapeHtml(
-                                scholarship.provider ||
-                                'Provider not specified'
-                            )}
+                scholarship.provider ||
+                'Provider not specified'
+            )}
 
                         </p>
 
@@ -3179,17 +2904,17 @@ function displayRecommendations(
                         <strong>
 
                             ${Number(
-                                scholarship.match_score
-                            )}%
+                scholarship.match_score
+            )}%
 
                         </strong>
 
                         <span>
 
                             ${escapeHtml(
-                                scholarship.match_label ||
-                                'Match'
-                            )}
+                scholarship.match_label ||
+                'Match'
+            )}
 
                         </span>
 
@@ -3203,9 +2928,9 @@ function displayRecommendations(
                 <p class="update-text">
 
                     ${escapeHtml(
-                        scholarship.description ||
-                        'No description provided.'
-                    )}
+                scholarship.description ||
+                'No description provided.'
+            )}
 
                 </p>
 
@@ -3221,9 +2946,9 @@ function displayRecommendations(
                         </strong>
 
                         ${escapeHtml(
-                            scholarship.country ||
-                            'Not specified'
-                        )}
+                scholarship.country ||
+                'Not specified'
+            )}
 
                     </span>
 
@@ -3235,9 +2960,9 @@ function displayRecommendations(
                         </strong>
 
                         ${escapeHtml(
-                            scholarship.university ||
-                            'Not specified'
-                        )}
+                scholarship.university ||
+                'Not specified'
+            )}
 
                     </span>
 
@@ -3249,10 +2974,10 @@ function displayRecommendations(
                         </strong>
 
                         ${escapeHtml(
-                            formatFundingType(
-                                scholarship.funding_type
-                            )
-                        )}
+                formatFundingType(
+                    scholarship.funding_type
+                )
+            )}
 
                     </span>
 
@@ -3264,12 +2989,12 @@ function displayRecommendations(
                         </strong>
 
                         ${escapeHtml(
-                            scholarship.deadline
-                                ? formatScholarshipDate(
-                                    scholarship.deadline
-                                )
-                                : 'Not specified'
-                        )}
+                scholarship.deadline
+                    ? formatScholarshipDate(
+                        scholarship.deadline
+                    )
+                    : 'Not specified'
+            )}
 
                     </span>
 
@@ -3294,9 +3019,8 @@ function displayRecommendations(
                     </div>
 
 
-                    ${
-                        warnings.length > 0
-                            ? `
+                    ${warnings.length > 0
+                    ? `
 
                             <div>
 
@@ -3311,8 +3035,8 @@ function displayRecommendations(
                             </div>
 
                             `
-                            : ''
-                    }
+                    : ''
+                }
 
 
                 </div>
@@ -3330,13 +3054,12 @@ function displayRecommendations(
                     </button>
 
 
-                    ${
-                        scholarship.application_link
-                            ? `
+                    ${scholarship.application_link
+                    ? `
                             <a
                                 href="${escapeHtml(
-                                    scholarship.application_link
-                                )}"
+                        scholarship.application_link
+                    )}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="update-btn"
@@ -3345,8 +3068,8 @@ function displayRecommendations(
                             </a>
 
                             `
-                            : ''
-                    }
+                    : ''
+                }
 
 
                 </div>
@@ -3355,11 +3078,7 @@ function displayRecommendations(
 
 
 
-            /*
-            -------------------------------------------------
-            SAVE BUTTON
-            -------------------------------------------------
-            */
+            //save button
 
             const saveButton =
                 card.querySelector(
@@ -3367,7 +3086,7 @@ function displayRecommendations(
                 );
 
 
-             {
+            {
 
                 saveButton.addEventListener(
                     'click',
@@ -3403,9 +3122,7 @@ function displayRecommendations(
 
 
 
-/* =========================================================
-   FILTER / SORT RECOMMENDATIONS
-========================================================= */
+// FILTER / SORT RECOMMENDATIONS
 
 function filterRecommendations() {
 
@@ -3465,11 +3182,7 @@ function filterRecommendations() {
 
 
 
-    /*
-    ---------------------------------------------------------
-    SORT
-    ---------------------------------------------------------
-    */
+    //sort
 
     if (sort === 'match') {
 
@@ -3532,9 +3245,7 @@ function filterRecommendations() {
 
 
 
-/* =========================================================
-   INCOMPLETE PROFILE
-========================================================= */
+//incomplete profile message for recommendations
 
 function displayIncompleteRecommendationProfile(
     data
@@ -3593,9 +3304,8 @@ function displayIncompleteRecommendationProfile(
                 </p>
 
 
-                ${
-                    missing.length > 0
-                        ? `
+                ${missing.length > 0
+                ? `
 
                         <p class="update-text">
 
@@ -3604,14 +3314,14 @@ function displayIncompleteRecommendationProfile(
                             </strong>
 
                             ${escapeHtml(
-                                missing.join(', ')
-                            )}
+                    missing.join(', ')
+                )}
 
                         </p>
 
                         `
-                        : ''
-                }
+                : ''
+            }
 
 
                 <div class="update-actions">
@@ -3634,18 +3344,14 @@ function displayIncompleteRecommendationProfile(
 
 }
 
-/* =========================================================
-   UPDATES PAGE
-========================================================= */
+// UPDATES PAGE
 
 let allApplicationUpdates = [];
 
 let allNotificationUpdates = [];
 
 
-/* =========================================================
-   INITIALIZE UPDATES PAGE
-========================================================= */
+// INITIALIZE UPDATES PAGE
 
 function initUpdatesPage() {
 
@@ -3660,9 +3366,7 @@ function initUpdatesPage() {
         );
 
 
-    /*
-    Not updates.html
-    */
+    // Not updates.html
 
     if (
         !applicationContainer &&
@@ -3673,16 +3377,12 @@ function initUpdatesPage() {
     }
 
 
-    /*
-    Load database data
-    */
+    //Load database data
 
     loadUpdates();
 
 
-    /*
-    Refresh
-    */
+    // Refresh
 
     const refreshButton =
         document.getElementById(
@@ -3703,9 +3403,7 @@ function initUpdatesPage() {
     }
 
 
-    /*
-    Search
-    */
+    //search 
 
     const searchInput =
         document.getElementById(
@@ -3738,9 +3436,7 @@ function initUpdatesPage() {
 }
 
 
-/* =========================================================
-   LOAD UPDATES
-========================================================= */
+//LOAD UPDATES
 
 async function loadUpdates() {
 
@@ -3820,11 +3516,7 @@ async function loadUpdates() {
         );
 
 
-        /*
-        -----------------------------------------------------
-        LOGIN
-        -----------------------------------------------------
-        */
+        // LOGIN
 
         if (
             data.logged_in === false
@@ -3837,11 +3529,7 @@ async function loadUpdates() {
         }
 
 
-        /*
-        -----------------------------------------------------
-        ERROR
-        -----------------------------------------------------
-        */
+        // ERROR
 
         if (
             !response.ok ||
@@ -3855,11 +3543,7 @@ async function loadUpdates() {
         }
 
 
-        /*
-        -----------------------------------------------------
-        STORE DATA
-        -----------------------------------------------------
-        */
+        // STORE DATA
 
         allApplicationUpdates =
             Array.isArray(
@@ -3877,12 +3561,7 @@ async function loadUpdates() {
                 : [];
 
 
-        /*
-        -----------------------------------------------------
-        DISPLAY
-        -----------------------------------------------------
-        */
-
+        // DISPLAY
         displayApplicationUpdates(
             allApplicationUpdates
         );
@@ -3893,12 +3572,7 @@ async function loadUpdates() {
         );
 
 
-        /*
-        -----------------------------------------------------
-        NOTIFICATION BADGE
-        -----------------------------------------------------
-        */
-
+        // NOTIFICATION BADGE 
         const notificationCount =
             document.getElementById(
                 'notification-count'
@@ -3942,8 +3616,8 @@ async function loadUpdates() {
 
                     <p class="update-text">
                         ${escapeHtml(
-                            error.message
-                        )}
+                error.message
+            )}
                     </p>
 
                 </article>
@@ -3979,9 +3653,7 @@ async function loadUpdates() {
 }
 
 
-/* =========================================================
-   DISPLAY APPLICATION UPDATES
-========================================================= */
+// ISPLAY APPLICATION UPDATES
 
 function displayApplicationUpdates(
     applications
@@ -4052,9 +3724,9 @@ function displayApplicationUpdates(
                 <h3 class="update-title">
 
                     ${escapeHtml(
-                        application.scholarship_title ||
-                        'Scholarship Application'
-                    )}
+                application.scholarship_title ||
+                'Scholarship Application'
+            )}
 
                 </h3>
 
@@ -4066,9 +3738,9 @@ function displayApplicationUpdates(
                     </strong>
 
                     ${escapeHtml(
-                        application.provider ||
-                        'Not specified'
-                    )}
+                application.provider ||
+                'Not specified'
+            )}
 
                 </p>
 
@@ -4080,15 +3752,14 @@ function displayApplicationUpdates(
                     </strong>
 
                     ${escapeHtml(
-                        status
-                    )}
+                status
+            )}
 
                 </p>
 
 
-                ${
-                    application.country
-                        ? `
+                ${application.country
+                    ? `
 
                         <p class="update-text">
 
@@ -4097,19 +3768,18 @@ function displayApplicationUpdates(
                             </strong>
 
                             ${escapeHtml(
-                                application.country
-                            )}
+                        application.country
+                    )}
 
                         </p>
 
                         `
-                        : ''
+                    : ''
                 }
 
 
-                ${
-                    application.notes
-                        ? `
+                ${application.notes
+                    ? `
 
                         <p class="update-text">
 
@@ -4118,13 +3788,13 @@ function displayApplicationUpdates(
                             </strong>
 
                             ${escapeHtml(
-                                application.notes
-                            )}
+                        application.notes
+                    )}
 
                         </p>
 
                         `
-                        : ''
+                    : ''
                 }
 
 
@@ -4132,10 +3802,10 @@ function displayApplicationUpdates(
 
                     Last updated:
                     ${escapeHtml(
-                        formatUpdateDate(
-                            application.updated_at
-                        )
-                    )}
+                    formatUpdateDate(
+                        application.updated_at
+                    )
+                )}
 
                 </div>
 
@@ -4150,9 +3820,7 @@ function displayApplicationUpdates(
 }
 
 
-/* =========================================================
-   DISPLAY NOTIFICATIONS
-========================================================= */
+// DISPLAY NOTIFICATIONS
 
 function displayNotificationUpdates(
     notifications
@@ -4229,9 +3897,9 @@ function displayNotificationUpdates(
                 <h3 class="update-title">
 
                     ${escapeHtml(
-                        notification.title ||
-                        'Notification'
-                    )}
+                notification.title ||
+                'Notification'
+            )}
 
                 </h3>
 
@@ -4239,9 +3907,9 @@ function displayNotificationUpdates(
                 <p class="update-text">
 
                     ${escapeHtml(
-                        notification.message ||
-                        ''
-                    )}
+                notification.message ||
+                ''
+            )}
 
                 </p>
 
@@ -4249,18 +3917,17 @@ function displayNotificationUpdates(
                 <div class="result-footer">
 
                     ${escapeHtml(
-                        formatUpdateDate(
-                            notification.created_at
-                        )
-                    )}
+                formatUpdateDate(
+                    notification.created_at
+                )
+            )}
 
-                    ${
-                        Number(
-                            notification.is_read
-                        ) === 0
-                            ? ' • New'
-                            : ''
-                    }
+                    ${Number(
+                notification.is_read
+            ) === 0
+                    ? ' • New'
+                    : ''
+                }
 
                 </div>
 
@@ -4275,9 +3942,7 @@ function displayNotificationUpdates(
 }
 
 
-/* =========================================================
-   SEARCH UPDATES
-========================================================= */
+// SEARCH UPDATES
 
 function filterUpdates() {
 
@@ -4317,30 +3982,25 @@ function filterUpdates() {
 
                 const searchable = `
 
-                    ${
-                        application
-                            .scholarship_title ||
-                        ''
+                    ${application
+                        .scholarship_title ||
+                    ''
                     }
 
-                    ${
-                        application.provider ||
-                        ''
+                    ${application.provider ||
+                    ''
                     }
 
-                    ${
-                        application.status ||
-                        ''
+                    ${application.status ||
+                    ''
                     }
 
-                    ${
-                        application.country ||
-                        ''
+                    ${application.country ||
+                    ''
                     }
 
-                    ${
-                        application.notes ||
-                        ''
+                    ${application.notes ||
+                    ''
                     }
 
                 `.toLowerCase();
@@ -4359,14 +4019,12 @@ function filterUpdates() {
 
                 const searchable = `
 
-                    ${
-                        notification.title ||
-                        ''
+                    ${notification.title ||
+                    ''
                     }
 
-                    ${
-                        notification.message ||
-                        ''
+                    ${notification.message ||
+                    ''
                     }
 
                 `.toLowerCase();
@@ -4390,9 +4048,7 @@ function filterUpdates() {
 }
 
 
-/* =========================================================
-   UPDATE DATE
-========================================================= */
+// UPDATE DATE
 
 function formatUpdateDate(
     value
@@ -4437,9 +4093,7 @@ function formatUpdateDate(
 }
 
 
-/* =========================================================
-   UPDATES MESSAGE
-========================================================= */
+// UPDATES MESSAGE
 
 function showUpdatesMessage(
     message,
@@ -4512,9 +4166,7 @@ function showUpdatesMessage(
     }
 }
 
-/* =========================================================
-   DASHBOARD QUICK SCHOLARSHIP SEARCH
-========================================================= */
+// DASHBOARD QUICK SCHOLARSHIP SEARCH
 
 function initQuickScholarshipSearch() {
 
@@ -4524,9 +4176,7 @@ function initQuickScholarshipSearch() {
         );
 
 
-    /*
-    Not dashboard.html
-    */
+    //Not dashboard.html
 
     if (!searchButton) {
         return;
@@ -4539,9 +4189,7 @@ function initQuickScholarshipSearch() {
     );
 
 
-    /*
-    Allow Enter from study field
-    */
+    //Allow Enter from study field
 
     const studyInput =
         document.getElementById(
@@ -4570,9 +4218,7 @@ function initQuickScholarshipSearch() {
 }
 
 
-/* =========================================================
-   PERFORM QUICK SEARCH
-========================================================= */
+//PERFORM QUICK SEARCH
 
 async function performQuickScholarshipSearch() {
 
@@ -4609,11 +4255,7 @@ async function performQuickScholarshipSearch() {
     }
 
 
-    /*
-    ---------------------------------------------------------
-    READ FILTERS
-    ---------------------------------------------------------
-    */
+    // READ FILTERS
 
     const study =
         document.getElementById(
@@ -4645,11 +4287,6 @@ async function performQuickScholarshipSearch() {
         )?.value || '';
 
 
-    /*
-    ---------------------------------------------------------
-    BUILD QUERY
-    ---------------------------------------------------------
-    */
 
     const params =
         new URLSearchParams();
@@ -4700,12 +4337,6 @@ async function performQuickScholarshipSearch() {
     }
 
 
-    /*
-    ---------------------------------------------------------
-    LOADING
-    ---------------------------------------------------------
-    */
-
     resultsWrapper.style.display =
         'block';
 
@@ -4747,11 +4378,7 @@ async function performQuickScholarshipSearch() {
 
     try {
 
-        /*
-        -----------------------------------------------------
-        FETCH DATABASE
-        -----------------------------------------------------
-        */
+        // FETCH DATABASE
 
         const response =
             await fetch(
@@ -4806,11 +4433,7 @@ async function performQuickScholarshipSearch() {
         );
 
 
-        /*
-        -----------------------------------------------------
-        LOGIN
-        -----------------------------------------------------
-        */
+        // LOGIN
 
         if (
             data.logged_in ===
@@ -4824,11 +4447,7 @@ async function performQuickScholarshipSearch() {
         }
 
 
-        /*
-        -----------------------------------------------------
-        ERROR
-        -----------------------------------------------------
-        */
+        // ERROR
 
         if (
             !response.ok ||
@@ -4842,11 +4461,7 @@ async function performQuickScholarshipSearch() {
         }
 
 
-        /*
-        -----------------------------------------------------
-        DISPLAY
-        -----------------------------------------------------
-        */
+        //DISPLAY
 
         const scholarships =
             Array.isArray(
@@ -4879,8 +4494,8 @@ async function performQuickScholarshipSearch() {
 
                 <p>
                     ${escapeHtml(
-                        error.message
-                    )}
+            error.message
+        )}
                 </p>
 
             </div>
@@ -4915,9 +4530,7 @@ async function performQuickScholarshipSearch() {
 }
 
 
-/* =========================================================
-   DISPLAY QUICK SEARCH RESULTS
-========================================================= */
+//DISPLAY QUICK SEARCH RESULTS
 
 function displayQuickScholarshipResults(
     scholarships
@@ -4943,29 +4556,19 @@ function displayQuickScholarshipResults(
     container.innerHTML =
         '';
 
-
-    /*
-    ---------------------------------------------------------
-    COUNT
-    ---------------------------------------------------------
-    */
+    //count
 
     if (countElement) {
 
         countElement.textContent =
-            `${scholarships.length} scholarship${
-                scholarships.length === 1
-                    ? ''
-                    : 's'
+            `${scholarships.length} scholarship${scholarships.length === 1
+                ? ''
+                : 's'
             } found`;
     }
 
 
-    /*
-    ---------------------------------------------------------
-    EMPTY
-    ---------------------------------------------------------
-    */
+    //if empty
 
     if (
         scholarships.length ===
@@ -4998,11 +4601,7 @@ function displayQuickScholarshipResults(
     }
 
 
-    /*
-    ---------------------------------------------------------
-    RESULTS
-    ---------------------------------------------------------
-    */
+    //results
 
     scholarships.forEach(
         scholarship => {
@@ -5055,9 +4654,9 @@ function displayQuickScholarshipResults(
                         <span class="quick-scholarship-country">
 
                             ${escapeHtml(
-                                scholarship.country ||
-                                'International'
-                            )}
+                scholarship.country ||
+                'International'
+            )}
 
                         </span>
 
@@ -5065,9 +4664,9 @@ function displayQuickScholarshipResults(
                         <h4>
 
                             ${escapeHtml(
-                                scholarship.title ||
-                                'Untitled Scholarship'
-                            )}
+                scholarship.title ||
+                'Untitled Scholarship'
+            )}
 
                         </h4>
 
@@ -5075,9 +4674,9 @@ function displayQuickScholarshipResults(
                         <p class="quick-scholarship-provider">
 
                             ${escapeHtml(
-                                scholarship.provider ||
-                                'Provider not specified'
-                            )}
+                scholarship.provider ||
+                'Provider not specified'
+            )}
 
                         </p>
 
@@ -5087,8 +4686,8 @@ function displayQuickScholarshipResults(
                     <span class="quick-funding-badge">
 
                         ${escapeHtml(
-                            fundingLabel
-                        )}
+                fundingLabel
+            )}
 
                     </span>
 
@@ -5098,12 +4697,12 @@ function displayQuickScholarshipResults(
                 <p class="quick-scholarship-description">
 
                     ${escapeHtml(
-                        truncateQuickSearchText(
-                            scholarship.description ||
-                            'No description provided.',
-                            180
-                        )
-                    )}
+                truncateQuickSearchText(
+                    scholarship.description ||
+                    'No description provided.',
+                    180
+                )
+            )}
 
                 </p>
 
@@ -5113,37 +4712,36 @@ function displayQuickScholarshipResults(
                     <span>
                         🎓
                         ${escapeHtml(
-                            scholarship.education_level ||
-                            'Any level'
-                        )}
+                scholarship.education_level ||
+                'Any level'
+            )}
                     </span>
 
 
                     <span>
                         📚
                         ${escapeHtml(
-                            scholarship.eligible_courses ||
-                            'Multiple fields'
-                        )}
+                scholarship.eligible_courses ||
+                'Multiple fields'
+            )}
                     </span>
 
 
                     <span>
                         🏫
                         ${escapeHtml(
-                            scholarship.university ||
-                            'University not specified'
-                        )}
+                scholarship.university ||
+                'University not specified'
+            )}
                     </span>
 
 
                     <span>
                         🏠
-                        ${
-                            hasAccommodation
-                                ? 'Accommodation included'
-                                : 'Accommodation not listed'
-                        }
+                        ${hasAccommodation
+                    ? 'Accommodation included'
+                    : 'Accommodation not listed'
+                }
                     </span>
 
                 </div>
@@ -5159,8 +4757,8 @@ function displayQuickScholarshipResults(
 
                         <strong>
                             ${escapeHtml(
-                                deadline
-                            )}
+                    deadline
+                )}
                         </strong>
 
                     </div>
@@ -5176,14 +4774,13 @@ function displayQuickScholarshipResults(
                         </button>
 
 
-                        ${
-                            scholarship.application_link
-                                ? `
+                        ${scholarship.application_link
+                    ? `
 
                                 <a
                                     href="${escapeHtml(
-                                        scholarship.application_link
-                                    )}"
+                        scholarship.application_link
+                    )}"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="quick-apply-btn"
@@ -5192,8 +4789,8 @@ function displayQuickScholarshipResults(
                                 </a>
 
                                 `
-                                : ''
-                        }
+                    : ''
+                }
 
                     </div>
 
@@ -5202,11 +4799,7 @@ function displayQuickScholarshipResults(
             `;
 
 
-            /*
-            -------------------------------------------------
-            SAVE
-            -------------------------------------------------
-            */
+            //save
 
             const saveButton =
                 card.querySelector(
@@ -5237,9 +4830,7 @@ function displayQuickScholarshipResults(
 }
 
 
-/* =========================================================
-   QUICK SEARCH HELPERS
-========================================================= */
+//quick search helpers
 
 function formatQuickFunding(
     funding
@@ -5390,30 +4981,49 @@ function hideQuickSearchMessage() {
     }
 }
 
-/* SETTINGS PAGE */
 
-async function initSettings(){
+function setupCollapsibleSidebar() {
 
-if(!document.getElementById("save-settings")) return;
+    const sidebar =
+        document.getElementById('sidebar');
 
-const res=await fetch("../backend/get_settings.php");
-const json=await res.json();
+    const toggleButton =
+        document.getElementById('sidebar-toggle');
 
-const d=json.data;
+    if (!sidebar || !toggleButton) {
+        return;
+    }
 
-pageUsername.textContent=d.username;
-pageRole.textContent=d.role;
 
-document.getElementById("two-factor").checked=d.two_factor==1;
-document.getElementById("allow-notifications").checked=d.allow_notifications==1;
-document.getElementById("text-notifications").checked=d.text_notifications==1;
-document.getElementById("deadline-reminders").checked=d.deadline_reminders==1;
-document.getElementById("email-notifications").checked=d.email_notifications==1;
-document.getElementById("recommendations").checked=d.scholarship_recommendations==1;
-document.getElementById("application-status").checked=d.application_status==1;
-document.getElementById("deadline-notifications").checked=d.deadline_notifications==1;
-document.getElementById("dark-mode-toggle").checked=d.dark_mode==1;
+    // Restore previous sidebar state
+    const sidebarCollapsed =
+        localStorage.getItem('sidebarCollapsed');
 
-applyDarkMode(d.dark_mode==1);
+    if (sidebarCollapsed === 'true') {
+        sidebar.classList.add('collapsed');
+        toggleButton.textContent = '☰';
+    }
 
+
+    toggleButton.addEventListener('click', () => {
+
+        sidebar.classList.toggle('collapsed');
+
+        const collapsed =
+            sidebar.classList.contains('collapsed');
+
+        localStorage.setItem(
+            'sidebarCollapsed',
+            collapsed
+        );
+
+        toggleButton.setAttribute(
+            'aria-label',
+            collapsed
+                ? 'Expand sidebar'
+                : 'Collapse sidebar'
+        );
+
+    });
 }
+

@@ -9,9 +9,7 @@ header(
 require_once 'db.php';
 
 
-/* =========================================================
-   RESPONSE
-========================================================= */
+/* RESPONSE*/
 
 function sendSavedResponse(
     $data,
@@ -30,9 +28,7 @@ function sendSavedResponse(
 }
 
 
-/* =========================================================
-   LOGIN CHECK
-========================================================= */
+/* LOGIN CHECK*/
 
 if (
     !isset($_SESSION['user_id']) ||
@@ -52,9 +48,7 @@ $user_id =
     (int) $_SESSION['user_id'];
 
 
-/* =========================================================
-   GET CURRENT USER
-========================================================= */
+/* GET CURRENT USER*/
 
 $userStmt =
     $conn->prepare("
@@ -115,9 +109,7 @@ if (!$user) {
 }
 
 
-/* =========================================================
-   GET ONLY THIS USER'S SAVED SCHOLARSHIPS
-========================================================= */
+/*GET ONLY THIS USER'S SAVED SCHOLARSHIPS*/
 
 $stmt =
     $conn->prepare("
@@ -208,9 +200,7 @@ while (
 $stmt->close();
 
 
-/* =========================================================
-   RESPONSE
-========================================================= */
+/* RESPONSE*/
 
 sendSavedResponse([
 

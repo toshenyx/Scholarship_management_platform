@@ -28,7 +28,17 @@
 <div class="admin-app">
 
 
-    <aside class="admin-sidebar">
+    <!-- =========================================
+     ADMIN SIDEBAR
+========================================= -->
+
+<aside
+    class="admin-sidebar"
+    id="admin-sidebar"
+>
+
+    <!-- Logo + Collapse Button -->
+    <div class="admin-sidebar-header">
 
         <div class="admin-logo">
 
@@ -37,59 +47,162 @@
                 alt="Scholarly"
             >
 
-            <span>scholarly</span>
+            <span class="admin-logo-text">
+                scholarly
+            </span>
 
         </div>
 
 
-        <div class="admin-label">
-            ADMIN PORTAL
-        </div>
+        <!-- Sidebar Collapse Button -->
+        <button
+            type="button"
+            class="admin-sidebar-toggle"
+            id="admin-sidebar-toggle"
+            aria-label="Collapse sidebar"
+            title="Collapse sidebar"
+        >
+            ☰
+        </button>
+
+    </div>
 
 
-        <nav class="admin-nav">
+    <!-- Admin Portal Label -->
+    <div class="admin-label">
+        ADMIN PORTAL
+    </div>
 
-            <a
-                href="dashboard.html"
-                class="active"
-            >
-                ▦ Dashboard
-            </a>
 
-            <a href="scholarships.html">
-                🎓 Scholarships
-            </a>
+    <!-- Navigation -->
+    <nav class="admin-nav">
 
-            <a href="pending.html">
-                ◷ Pending Reviews
-            </a>
 
-            <a href="users.html">
-                👥 Users
-            </a>
+        <!-- Dashboard -->
+        <a
+            href="dashboard.html"
+            class="active"
+            title="Dashboard"
+        >
+            <span class="admin-nav-icon">
+                ▦
+            </span>
 
-            <a href="post-scholarship.html">
-                ＋ Post Scholarship
-            </a>
+            <span class="admin-nav-text">
+                Dashboard
+            </span>
+        </a>
 
-            <a href="reports.html">
-                ▤ Reports
-            </a>
 
-            <a href="settings.html">
-                ⚙ Settings
-            </a>
+        <!-- Scholarships -->
+        <a
+            href="scholarships.html"
+            title="Scholarships"
+        >
+            <span class="admin-nav-icon">
+                🎓
+            </span>
 
-            <a
-                href="../backend/logout.php"
-                class="logout"
-            >
-                ↪ Logout
-            </a>
+            <span class="admin-nav-text">
+                Scholarships
+            </span>
+        </a>
 
-        </nav>
 
-    </aside>
+        <!-- Pending Reviews -->
+        <a
+            href="pending.html"
+            title="Pending Reviews"
+        >
+            <span class="admin-nav-icon">
+                ◷
+            </span>
+
+            <span class="admin-nav-text">
+                Pending Reviews
+            </span>
+        </a>
+
+
+        <!-- Users -->
+        <a
+            href="users.html"
+            title="Users"
+        >
+            <span class="admin-nav-icon">
+                👥
+            </span>
+
+            <span class="admin-nav-text">
+                Users
+            </span>
+        </a>
+
+
+        <!-- Post Scholarship -->
+        <a
+            href="post-scholarship.html"
+            title="Post Scholarship"
+        >
+            <span class="admin-nav-icon">
+                ＋
+            </span>
+
+            <span class="admin-nav-text">
+                Post Scholarship
+            </span>
+        </a>
+
+
+        <!-- Reports -->
+        <a
+            href="reports.html"
+            title="Reports"
+        >
+            <span class="admin-nav-icon">
+                ▤
+            </span>
+
+            <span class="admin-nav-text">
+                Reports
+            </span>
+        </a>
+
+
+        <!-- Settings -->
+        <a
+            href="settings.html"
+            title="Settings"
+        >
+            <span class="admin-nav-icon">
+                ⚙
+            </span>
+
+            <span class="admin-nav-text">
+                Settings
+            </span>
+        </a>
+
+
+        <!-- Logout -->
+        <a
+            href="../backend/logout.php"
+            class="logout"
+            title="Logout"
+        >
+            <span class="admin-nav-icon">
+                ↪
+            </span>
+
+            <span class="admin-nav-text">
+                Logout
+            </span>
+        </a>
+
+
+    </nav>
+
+</aside>
 
 
 

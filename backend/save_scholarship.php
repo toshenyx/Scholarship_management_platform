@@ -21,9 +21,7 @@ function sendResponse($data, $status = 200)
 }
 
 
-/* =========================================================
-   CHECK LOGIN
-========================================================= */
+/* CHECK LOGIN*/
 
 if (
     !isset($_SESSION['user_id']) ||
@@ -41,10 +39,7 @@ $user_id =
     (int) $_SESSION['user_id'];
 
 
-/* =========================================================
-   READ REQUEST
-   Supports BOTH JSON and normal POST
-========================================================= */
+/*READ REQUEST.Supports BOTH JSON and normal POST*/
 
 $input =
     json_decode(
@@ -81,9 +76,7 @@ if ($scholarship_id <= 0) {
 }
 
 
-/* =========================================================
-   CHECK SCHOLARSHIP EXISTS
-========================================================= */
+/*CHECK SCHOLARSHIP EXISTS*/
 
 $checkScholarship =
     $conn->prepare("
@@ -132,9 +125,7 @@ if (
 $checkScholarship->close();
 
 
-/* =========================================================
-   CHECK IF ALREADY SAVED
-========================================================= */
+/* CHECK IF ALREADY SAVED*/
 
 $checkSaved =
     $conn->prepare("
@@ -187,9 +178,7 @@ if (
 $checkSaved->close();
 
 
-/* =========================================================
-   SAVE SCHOLARSHIP
-========================================================= */
+/* SAVE SCHOLARSHIP*/
 
 $save =
     $conn->prepare("
@@ -246,9 +235,7 @@ $saved_id =
 $save->close();
 
 
-/* =========================================================
-   SUCCESS
-========================================================= */
+/* SUCCESS*/
 
 sendResponse([
     'success' => true,

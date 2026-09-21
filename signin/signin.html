@@ -1,26 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Login page</title>
-        <link rel="stylesheet" href="signin.css">
-    </head>
-    <body>
-        <h1>Welcome back 🤗, login to get started</h1>
-        
-        <!-- FIXED: Added action, method, and name attributes -->
-        <form action="../backend/login.php" method="POST">
-            <label>Username/Email</label><br>
-            <input type="text" name="login" required><br><br>
 
-            <label>Password</label><br>
-            <input type="password" name="password" required><br><br>
+<head>
+    <meta charset="UTF-8">
 
-            <input type="submit" value="Login"><br><br><br>
-        </form>
-        
-        <a href="forgotpassword.html">Forgot password</a><br><br>
-        <a href="../signup/signup.html">Do not have an account? Sign up</a>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-        <script src="../home/script.js" defer></script>
-    </body>
+    <title>Sign In | Scholarly</title>
+
+    <link
+        rel="stylesheet"
+        href="signin.css"
+    >
+</head>
+
+
+<body>
+
+    <main class="signin-page">
+
+        <a
+            href="../landing/landing.html"
+            class="signin-brand"
+        >
+
+            <img
+                src="../images/logo3.png"
+                alt="Scholarly logo"
+                class="signin-logo"
+            >
+
+            <span class="brand-name">
+                scholarly
+            </span>
+
+        </a>
+
+
+
+        <!-- =====================================
+             LOGIN CARD
+        ====================================== -->
+
+        <div class="signin-card">
+
+
+            <!-- Header -->
+
+            <div class="signin-header">
+
+                <h1>
+                    Welcome Back!
+                </h1>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 LOGIN FORM
+            ====================================== -->
+
+            <form
+                action="../backend/login.php"
+                method="POST"
+            >
+
+
+                <!-- Username / Email -->
+
+                <div class="form-group">
+
+                    <label for="login">
+                        Username / Email
+                    </label>
+
+                    <input
+                        type="text"
+                        id="login"
+                        name="login"
+                        placeholder="Enter your username or email"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Forgot Password -->
+
+                <div class="forgot-password">
+
+                    <a href="forgotpassword.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =====================================
+                 SIGN UP LINK
+            ====================================== -->
+
+            <div class="signup-section">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <a href="../signup/signup.html">
+                    Sign up
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <script
+        src="../home/script.js"
+        defer
+    ></script>
+
+</body>
+
 </html>

@@ -5,17 +5,11 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>My Scholarship Matches</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -23,339 +17,235 @@
 <body>
 
 
-<div class="app">
+    <div class="app">
 
+        <aside class="sidebar" id="sidebar">
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
-    <aside class="sidebar">
-
-
-        <div class="logo-box">
-
-            <img
-                src="../images/logo1.png"
-                alt="Site logo"
-            >
-
-        </div>
-
-
-        <nav class="nav">
-
-
-            <a
-                href="dashboard.html"
-                class="nav-btn"
-            >
-                <span class="icon">▦</span>
-                Dashboard
-            </a>
-
-
-            <a
-                href="scholarships.html"
-                class="nav-btn nav-btn--active"
-            >
-                <span class="icon">🎓</span>
-                Scholarships
-            </a>
-
-
-            <a
-                href="#"
-                class="nav-btn"
-                onclick="openProfile(); return false;"
-            >
-                <span class="icon">◔</span>
-                Profile
-            </a>
-
-
-            <a
-                href="updates.html"
-                class="nav-btn"
-            >
-                <span class="icon">♥</span>
-                Saved
-            </a>
-
-
-            <a
-                href="settings.html"
-                class="nav-btn"
-            >
-                <span class="icon">⚙</span>
-                Settings
-            </a>
-
-
-            <a
-                href="../backend/logout.php"
-                class="nav-btn"
-            >
-                Logout
-            </a>
-
-
-        </nav>
-
-
-    </aside>
-
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <div class="main">
-
-
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
-
-        <header class="topbar">
-
-
-            <div class="search">
-
-
-                <input
-                    type="text"
-                    id="recommendation-search"
-                    placeholder="Search recommendations"
-                >
-
-
-                <button
-                    type="button"
-                    id="recommendation-search-btn"
-                    aria-label="Search"
-                >
-                    🔍
-                </button>
-
-
-            </div>
-
-
-
-            <div class="topbar-right">
-
-
-                <button
-                    type="button"
-                    class="bell"
-                    aria-label="Notifications"
-                >
-
-                    🔔
-
-                    <span
-                        class="badge"
-                        id="notification-count"
-                    >
-                        0
-                    </span>
-
-                </button>
-
-
-                <img
-                    class="avatar"
-                    src="../images/logo1.png"
-                    alt="User avatar"
-                >
-
-
-                <div class="user-info">
-
-
-                    <div
-                        class="user-name"
-                        id="page-username"
-                    >
-                        Loading...
-                    </div>
-
-
-                    <div
-                        class="user-role"
-                        id="page-role"
-                    >
-                        Student
-                    </div>
-
-
+            <div class="sidebar-header">
+                <div class="logo-box">
+                    <img src="../images/logo1.png" alt="Scholarly">
+                    <span class="logo-name">scholarly</span>
                 </div>
 
-
+                <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar">
+                    ☰
+                </button>
             </div>
 
+            <div class="sidebar-label">
+                STUDENT PORTAL
+            </div>
 
-        </header>
+            <nav class="nav">
 
-
-
-        <!-- =================================================
-             PAGE HEADER
-        ================================================== -->
-
-        <section class="card">
-
-
-            <div class="updates-header">
-
-
-                <div>
-
-                    <h1>
-                        My Scholarship Matches
-                    </h1>
-
-
-                    <p>
-                        Personalized recommendations based
-                        on your profile and scholarship
-                        preferences.
-                    </p>
-
-                </div>
-
-
-                <a
-                    href="scholarships.html"
-                    class="update-btn"
-                >
-                    Browse All Scholarships
+                <a href="dashboard.html" class="nav-btn">
+                    <span class="icon">▦</span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
 
+                <a href="scholarships.html" class="nav-btn nav-btn--active">
+                    <span class="icon">🎓</span>
+                    <span class="nav-text">Scholarships</span>
+                </a>
 
-            </div>
+                <a href="#" class="nav-btn" onclick="openProfile(); return false;">
+                    <span class="icon">◔</span>
+                    <span class="nav-text">Profile</span>
+                </a>
 
+                <a href="updates.html" class="nav-btn">
+                    <span class="icon">♥</span>
+                    <span class="nav-text">Saved</span>
+                </a>
 
-        </section>
+                <a href="../backend/logout.php" class="nav-btn logout-btn">
+                    <span class="icon">↪</span>
+                    <span class="nav-text">Logout</span>
+                </a>
 
+            </nav>
 
-
-        <!-- =================================================
-             PROFILE SUMMARY
-        ================================================== -->
-
-        <section
-            class="card"
-            id="recommendation-profile-summary"
-        >
-
-
-            <h2>
-                Matching Your Profile
-            </h2>
-
-
-            <div
-                id="matching-profile-details"
-                class="recommendation-profile-grid"
-            >
-
-                <p>
-                    Loading profile information...
-                </p>
-
-            </div>
-
-
-        </section>
+        </aside>
 
 
 
-        <!-- =================================================
-             MATCH INFORMATION
-        ================================================== -->
+        <div class="main">
 
-        <section class="card">
+            <header class="topbar">
 
 
-            <div class="updates-header">
+                <div class="search">
 
 
-                <div>
-
-                    <h2>
-                        Recommended Scholarships
-                    </h2>
+                    <input type="text" id="recommendation-search" placeholder="Search recommendations">
 
 
-                    <p
-                        id="recommendation-count-text"
-                    >
-                        Finding your best matches...
+                    <button type="button" id="recommendation-search-btn" aria-label="Search">
+                        🔍
+                    </button>
+
+
+                </div>
+
+
+
+                <div class="topbar-right">
+
+
+                    <button type="button" class="bell" aria-label="Notifications">
+
+                        🔔
+
+                        <span class="badge" id="notification-count">
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <img class="avatar" src="../images/logo1.png" alt="User avatar">
+
+
+                    <div class="user-info">
+
+
+                        <div class="user-name" id="page-username">
+                            Loading...
+                        </div>
+
+
+                        <div class="user-role" id="page-role">
+                            Student
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </header>
+
+
+            <section class="card">
+
+
+                <div class="updates-header">
+
+
+                    <div>
+
+                        <h1>
+                            My Scholarship Matches
+                        </h1>
+
+
+                        <p>
+                            Personalized recommendations based
+                            on your profile and scholarship
+                            preferences.
+                        </p>
+
+                    </div>
+
+
+                    <a href="scholarships.html" class="update-btn">
+                        Browse All Scholarships
+                    </a>
+
+
+                </div>
+
+
+            </section>
+
+
+            <section class="card" id="recommendation-profile-summary">
+
+
+                <h2>
+                    Matching Your Profile
+                </h2>
+
+
+                <div id="matching-profile-details" class="recommendation-profile-grid">
+
+                    <p>
+                        Loading profile information...
                     </p>
 
                 </div>
 
 
-                <select
-                    id="recommendation-sort"
-                    aria-label="Sort recommendations"
-                >
-
-                    <option value="match">
-                        Highest Match
-                    </option>
-
-                    <option value="deadline">
-                        Deadline
-                    </option>
-
-                    <option value="country">
-                        Country
-                    </option>
-
-                </select>
+            </section>
 
 
-            </div>
+            <section class="card">
+
+
+                <div class="updates-header">
+
+
+                    <div>
+
+                        <h2>
+                            Recommended Scholarships
+                        </h2>
+
+
+                        <p id="recommendation-count-text">
+                            Finding your best matches...
+                        </p>
+
+                    </div>
+
+
+                    <select id="recommendation-sort" aria-label="Sort recommendations">
+
+                        <option value="match">
+                            Highest Match
+                        </option>
+
+                        <option value="deadline">
+                            Deadline
+                        </option>
+
+                        <option value="country">
+                            Country
+                        </option>
+
+                    </select>
+
+
+                </div>
 
 
 
-            <div
-                id="recommendation-message"
-                style="display: none;"
-            ></div>
+                <div id="recommendation-message" style="display: none;"></div>
 
 
 
-            <div
-                id="recommendation-results"
-                class="update-list"
-            >
+                <div id="recommendation-results" class="update-list">
 
-                <p>
-                    Calculating scholarship matches...
-                </p>
+                    <p>
+                        Calculating scholarship matches...
+                    </p>
 
-            </div>
+                </div>
 
 
-        </section>
+            </section>
+
+
+        </div>
 
 
     </div>
 
 
-</div>
 
-
-
-<script
-    src="script.js"
-    defer
-></script>
+    <script src="script.js" defer></script>
 
 
 </body>

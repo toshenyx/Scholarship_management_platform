@@ -7,6 +7,8 @@ document.addEventListener(
     'DOMContentLoaded',
     async () => {
 
+        setupAdminCollapsibleSidebar();
+        
         const authorized =
             await checkAdminAccess();
 
@@ -1857,4 +1859,122 @@ function escapeHtml(value) {
         '&#039;'
     );
 
+}
+
+/* =========================================================
+   COLLAPSIBLE ADMIN SIDEBAR
+========================================================= */
+
+function setupAdminCollapsibleSidebar() {
+
+    const sidebar =
+        document.getElementById(
+            'admin-sidebar'
+        );
+
+    const toggleButton =
+        document.getElementById(
+            'admin-sidebar-toggle'
+        );
+
+
+    // Sidebar does not exist on this page
+    if (!sidebar || !toggleButton) {
+        return;
+    }
+
+
+    /*
+       Restore previous sidebar state
+    */
+
+    const savedState =
+        localStorage.getItem(
+            'adminSidebarCollapsed'
+        );
+
+
+    if (savedState === 'true') {
+
+        sidebar.classList.add(
+            'collapsed'
+        );
+
+        toggleButton.setAttribute(
+            'aria-label',
+            'Expand sidebar'
+        );
+
+        toggleButton.setAttribute(
+            'title',
+            'Expand sidebar'
+        );
+
+    } else {
+
+        sidebar.classList.remove(
+            'collapsed'
+        );
+
+        toggleButton.setAttribute(
+            'aria-label',
+            'Collapse sidebar'
+        );
+
+        toggleButton.setAttribute(
+            'title',
+            'Collapse sidebar'
+        );
+    }
+
+
+    /*
+       Collapse / expand when clicked
+    */
+
+    toggleButton.addEventListener(
+        'click',
+        () => {
+
+            sidebar.classList.toggle(
+                'collapsed'
+            );
+
+
+            const isCollapsed =
+                sidebar.classList.contains(
+                    'collapsed'
+                );
+
+
+            /*
+               Remember state between admin pages
+            */
+
+            localStorage.setItem(
+                'adminSidebarCollapsed',
+                String(isCollapsed)
+            );
+
+
+            /*
+               Accessibility / tooltip
+            */
+
+            toggleButton.setAttribute(
+                'aria-label',
+                isCollapsed
+                    ? 'Expand sidebar'
+                    : 'Collapse sidebar'
+            );
+
+
+            toggleButton.setAttribute(
+                'title',
+                isCollapsed
+                    ? 'Expand sidebar'
+                    : 'Collapse sidebar'
+            );
+        }
+    );
 }

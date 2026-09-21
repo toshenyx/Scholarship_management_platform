@@ -7,11 +7,7 @@ header("Content-Type: application/json");
 require_once "db.php";
 
 
-/*
-|--------------------------------------------------------------------------
-| CHECK SESSION
-|--------------------------------------------------------------------------
-*/
+/*CHECK SESSION*/
 
 if (!isset($_SESSION['user_id'])) {
 
@@ -39,11 +35,7 @@ $user_id = (int) $_SESSION['user_id'];
 
 
 
-/*
-|--------------------------------------------------------------------------
-| CHECK USER
-|--------------------------------------------------------------------------
-*/
+/*CHECK USER*/
 
 $stmt = $conn->prepare(
 
@@ -127,15 +119,9 @@ if (!$user) {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| PROFILE 1
-|--------------------------------------------------------------------------
-|
+/*PROFILE 1
 | Keep your original check:
-| Does a student_profiles record exist?
-|
-*/
+| Does a student_profiles record exist?*/
 
 $stmt = $conn->prepare(
 
@@ -170,14 +156,7 @@ $stmt->close();
 
 
 
-/*
-|--------------------------------------------------------------------------
-| PROFILE 2
-|--------------------------------------------------------------------------
-|
-| Keep your original education check.
-|
-*/
+/*PROFILE 2/ Keep your original education check.*/
 
 $stmt = $conn->prepare(
 
@@ -212,14 +191,7 @@ $stmt->close();
 
 
 
-/*
-|--------------------------------------------------------------------------
-| PROFILE 3
-|--------------------------------------------------------------------------
-|
-| Keep your original preferences check.
-|
-*/
+/*PROFILE 3/Keep your original preferences check.*/
 
 $stmt = $conn->prepare(
 
@@ -254,20 +226,7 @@ $stmt->close();
 
 
 
-/*
-|--------------------------------------------------------------------------
-| ORIGINAL COMPLETION CHECK
-|--------------------------------------------------------------------------
-|
-| We keep this exactly for your existing profile navigation.
-|
-| completed = the student has submitted:
-|
-| Profile 1
-| Profile 2
-| Profile 3
-|
-*/
+/*ORIGINAL COMPLETION CHECK*/
 
 $completed =
 
@@ -279,11 +238,7 @@ $completed =
 
 
 
-/*
-|--------------------------------------------------------------------------
-| ORIGINAL NEXT STEP LOGIC
-|--------------------------------------------------------------------------
-*/
+/*ORIGINAL NEXT STEP LOGIC*/
 
 if ($completed) {
 
@@ -308,15 +263,7 @@ else {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| GET PERSONAL PROFILE DETAILS
-|--------------------------------------------------------------------------
-|
-| We now check the actual data that will be needed by the
-| scholarship matching system.
-|
-*/
+/* GET PERSONAL PROFILE DETAILS*/
 
 $personal = null;
 
@@ -370,11 +317,7 @@ if ($has_personal) {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| GET EDUCATION DETAILS
-|--------------------------------------------------------------------------
-*/
+/*GET EDUCATION DETAILS*/
 
 $education = null;
 
@@ -428,11 +371,7 @@ if ($has_education) {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| GET STUDENT PREFERENCES
-|--------------------------------------------------------------------------
-*/
+/*GET STUDENT PREFERENCES*/
 
 $preferences = null;
 
@@ -487,25 +426,13 @@ if ($has_preferences) {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| CHECK IMPORTANT MATCHING FIELDS
-|--------------------------------------------------------------------------
-|
-| These fields are important because they will eventually be compared
-| against the scholarship eligibility requirements.
-|
-*/
+/*CHECK IMPORTANT MATCHING FIELDS*/
 
 $missing_fields = [];
 
 
 
-/*
-|--------------------------------------------------------------------------
-| PERSONAL INFORMATION CHECK
-|--------------------------------------------------------------------------
-*/
+/*PERSONAL INFORMATION CHECK*/
 
 if (!$personal) {
 
@@ -560,11 +487,7 @@ else {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| EDUCATION INFORMATION CHECK
-|--------------------------------------------------------------------------
-*/
+/*EDUCATION INFORMATION CHECK*/
 
 if (!$education) {
 
@@ -616,18 +539,7 @@ else {
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | GPA CHECK
-    |--------------------------------------------------------------------------
-    |
-    | GPA is important because scholarships may contain minimum_gpa.
-    |
-    | We deliberately check against NULL/empty rather than using empty(),
-    | because a numeric value such as 0 should not be confused with a
-    | completely missing database value.
-    |
-    */
+    /*GPA CHECK*/
 
     if (
         !array_key_exists(
@@ -651,11 +563,7 @@ else {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| SCHOLARSHIP PREFERENCES CHECK
-|--------------------------------------------------------------------------
-*/
+/*SCHOLARSHIP PREFERENCES CHECK*/
 
 if (!$preferences) {
 
@@ -697,29 +605,7 @@ else {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| DETERMINE PROFILE COMPLETION FOR PREMIUM FEATURES
-|--------------------------------------------------------------------------
-|
-| IMPORTANT:
-|
-| $completed
-| ----------
-| Keeps your original meaning:
-| Profile 1 + Profile 2 + Profile 3 records exist.
-|
-|
-| $profile_complete
-| -----------------
-| Used for:
-|
-| 1. My Scholarship Matches
-| 2. Scholarship Report / PDF Export
-|
-| The important matching fields must actually contain information.
-|
-*/
+/* determine if profile is completed to access recommendations and file download*/
 
 $profile_complete =
 
@@ -729,21 +615,7 @@ $profile_complete =
 
 
 
-/*
-|--------------------------------------------------------------------------
-| FEATURE ACCESS
-|--------------------------------------------------------------------------
-|
-| Student Community:
-| Any registered/logged-in user can access it.
-|
-| Scholarship Matching:
-| Requires completed profile.
-|
-| PDF Export:
-| Requires completed profile.
-|
-*/
+/*feature acess: community, recommendations and file download*/
 
 $feature_access = [
 
@@ -759,18 +631,7 @@ $feature_access = [
 
 
 
-/*
-|--------------------------------------------------------------------------
-| PROFILE COMPLETION PERCENTAGE
-|--------------------------------------------------------------------------
-|
-| This is optional information but useful for the frontend.
-|
-| Profile 1 = 1 section
-| Profile 2 = 1 section
-| Profile 3 = 1 section
-|
-*/
+/*profile completion percentage*/
 
 $completed_sections = 0;
 
@@ -806,11 +667,7 @@ $profile_percentage =
 
 
 
-/*
-|--------------------------------------------------------------------------
-| MESSAGE
-|--------------------------------------------------------------------------
-*/
+/*MESSAGE*/
 
 if ($profile_complete) {
 
@@ -833,23 +690,6 @@ else {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| FINAL RESPONSE
-|--------------------------------------------------------------------------
-|
-| IMPORTANT:
-|
-| We return BOTH:
-|
-| completed
-| profile_complete
-|
-| This means your old profile routing can continue using "completed"
-| while the new dashboard features use "profile_complete".
-|
-*/
-
 echo json_encode([
 
     "success" => true,
@@ -865,11 +705,7 @@ echo json_encode([
     "role" => $user['role'] ?? "student",
 
 
-    /*
-    -------------------------------------------------------------
-    EXISTING COMPLETION DATA
-    -------------------------------------------------------------
-    */
+    /*EXISTING COMPLETION DATA*/
 
     "completed" => $completed,
 
@@ -886,11 +722,7 @@ echo json_encode([
         $next_step,
 
 
-    /*
-    -------------------------------------------------------------
-    NEW PROFILE ACCESS DATA
-    -------------------------------------------------------------
-    */
+    /*NEW PROFILE ACCESS DATA*/
 
     "profile_complete" =>
         $profile_complete,

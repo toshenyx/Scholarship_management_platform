@@ -31,9 +31,7 @@ $conn->begin_transaction();
 
 try {
 
-    /*
-       Remove dependent records first.
-    */
+    /*Remove dependent records first.*/
 
     $tables = [
         'scholarship_benefits',
