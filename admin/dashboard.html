@@ -6,345 +6,286 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
         Admin Dashboard - Scholarly
     </title>
 
-    <link
-        rel="stylesheet"
-        href="admin.css"
-    >
+    <link rel="stylesheet" href="admin.css">
 
 </head>
 
 
 <body data-page="dashboard">
 
-<div class="admin-app">
+    <div class="admin-app">
 
 
-    <!-- =========================================
-     ADMIN SIDEBAR
-========================================= -->
-
-<aside
-    class="admin-sidebar"
-    id="admin-sidebar"
->
-
-    <!-- Logo + Collapse Button -->
-    <div class="admin-sidebar-header">
-
-        <div class="admin-logo">
-
-            <img
-                src="../images/logo1.png"
-                alt="Scholarly"
-            >
-
-            <span class="admin-logo-text">
-                scholarly
-            </span>
-
-        </div>
+        <aside class="admin-sidebar" id="admin-sidebar">
 
 
-        <!-- Sidebar Collapse Button -->
-        <button
-            type="button"
-            class="admin-sidebar-toggle"
-            id="admin-sidebar-toggle"
-            aria-label="Collapse sidebar"
-            title="Collapse sidebar"
-        >
-            ☰
-        </button>
+            <div class="admin-sidebar-header">
+
+                <div class="admin-logo">
+
+                    <img src="../images/logo1.png" alt="Scholarly">
+
+                    <span class="admin-logo-text">
+                        scholarly
+                    </span>
+
+                </div>
+
+
+                <button type="button" class="admin-sidebar-toggle" id="admin-sidebar-toggle"
+                    aria-label="Collapse sidebar" title="Collapse sidebar">
+                    ☰
+                </button>
+
+            </div>
+
+            <div class="admin-label">
+                ADMIN PORTAL
+            </div>
+
+            <nav class="admin-nav">
+
+
+                <!-- Dashboard -->
+                <a href="dashboard.html" class="active" title="Dashboard">
+                    <span class="admin-nav-icon">
+                        ▦
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+
+
+                <a href="scholarships.html" title="Scholarships">
+                    <span class="admin-nav-icon">
+                        🎓
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Scholarships
+                    </span>
+                </a>
+
+
+
+                <a href="pending.html" title="Pending Reviews">
+                    <span class="admin-nav-icon">
+                        ◷
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Pending Reviews
+                    </span>
+                </a>
+
+
+
+                <a href="users.html" title="Users">
+                    <span class="admin-nav-icon">
+                        👥
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Users
+                    </span>
+                </a>
+
+
+
+                <a href="post-scholarship.html" title="Post Scholarship">
+                    <span class="admin-nav-icon">
+                        ＋
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Post Scholarship
+                    </span>
+                </a>
+
+
+                <a href="reports.html" title="Reports">
+                    <span class="admin-nav-icon">
+                        ▤
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Reports
+                    </span>
+                </a>
+
+
+                <a href="settings.html" title="Settings">
+                    <span class="admin-nav-icon">
+                        ⚙
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Settings
+                    </span>
+                </a>
+
+
+
+                <a href="../backend/logout.php" class="logout" title="Logout">
+                    <span class="admin-nav-icon">
+                        ↪
+                    </span>
+
+                    <span class="admin-nav-text">
+                        Logout
+                    </span>
+                </a>
+
+
+            </nav>
+
+        </aside>
+
+
+
+        <main class="admin-main">
+
+
+            <header class="admin-header">
+
+                <div>
+
+                    <h1>
+                        Admin Dashboard
+                    </h1>
+
+                    <p>
+                        Manage the Scholarly platform.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-user" id="admin-name">
+                    Admin
+                </div>
+
+            </header>
+
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <span>
+                        Students
+                    </span>
+
+                    <strong id="stat-students">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        Scholarships
+                    </span>
+
+                    <strong id="stat-scholarships">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        Pending Reviews
+                    </span>
+
+                    <strong id="stat-pending">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        Approved
+                    </span>
+
+                    <strong id="stat-approved">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <section class="admin-card">
+
+                <h2 class="card-title">
+                    Recent Scholarship Submissions
+                </h2>
+
+
+                <div class="table-wrap">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Scholarship</th>
+                                <th>Provider</th>
+                                <th>Posted By</th>
+                                <th>Country</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="recent-table">
+
+                            <tr>
+
+                                <td colspan="5">
+                                    Loading...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
 
     </div>
 
 
-    <!-- Admin Portal Label -->
-    <div class="admin-label">
-        ADMIN PORTAL
-    </div>
-
-
-    <!-- Navigation -->
-    <nav class="admin-nav">
-
-
-        <!-- Dashboard -->
-        <a
-            href="dashboard.html"
-            class="active"
-            title="Dashboard"
-        >
-            <span class="admin-nav-icon">
-                ▦
-            </span>
-
-            <span class="admin-nav-text">
-                Dashboard
-            </span>
-        </a>
-
-
-        <!-- Scholarships -->
-        <a
-            href="scholarships.html"
-            title="Scholarships"
-        >
-            <span class="admin-nav-icon">
-                🎓
-            </span>
-
-            <span class="admin-nav-text">
-                Scholarships
-            </span>
-        </a>
-
-
-        <!-- Pending Reviews -->
-        <a
-            href="pending.html"
-            title="Pending Reviews"
-        >
-            <span class="admin-nav-icon">
-                ◷
-            </span>
-
-            <span class="admin-nav-text">
-                Pending Reviews
-            </span>
-        </a>
-
-
-        <!-- Users -->
-        <a
-            href="users.html"
-            title="Users"
-        >
-            <span class="admin-nav-icon">
-                👥
-            </span>
-
-            <span class="admin-nav-text">
-                Users
-            </span>
-        </a>
-
-
-        <!-- Post Scholarship -->
-        <a
-            href="post-scholarship.html"
-            title="Post Scholarship"
-        >
-            <span class="admin-nav-icon">
-                ＋
-            </span>
-
-            <span class="admin-nav-text">
-                Post Scholarship
-            </span>
-        </a>
-
-
-        <!-- Reports -->
-        <a
-            href="reports.html"
-            title="Reports"
-        >
-            <span class="admin-nav-icon">
-                ▤
-            </span>
-
-            <span class="admin-nav-text">
-                Reports
-            </span>
-        </a>
-
-
-        <!-- Settings -->
-        <a
-            href="settings.html"
-            title="Settings"
-        >
-            <span class="admin-nav-icon">
-                ⚙
-            </span>
-
-            <span class="admin-nav-text">
-                Settings
-            </span>
-        </a>
-
-
-        <!-- Logout -->
-        <a
-            href="../backend/logout.php"
-            class="logout"
-            title="Logout"
-        >
-            <span class="admin-nav-icon">
-                ↪
-            </span>
-
-            <span class="admin-nav-text">
-                Logout
-            </span>
-        </a>
-
-
-    </nav>
-
-</aside>
-
-
-
-    <main class="admin-main">
-
-
-        <header class="admin-header">
-
-            <div>
-
-                <h1>
-                    Admin Dashboard
-                </h1>
-
-                <p>
-                    Manage the Scholarly platform.
-                </p>
-
-            </div>
-
-
-            <div
-                class="admin-user"
-                id="admin-name"
-            >
-                Admin
-            </div>
-
-        </header>
-
-
-
-        <div class="stats-grid">
-
-            <div class="stat-card">
-
-                <span>
-                    Students
-                </span>
-
-                <strong id="stat-students">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <span>
-                    Scholarships
-                </span>
-
-                <strong id="stat-scholarships">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <span>
-                    Pending Reviews
-                </span>
-
-                <strong id="stat-pending">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <span>
-                    Approved
-                </span>
-
-                <strong id="stat-approved">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <section class="admin-card">
-
-            <h2 class="card-title">
-                Recent Scholarship Submissions
-            </h2>
-
-
-            <div class="table-wrap">
-
-                <table class="admin-table">
-
-                    <thead>
-
-                    <tr>
-
-                        <th>Scholarship</th>
-                        <th>Provider</th>
-                        <th>Posted By</th>
-                        <th>Country</th>
-                        <th>Status</th>
-
-                    </tr>
-
-                    </thead>
-
-
-                    <tbody id="recent-table">
-
-                    <tr>
-
-                        <td colspan="5">
-                            Loading...
-                        </td>
-
-                    </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
-<script
-    src="admin.js"
-    defer
-></script>
+    <script src="admin.js" defer></script>
 
 </body>
+
 </html>

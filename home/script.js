@@ -1326,17 +1326,19 @@ function displayScholarships(
 
                         ${scholarship.application_link
                     ? `
-                                <a
-                                    href="${escapeHtml(
+        <button
+            type="button"
+            class="apply-scholarship-btn"
+            data-scholarship-id="${Number(
+                        scholarship.scholarship_id
+                    )}"
+            data-application-link="${escapeHtml(
                         scholarship.application_link
                     )}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="apply-scholarship-btn"
-                                >
-                                    Apply
-                                </a>
-                                `
+        >
+            Apply
+        </button>
+    `
                     : ''
                 }
 
@@ -1367,6 +1369,28 @@ function displayScholarships(
                 );
             }
 
+            const applyButton =
+                card.querySelector(
+                    '.apply-scholarship-btn'
+                );
+
+
+            if (applyButton) {
+
+                applyButton.addEventListener(
+                    'click',
+                    async () => {
+
+                        await recordScholarshipApplication(
+                            scholarship.scholarship_id,
+                            scholarship.application_link,
+                            applyButton
+                        );
+
+                    }
+                );
+            }
+
 
             resultsContainer.appendChild(
                 card
@@ -1377,6 +1401,193 @@ function displayScholarships(
 
 
 // 13. SCHOLARSHIP FILTERING
+async function recordScholarshipApplication(
+    scholarshipId,
+    applicationLink,
+    applyButton
+) {
+
+    if (!scholarshipId) {
+        console.error(
+            'Missing scholarship ID.'
+        );
+        return;
+    }
+
+    const originalText =
+        applyButton
+            ? applyButton.textContent
+            : 'Apply';
+
+    if (applyButton) {
+        applyButton.textContent =
+            'Opening...';
+
+        applyButton.style.pointerEvents =
+            'none';
+    }
+
+    try {
+
+        const formData =
+            new FormData();
+
+        formData.append(
+            'scholarship_id',
+            scholarshipId
+        );
+
+
+        const response =
+            await fetch(
+                '../backend/apply_scholarship.php',
+                {
+                    method: 'POST',
+
+                    credentials: 'include',
+
+                    body: formData
+                }
+            );
+
+
+        const responseText =
+            await response.text();
+
+
+        let data;
+
+
+        try {
+
+            data =
+                JSON.parse(
+                    responseText
+                );
+
+        } catch (error) {
+
+            console.error(
+                'Invalid application response:',
+                responseText
+            );
+
+            throw new Error(
+                'The server returned an invalid response.'
+            );
+        }
+
+
+        if (!data.success) {
+
+            if (
+                data.logged_in === false ||
+                data.message ===
+                'Please log in first.'
+            ) {
+
+                window.location.href =
+                    '../signin/signin.html';
+
+                return;
+            }
+
+
+            throw new Error(
+                data.message ||
+                'Unable to record application.'
+            );
+        }
+
+
+        console.log(
+            'Application recorded:',
+            data
+        );
+
+
+        if (applyButton) {
+
+            applyButton.textContent =
+                'Applied ✓';
+
+            applyButton.classList.add(
+                'application-recorded'
+            );
+        }
+
+
+        if (!data.already_recorded) {
+
+            updateDashboardApplicationCount();
+        }
+
+
+        if (applicationLink) {
+
+            window.open(
+                applicationLink,
+                '_blank',
+                'noopener,noreferrer'
+            );
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            'Application recording failed:',
+            error
+        );
+
+
+        if (applyButton) {
+
+            applyButton.textContent =
+                originalText;
+        }
+
+
+        alert(
+            error.message ||
+            'Unable to record your application. Please try again.'
+        );
+
+    } finally {
+
+        if (applyButton) {
+
+            applyButton.style.pointerEvents =
+                '';
+        }
+    }
+}
+
+
+
+function updateDashboardApplicationCount() {
+
+    const applicationCount =
+        document.getElementById(
+            'applications-count'
+        );
+
+
+    if (!applicationCount) {
+        return;
+    }
+
+
+    const currentCount =
+        parseInt(
+            applicationCount.textContent,
+            10
+        ) || 0;
+
+
+    applicationCount.textContent =
+        currentCount + 1;
+}
 
 function applyScholarshipFilters() {
 

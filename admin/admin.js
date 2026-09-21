@@ -8,7 +8,7 @@ document.addEventListener(
     async () => {
 
         setupAdminCollapsibleSidebar();
-        
+
         const authorized =
             await checkAdminAccess();
 
@@ -70,9 +70,7 @@ document.addEventListener(
 
 
 
-/* =========================================================
-   SECURITY
-========================================================= */
+/* SECURITY*/
 
 async function checkAdminAccess() {
 
@@ -91,15 +89,7 @@ async function checkAdminAccess() {
             );
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | READ AS TEXT FIRST
-        |--------------------------------------------------------------------------
-        |
-        | Don't immediately call response.json().
-        | This lets us see PHP errors / empty responses.
-        |
-        */
+
 
         const responseText =
             await response.text();
@@ -111,11 +101,6 @@ async function checkAdminAccess() {
         );
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | EMPTY RESPONSE
-        |--------------------------------------------------------------------------
-        */
 
         if (!responseText.trim()) {
 
@@ -126,12 +111,6 @@ async function checkAdminAccess() {
             return false;
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | CONVERT TO JSON
-        |--------------------------------------------------------------------------
-        */
 
         let data;
 
@@ -160,12 +139,6 @@ async function checkAdminAccess() {
         }
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | NOT LOGGED IN
-        |--------------------------------------------------------------------------
-        */
-
         if (
             response.status === 401 ||
             data.logged_in === false
@@ -177,12 +150,6 @@ async function checkAdminAccess() {
             return false;
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | LOGGED IN BUT NOT ADMIN
-        |--------------------------------------------------------------------------
-        */
 
         if (
             response.status === 403 ||
@@ -201,11 +168,6 @@ async function checkAdminAccess() {
         }
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | ADMIN AUTHORIZED
-        |--------------------------------------------------------------------------
-        */
 
         if (
             response.ok &&
@@ -269,9 +231,7 @@ async function checkAdminAccess() {
 
 
 
-/* =========================================================
-   DASHBOARD
-========================================================= */
+/* DASHBOARD*/
 
 async function loadAdminDashboard() {
 
@@ -381,35 +341,35 @@ function displayRecentScholarships(
 
                         <td>
                             ${escapeHtml(
-                                scholarship.title
-                            )}
+                    scholarship.title
+                )}
                         </td>
 
                         <td>
                             ${escapeHtml(
-                                scholarship.provider
-                            )}
+                    scholarship.provider
+                )}
                         </td>
 
                         <td>
                             ${escapeHtml(
-                                scholarship.posted_by_username
-                                || 'Unknown'
-                            )}
+                    scholarship.posted_by_username
+                    || 'Unknown'
+                )}
                         </td>
 
                         <td>
                             ${escapeHtml(
-                                scholarship.country
-                                || '-'
-                            )}
+                    scholarship.country
+                    || '-'
+                )}
                         </td>
 
                         <td>
 
                             ${statusBadge(
-                                scholarship.verification_status
-                            )}
+                    scholarship.verification_status
+                )}
 
                         </td>
 
@@ -422,9 +382,7 @@ function displayRecentScholarships(
 
 
 
-/* =========================================================
-   ALL SCHOLARSHIPS
-========================================================= */
+/*ALL SCHOLARSHIPS*/
 
 function setupScholarshipPage() {
 
@@ -517,8 +475,8 @@ function filterScholarships() {
         document.getElementById(
             'scholarship-search'
         )?.value
-        .trim()
-        .toLowerCase() || '';
+            .trim()
+            .toLowerCase() || '';
 
 
     const status =
@@ -539,8 +497,8 @@ function filterScholarships() {
                         ' ' +
                         scholarship.country
                     )
-                    .toLowerCase()
-                    .includes(search);
+                        .toLowerCase()
+                        .includes(search);
 
 
                 const matchesStatus =
@@ -594,59 +552,59 @@ function displayScholarships(
 
     tbody.innerHTML =
         scholarships
-        .map(
-            scholarship => {
+            .map(
+                scholarship => {
 
-                const id =
-                    scholarship.scholarship_id;
+                    const id =
+                        scholarship.scholarship_id;
 
 
-                return `
+                    return `
                     <tr>
 
                         <td>
                             <strong>
                                 ${escapeHtml(
-                                    scholarship.title
-                                )}
+                        scholarship.title
+                    )}
                             </strong>
                         </td>
 
 
                         <td>
                             ${escapeHtml(
-                                scholarship.provider
-                            )}
+                        scholarship.provider
+                    )}
                         </td>
 
 
                         <td>
                             ${escapeHtml(
-                                scholarship.country
-                                || '-'
-                            )}
+                        scholarship.country
+                        || '-'
+                    )}
                         </td>
 
 
                         <td>
                             ${formatDate(
-                                scholarship.deadline
-                            )}
+                        scholarship.deadline
+                    )}
                         </td>
 
 
                         <td>
                             ${escapeHtml(
-                                scholarship.posted_by_username
-                                || 'Unknown'
-                            )}
+                        scholarship.posted_by_username
+                        || 'Unknown'
+                    )}
                         </td>
 
 
                         <td>
                             ${statusBadge(
-                                scholarship.verification_status
-                            )}
+                        scholarship.verification_status
+                    )}
                         </td>
 
 
@@ -654,10 +612,9 @@ function displayScholarships(
 
                             <div class="action-buttons">
 
-                                ${
-                                    scholarship.verification_status
-                                    !== 'approved'
-                                    ? `
+                                ${scholarship.verification_status
+                            !== 'approved'
+                            ? `
                                         <button
                                             class="btn btn-success"
                                             onclick="
@@ -670,14 +627,13 @@ function displayScholarships(
                                             Approve
                                         </button>
                                     `
-                                    : ''
-                                }
+                            : ''
+                        }
 
 
-                                ${
-                                    scholarship.verification_status
-                                    !== 'rejected'
-                                    ? `
+                                ${scholarship.verification_status
+                            !== 'rejected'
+                            ? `
                                         <button
                                             class="btn btn-warning"
                                             onclick="
@@ -690,8 +646,8 @@ function displayScholarships(
                                             Reject
                                         </button>
                                     `
-                                    : ''
-                                }
+                            : ''
+                        }
 
 
                                 <button
@@ -711,17 +667,15 @@ function displayScholarships(
 
                     </tr>
                 `;
-            }
-        )
-        .join('');
+                }
+            )
+            .join('');
 
 }
 
 
 
-/* =========================================================
-   PENDING
-========================================================= */
+/* PENDING PAGE*/
 
 function setupPendingPage() {
 
@@ -786,8 +740,8 @@ function filterPendingScholarships() {
         document.getElementById(
             'pending-search'
         )?.value
-        .trim()
-        .toLowerCase() || '';
+            .trim()
+            .toLowerCase() || '';
 
 
     const filtered =
@@ -800,8 +754,8 @@ function filterPendingScholarships() {
                     ' ' +
                     scholarship.country
                 )
-                .toLowerCase()
-                .includes(search)
+                    .toLowerCase()
+                    .includes(search)
         );
 
 
@@ -847,47 +801,47 @@ function displayPendingScholarships(
 
     tbody.innerHTML =
         scholarships
-        .map(
-            scholarship => `
+            .map(
+                scholarship => `
 
                 <tr>
 
                     <td>
                         <strong>
                             ${escapeHtml(
-                                scholarship.title
-                            )}
+                    scholarship.title
+                )}
                         </strong>
                     </td>
 
 
                     <td>
                         ${escapeHtml(
-                            scholarship.provider
-                        )}
+                    scholarship.provider
+                )}
                     </td>
 
 
                     <td>
                         ${escapeHtml(
-                            scholarship.posted_by_username
-                            || 'Unknown'
-                        )}
+                    scholarship.posted_by_username
+                    || 'Unknown'
+                )}
                     </td>
 
 
                     <td>
                         ${escapeHtml(
-                            scholarship.country
-                            || '-'
-                        )}
+                    scholarship.country
+                    || '-'
+                )}
                     </td>
 
 
                     <td>
                         ${formatDate(
-                            scholarship.deadline
-                        )}
+                    scholarship.deadline
+                )}
                     </td>
 
 
@@ -926,16 +880,14 @@ function displayPendingScholarships(
 
                 </tr>
             `
-        )
-        .join('');
+            )
+            .join('');
 
 }
 
 
 
-/* =========================================================
-   APPROVE / REJECT
-========================================================= */
+/*APPROVE / REJECT FUNCTION*/
 
 async function reviewScholarship(
     scholarshipId,
@@ -1029,9 +981,7 @@ async function reviewScholarship(
 
 
 
-/* =========================================================
-   DELETE
-========================================================= */
+/* DELETE*/
 
 async function deleteScholarship(
     scholarshipId
@@ -1103,9 +1053,7 @@ async function deleteScholarship(
 
 
 
-/* =========================================================
-   USERS
-========================================================= */
+/* USERS PAGE*/
 
 function setupUsersPage() {
 
@@ -1178,8 +1126,8 @@ function filterUsers() {
         document.getElementById(
             'user-search'
         )?.value
-        .trim()
-        .toLowerCase() || '';
+            .trim()
+            .toLowerCase() || '';
 
 
     const role =
@@ -1200,7 +1148,7 @@ function filterUsers() {
                         ' ' +
                         user.email
                     )
-                    .toLowerCase();
+                        .toLowerCase();
 
 
                 const roleMatch =
@@ -1253,8 +1201,8 @@ function displayUsers(users) {
 
     tbody.innerHTML =
         users
-        .map(
-            user => `
+            .map(
+                user => `
 
                 <tr>
 
@@ -1262,17 +1210,17 @@ function displayUsers(users) {
 
                         <strong>
                             ${escapeHtml(
-                                user.full_name
-                                || user.username
-                            )}
+                    user.full_name
+                    || user.username
+                )}
                         </strong>
 
                         <br>
 
                         <small>
                             @${escapeHtml(
-                                user.username
-                            )}
+                    user.username
+                )}
                         </small>
 
                     </td>
@@ -1280,60 +1228,58 @@ function displayUsers(users) {
 
                     <td>
                         ${escapeHtml(
-                            user.email
-                        )}
+                    user.email
+                )}
                     </td>
 
 
                     <td>
                         ${escapeHtml(
-                            user.role
-                        )}
+                    user.role
+                )}
                     </td>
 
 
                     <td>
                         ${escapeHtml(
-                            user.nationality
-                            || '-'
-                        )}
+                    user.nationality
+                    || '-'
+                )}
                     </td>
 
 
                     <td>
                         ${escapeHtml(
-                            user.education_level
-                            || '-'
-                        )}
+                    user.education_level
+                    || '-'
+                )}
                     </td>
 
 
                     <td>
                         ${escapeHtml(
-                            user.course
-                            || '-'
-                        )}
+                    user.course
+                    || '-'
+                )}
                     </td>
 
 
                     <td>
                         ${formatDate(
-                            user.created_at
-                        )}
+                    user.created_at
+                )}
                     </td>
 
                 </tr>
             `
-        )
-        .join('');
+            )
+            .join('');
 
 }
 
 
 
-/* =========================================================
-   REPORT
-========================================================= */
+/*REPORT PAGE*/
 
 async function loadAdminReport() {
 
@@ -1375,14 +1321,14 @@ async function loadAdminReport() {
 
         const countries =
             report.countries
-            .map(
-                country => `
+                .map(
+                    country => `
                     <div class="report-row">
 
                         <span>
                             ${escapeHtml(
-                                country.country
-                            )}
+                        country.country
+                    )}
                         </span>
 
                         <strong>
@@ -1391,8 +1337,8 @@ async function loadAdminReport() {
 
                     </div>
                 `
-            )
-            .join('');
+                )
+                .join('');
 
 
         container.innerHTML = `
@@ -1405,8 +1351,8 @@ async function loadAdminReport() {
             <p>
                 Generated:
                 ${escapeHtml(
-                    data.generated_at
-                )}
+            data.generated_at
+        )}
             </p>
 
 
@@ -1420,14 +1366,14 @@ async function loadAdminReport() {
                 </h3>
 
                 ${reportRow(
-                    'Students',
-                    report.users.students
-                )}
+            'Students',
+            report.users.students
+        )}
 
                 ${reportRow(
-                    'Administrators',
-                    report.users.admins
-                )}
+            'Administrators',
+            report.users.admins
+        )}
 
             </div>
 
@@ -1440,24 +1386,24 @@ async function loadAdminReport() {
                 </h3>
 
                 ${reportRow(
-                    'Total Scholarships',
-                    report.scholarships.total
-                )}
+            'Total Scholarships',
+            report.scholarships.total
+        )}
 
                 ${reportRow(
-                    'Approved',
-                    report.scholarships.approved
-                )}
+            'Approved',
+            report.scholarships.approved
+        )}
 
                 ${reportRow(
-                    'Pending',
-                    report.scholarships.pending
-                )}
+            'Pending',
+            report.scholarships.pending
+        )}
 
                 ${reportRow(
-                    'Rejected',
-                    report.scholarships.rejected
-                )}
+            'Rejected',
+            report.scholarships.rejected
+        )}
 
             </div>
 
@@ -1470,19 +1416,19 @@ async function loadAdminReport() {
                 </h3>
 
                 ${reportRow(
-                    'Fully Funded',
-                    report.funding.fully_funded
-                )}
+            'Fully Funded',
+            report.funding.fully_funded
+        )}
 
                 ${reportRow(
-                    'Partially Funded',
-                    report.funding.partially_funded
-                )}
+            'Partially Funded',
+            report.funding.partially_funded
+        )}
 
                 ${reportRow(
-                    'Tuition Only',
-                    report.funding.tuition_only
-                )}
+            'Tuition Only',
+            report.funding.tuition_only
+        )}
 
             </div>
 
@@ -1495,24 +1441,10 @@ async function loadAdminReport() {
                 </h3>
 
                 ${reportRow(
-                    'Total Applications',
-                    report.applications.total
-                )}
+            'Total Applications',
+            report.applications.total
+        )}
 
-                ${reportRow(
-                    'Under Review',
-                    report.applications.under_review
-                )}
-
-                ${reportRow(
-                    'Accepted',
-                    report.applications.accepted
-                )}
-
-                ${reportRow(
-                    'Rejected',
-                    report.applications.rejected
-                )}
 
             </div>
 
@@ -1524,10 +1456,9 @@ async function loadAdminReport() {
                     Scholarships by Country
                 </h3>
 
-                ${
-                    countries ||
-                    '<p>No country data available.</p>'
-                }
+                ${countries ||
+            '<p>No country data available.</p>'
+            }
 
             </div>
 
@@ -1570,9 +1501,7 @@ function reportRow(
 
 
 
-/* =========================================================
-   SETTINGS
-========================================================= */
+/*SETTINGS PAGE */
 
 function setupAdminSettings() {
 
@@ -1715,10 +1644,6 @@ function setupAdminSettings() {
 
 
 
-/* =========================================================
-   SHARED HELPERS
-========================================================= */
-
 function showMessage(
     message,
     type
@@ -1838,32 +1763,30 @@ function escapeHtml(value) {
     return String(
         value ?? ''
     )
-    .replaceAll(
-        '&',
-        '&amp;'
-    )
-    .replaceAll(
-        '<',
-        '&lt;'
-    )
-    .replaceAll(
-        '>',
-        '&gt;'
-    )
-    .replaceAll(
-        '"',
-        '&quot;'
-    )
-    .replaceAll(
-        "'",
-        '&#039;'
-    );
+        .replaceAll(
+            '&',
+            '&amp;'
+        )
+        .replaceAll(
+            '<',
+            '&lt;'
+        )
+        .replaceAll(
+            '>',
+            '&gt;'
+        )
+        .replaceAll(
+            '"',
+            '&quot;'
+        )
+        .replaceAll(
+            "'",
+            '&#039;'
+        );
 
 }
 
-/* =========================================================
-   COLLAPSIBLE ADMIN SIDEBAR
-========================================================= */
+/* COLLAPSIBLE ADMIN SIDEBAR*/
 
 function setupAdminCollapsibleSidebar() {
 
@@ -1928,9 +1851,6 @@ function setupAdminCollapsibleSidebar() {
     }
 
 
-    /*
-       Collapse / expand when clicked
-    */
 
     toggleButton.addEventListener(
         'click',
@@ -1947,19 +1867,12 @@ function setupAdminCollapsibleSidebar() {
                 );
 
 
-            /*
-               Remember state between admin pages
-            */
 
             localStorage.setItem(
                 'adminSidebarCollapsed',
                 String(isCollapsed)
             );
 
-
-            /*
-               Accessibility / tooltip
-            */
 
             toggleButton.setAttribute(
                 'aria-label',
