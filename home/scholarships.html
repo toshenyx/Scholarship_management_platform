@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Scholarships</title>
+    <title>Scholarships | Scholarly</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,84 +15,197 @@
 
     <div class="app">
 
+        <!-- ==============================
+             SIDEBAR
+        =============================== -->
+
         <aside class="sidebar" id="sidebar">
 
             <div class="sidebar-header">
+
                 <div class="logo-box">
+
                     <img src="../images/logo1.png" alt="Scholarly">
-                    <span class="logo-name">scholarly</span>
+
+                    <span class="logo-name">
+                        scholarly
+                    </span>
+
                 </div>
 
                 <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar">
                     ☰
                 </button>
+
             </div>
+
 
             <div class="sidebar-label">
                 STUDENT PORTAL
             </div>
 
+
             <nav class="nav">
 
                 <a href="dashboard.html" class="nav-btn">
                     <span class="icon">▦</span>
-                    <span class="nav-text">Dashboard</span>
+
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
                 </a>
+
 
                 <a href="scholarships.html" class="nav-btn nav-btn--active">
                     <span class="icon">🎓</span>
-                    <span class="nav-text">Scholarships</span>
+
+                    <span class="nav-text">
+                        Scholarships
+                    </span>
                 </a>
+
 
                 <a href="#" class="nav-btn" onclick="openProfile(); return false;">
                     <span class="icon">◔</span>
-                    <span class="nav-text">Profile</span>
+
+                    <span class="nav-text">
+                        Profile
+                    </span>
                 </a>
+
 
                 <a href="updates.html" class="nav-btn">
                     <span class="icon">♥</span>
-                    <span class="nav-text">Saved</span>
+
+                    <span class="nav-text">
+                        Saved
+                    </span>
                 </a>
+
 
                 <a href="../backend/logout.php" class="nav-btn logout-btn">
                     <span class="icon">↪</span>
-                    <span class="nav-text">Logout</span>
+
+                    <span class="nav-text">
+                        Logout
+                    </span>
                 </a>
 
             </nav>
 
         </aside>
 
-        <div class="main">
+
+        <!-- ==============================
+             MAIN CONTENT
+        =============================== -->
+
+        <main class="main scholarships-page">
 
 
-            <div class="post-scholarship-row">
-                <button type="button" class="post-scholarship-btn"
-                    onclick="window.location.href='../profile/postscholarship.html'">
-                    + Post Scholarship
-                </button>
-            </div>
+            <!-- PAGE HEADER -->
 
-            <div id="scholarship-message" style="
-                        display:none;
-                        margin:20px 0;
-                        padding:12px 16px;
-                        background:#ffffff;
-                        border-radius:10px;
+            <section class="scholarships-hero">
+
+                <div class="scholarships-hero-content">
+
+                    <span class="scholarships-eyebrow">
+                        SCHOLARSHIP DIRECTORY
+                    </span>
+
+                    <h1>
+                        Find your next opportunity
+                    </h1>
+
+                    <p>
+                        Explore verified scholarships from
+                        universities and organizations around
+                        the world.
+                    </p>
+
+                </div>
+
+
+                <button type="button" class="post-scholarship-btn" onclick="
+                        window.location.href=
+                        '../profile/postscholarship.html'
                     ">
+                    <span>＋</span>
+                    Post Scholarship
+                </button>
+
+            </section>
+
+
+            <!-- SEARCH BAR -->
+
+            <section class="scholarship-toolbar">
+
+                <div class="scholarship-page-search">
+
+                    <span class="scholarship-search-icon">
+                        🔍
+                    </span>
+
+                    <input type="search" id="global-search"
+                        placeholder="Search by scholarship, university, country or course..." autocomplete="off">
+
+                    <button type="button" id="global-search-btn">
+                        Search
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- MESSAGE -->
+
+            <div id="scholarship-message" class="scholarship-message" style="display: none;">
             </div>
 
-            <div class="results-grid" id="scholarship-results">
 
-                <p id="scholarships-loading">
-                    Loading scholarships...
+            <!-- RESULTS HEADER -->
+
+            <div class="scholarship-results-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        AVAILABLE OPPORTUNITIES
+                    </span>
+
+                    <h2>
+                        Scholarships
+                    </h2>
+
+                </div>
+
+                <p>
+                    Browse opportunities and view full
+                    eligibility details before applying.
                 </p>
 
             </div>
 
+
+            <!-- SCHOLARSHIPS FROM DATABASE -->
+
+            <section class="results-grid" id="scholarship-results">
+
+                <div class="scholarships-loading">
+
+                    <div class="loading-spinner"></div>
+
+                    <p>
+                        Loading scholarships...
+                    </p>
+
+                </div>
+
             </section>
 
-        </div>
+        </main>
 
     </div>
 

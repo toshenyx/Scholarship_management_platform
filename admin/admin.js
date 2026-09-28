@@ -16,7 +16,6 @@ document.addEventListener(
             return;
         }
 
-
         const page =
             document.body.dataset.page;
 
@@ -47,6 +46,13 @@ document.addEventListener(
             case 'users':
 
                 setupUsersPage();
+
+                break;
+
+
+            case 'post-scholarship':
+
+                setupPostScholarshipPage();
 
                 break;
 
@@ -1277,7 +1283,201 @@ function displayUsers(users) {
 
 }
 
+function setupPostScholarshipPage() {
 
+    const form =
+        document.getElementById(
+            'post-scholarship-form'
+        );
+
+
+    if (!form) {
+
+        console.error(
+            'Post scholarship form was not found.'
+        );
+
+        return;
+    }
+
+
+    form.addEventListener(
+        'submit',
+        async event => {
+
+            event.preventDefault();
+
+
+            const submitButton =
+                form.querySelector(
+                    'button[type="submit"], input[type="submit"]'
+                );
+
+
+            const originalButtonText =
+                submitButton
+                    ? (
+                        submitButton.tagName === 'INPUT'
+                            ? submitButton.value
+                            : submitButton.textContent
+                    )
+                    : '';
+
+
+            if (submitButton) {
+
+                submitButton.disabled = true;
+
+
+                if (
+                    submitButton.tagName ===
+                    'INPUT'
+                ) {
+
+                    submitButton.value =
+                        'Publishing...';
+
+                } else {
+
+                    submitButton.textContent =
+                        'Publishing...';
+                }
+            }
+
+
+            try {
+
+                const formData =
+                    new FormData(form);
+
+
+                const response =
+                    await fetch(
+                        '../backend/admin_post_scholarship.php',
+                        {
+                            method: 'POST',
+
+                            credentials:
+                                'include',
+
+                            body:
+                                formData
+                        }
+                    );
+
+
+                const responseText =
+                    await response.text();
+
+
+                let data;
+
+
+                try {
+
+                    data =
+                        JSON.parse(
+                            responseText
+                        );
+
+                } catch (error) {
+
+                    console.error(
+                        'Invalid server response:',
+                        responseText
+                    );
+
+
+                    throw new Error(
+                        'The server returned an invalid response.'
+                    );
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        'Could not publish scholarship.'
+                    );
+                }
+
+
+                if (!data.success) {
+
+                    showMessage(
+                        data.message ||
+                        'Could not publish scholarship.',
+                        'error'
+                    );
+
+                    return;
+                }
+
+
+                showMessage(
+                    data.message ||
+                    'Scholarship published successfully.',
+                    'success'
+                );
+
+
+                form.reset();
+
+
+                setTimeout(
+                    () => {
+
+                        window.location.href =
+                            'scholarships.html';
+
+                    },
+                    700
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    'Publish scholarship error:',
+                    error
+                );
+
+
+                showMessage(
+                    error.message ||
+                    'Could not publish scholarship.',
+                    'error'
+                );
+
+
+            } finally {
+
+                if (submitButton) {
+
+                    submitButton.disabled =
+                        false;
+
+
+                    if (
+                        submitButton.tagName ===
+                        'INPUT'
+                    ) {
+
+                        submitButton.value =
+                            originalButtonText;
+
+                    } else {
+
+                        submitButton.textContent =
+                            originalButtonText;
+                    }
+                }
+            }
+
+        }
+    );
+}
 
 /*REPORT PAGE*/
 

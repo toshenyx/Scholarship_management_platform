@@ -1035,11 +1035,14 @@ function displayScholarships(
             'scholarship-results'
         );
 
+
     if (!resultsContainer) {
         return;
     }
 
+
     resultsContainer.innerHTML = '';
+
 
     if (
         !Array.isArray(scholarships) ||
@@ -1047,15 +1050,29 @@ function displayScholarships(
     ) {
 
         resultsContainer.innerHTML = `
+
             <div class="no-scholarships">
+
+                <div class="no-scholarships-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    No scholarships found
+                </h3>
+
                 <p>
-                    No scholarships found.
+                    Try changing your search
+                    or check back later for
+                    new opportunities.
                 </p>
+
             </div>
         `;
 
         return;
     }
+
 
     scholarships.forEach(
         (scholarship) => {
@@ -1064,6 +1081,7 @@ function displayScholarships(
                 document.createElement(
                     'article'
                 );
+
 
             card.className =
                 'result-card';
@@ -1103,7 +1121,7 @@ function displayScholarships(
                 )
                     ? scholarship.benefits
                         .map(
-                            (benefit) =>
+                            benefit =>
                                 formatBenefitType(
                                     benefit.benefit_type
                                 )
@@ -1112,241 +1130,426 @@ function displayScholarships(
                     : [];
 
 
+            const scholarshipId =
+                Number(
+                    scholarship.scholarship_id
+                );
+
+
             card.innerHTML = `
 
-                <div class="result-card-content">
+                <!-- CARD HEADER -->
 
-                    <div class="result-header">
+                <div class="scholarship-card-top">
+
+                    <div class="scholarship-card-heading">
+
+                        <div class="scholarship-card-icon">
+                            🎓
+                        </div>
 
                         <div>
 
                             <h3 class="result-title">
+
                                 ${escapeHtml(
                 scholarship.title ||
                 'Untitled scholarship'
             )}
+
                             </h3>
 
+
                             <p class="result-provider">
+
                                 ${escapeHtml(
                 scholarship.provider ||
                 'Provider not specified'
             )}
+
                             </p>
 
                         </div>
 
-                        <span class="funding-badge">
-
-                            ${escapeHtml(
-                fundingLabel
-            )}
-
-                        </span>
-
                     </div>
 
 
-                    <p class="result-description">
+                    <span class="funding-badge">
 
                         ${escapeHtml(
+                fundingLabel
+            )}
+
+                    </span>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <p class="result-description">
+
+                    ${escapeHtml(
                 scholarship.description ||
                 'No description provided.'
             )}
 
-                    </p>
+                </p>
 
 
-                    <div class="scholarship-details">
+                <!-- IMPORTANT INFORMATION -->
 
-                        <p>
+                <div class="scholarship-summary-grid">
+
+
+                    <div class="scholarship-summary-item">
+
+                        <span class="summary-icon">
+                            🌍
+                        </span>
+
+                        <div>
+
+                            <span class="summary-label">
+                                Country
+                            </span>
+
                             <strong>
-                                Country:
-                            </strong>
 
-                            ${escapeHtml(
+                                ${escapeHtml(
                 scholarship.country ||
                 'Not specified'
             )}
-                        </p>
 
-
-                        <p>
-                            <strong>
-                                University:
                             </strong>
 
-                            ${escapeHtml(
-                scholarship.university ||
-                'Not specified'
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                Education level:
-                            </strong>
-
-                            ${escapeHtml(
-                scholarship.education_level ||
-                'Not specified'
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                Eligible courses:
-                            </strong>
-
-                            ${escapeHtml(
-                scholarship.eligible_courses ||
-                'Not specified'
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                Minimum GPA:
-                            </strong>
-
-                            ${escapeHtml(
-                scholarship.minimum_gpa ??
-                'Not specified'
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                Eligible nationalities:
-                            </strong>
-
-                            ${escapeHtml(
-                scholarship.eligible_nationalities ||
-                'Not specified'
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                Age limit:
-                            </strong>
-
-                            ${escapeHtml(
-                scholarship.age_limit ??
-                'Not specified'
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                IELTS:
-                            </strong>
-
-                            ${escapeHtml(
-                ieltsLabel
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                Duration:
-                            </strong>
-
-                            ${escapeHtml(
-                scholarship.duration ||
-                'Not specified'
-            )}
-                        </p>
-
-
-                        <p>
-                            <strong>
-                                Deadline:
-                            </strong>
-
-                            ${escapeHtml(
-                deadlineLabel
-            )}
-                        </p>
-
-
-                        ${benefits.length > 0
-                    ? `
-                                <p>
-                                    <strong>
-                                        Benefits:
-                                    </strong>
-
-                                    ${escapeHtml(
-                        benefits.join(', ')
-                    )}
-                                </p>
-                                `
-                    : ''
-                }
-
-
-                        ${statusLabel
-                    ? `
-                                <p>
-                                    <strong>
-                                        Status:
-                                    </strong>
-
-                                    ${escapeHtml(
-                        statusLabel
-                    )}
-                                </p>
-                                `
-                    : ''
-                }
+                        </div>
 
                     </div>
 
 
-                    <div class="result-actions">
+                    <div class="scholarship-summary-item">
 
-                        <button
-                            type="button"
-                            class="save-scholarship-btn"
-                            data-scholarship-id="${Number(
-                    scholarship.scholarship_id
-                )}"
-                        >
-                            Save
-                        </button>
+                        <span class="summary-icon">
+                            🏫
+                        </span>
+
+                        <div>
+
+                            <span class="summary-label">
+                                University
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                scholarship.university ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
 
 
-                        ${scholarship.application_link
+                    <div class="scholarship-summary-item">
+
+                        <span class="summary-icon">
+                            📚
+                        </span>
+
+                        <div>
+
+                            <span class="summary-label">
+                                Study level
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                scholarship.education_level ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="
+                        scholarship-summary-item
+                        scholarship-summary-item--deadline
+                    ">
+
+                        <span class="summary-icon">
+                            📅
+                        </span>
+
+                        <div>
+
+                            <span class="summary-label">
+                                Application deadline
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                deadlineLabel ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPANDED DETAILS -->
+
+                <div
+                    class="scholarship-extra-details"
+                    id="scholarship-details-${scholarshipId}"
+                >
+
+                    <div class="scholarship-details-divider">
+                    </div>
+
+
+                    <h4>
+                        Eligibility & scholarship details
+                    </h4>
+
+
+                    <div class="scholarship-details-grid">
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Eligible courses
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                scholarship.eligible_courses ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Minimum GPA
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                scholarship.minimum_gpa ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Eligible nationalities
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                scholarship.eligible_nationalities ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Age limit
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                scholarship.age_limit ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                IELTS
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                ieltsLabel
+            )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Duration
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                scholarship.duration ||
+                'Not specified'
+            )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item detail-item--wide">
+
+                            <span>
+                                Benefits
+                            </span>
+
+                            <strong>
+
+                                ${benefits.length
+                    ? escapeHtml(
+                        benefits.join(', ')
+                    )
+                    : 'Not specified'
+                }
+
+                            </strong>
+
+                        </div>
+
+
+                        ${statusLabel
                     ? `
-        <button
-            type="button"
-            class="apply-scholarship-btn"
-            data-scholarship-id="${Number(
-                        scholarship.scholarship_id
-                    )}"
-            data-application-link="${escapeHtml(
-                        scholarship.application_link
-                    )}"
-        >
-            Apply
-        </button>
-    `
+
+                                <div class="detail-item">
+
+                                    <span>
+                                        Verification
+                                    </span>
+
+                                    <strong class="verified-status">
+
+                                        ✓ ${escapeHtml(
+                        statusLabel
+                    )}
+
+                                    </strong>
+
+                                </div>
+
+                                `
                     : ''
                 }
 
                     </div>
 
                 </div>
+
+
+                <!-- ACTION AREA -->
+
+                <div class="result-actions">
+
+
+                    <button
+                        type="button"
+                        class="save-scholarship-btn"
+                        data-scholarship-id="${scholarshipId}"
+                    >
+                        ♡ Save
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="scholarship-details-btn"
+                        aria-expanded="false"
+                        aria-controls="scholarship-details-${scholarshipId}"
+                    >
+                        View Details
+                        <span class="details-arrow">
+                            ↓
+                        </span>
+                    </button>
+
+
+                    ${scholarship.application_link
+                    ? `
+        <button
+            type="button"
+            class="apply-scholarship-btn"
+            data-scholarship-id="${scholarshipId}"
+            data-application-link="${escapeHtml(
+                        scholarship.application_link
+                    )}"
+        >
+            Apply Now
+            <span>↗</span>
+        </button>
+        `
+                    : `
+        <button
+            type="button"
+            class="
+                apply-scholarship-btn
+                apply-scholarship-btn--disabled
+            "
+            disabled
+        >
+            Application unavailable
+        </button>
+        `
+                }
+
+                </div>
+
             `;
 
+
+            /*
+            ---------------------------------------------
+            SAVE SCHOLARSHIP
+            ---------------------------------------------
+            */
 
             const saveButton =
                 card.querySelector(
@@ -1369,9 +1572,15 @@ function displayScholarships(
                 );
             }
 
+            /*
+---------------------------------------------
+APPLY FOR SCHOLARSHIP
+---------------------------------------------
+*/
+
             const applyButton =
                 card.querySelector(
-                    '.apply-scholarship-btn'
+                    '.apply-scholarship-btn:not(.apply-scholarship-btn--disabled)'
                 );
 
 
@@ -1381,11 +1590,80 @@ function displayScholarships(
                     'click',
                     async () => {
 
+                        const scholarshipId =
+                            applyButton.dataset
+                                .scholarshipId;
+
+
+                        const applicationLink =
+                            applyButton.dataset
+                                .applicationLink;
+
+
                         await recordScholarshipApplication(
-                            scholarship.scholarship_id,
-                            scholarship.application_link,
+                            scholarshipId,
+                            applicationLink,
                             applyButton
                         );
+
+                    }
+                );
+            }
+
+
+            /*
+            ---------------------------------------------
+            VIEW / HIDE DETAILS
+            ---------------------------------------------
+            */
+
+            const detailsButton =
+                card.querySelector(
+                    '.scholarship-details-btn'
+                );
+
+
+            const details =
+                card.querySelector(
+                    '.scholarship-extra-details'
+                );
+
+
+            if (
+                detailsButton &&
+                details
+            ) {
+
+                detailsButton.addEventListener(
+                    'click',
+                    () => {
+
+                        const isOpen =
+                            details.classList.toggle(
+                                'scholarship-extra-details--open'
+                            );
+
+
+                        detailsButton.setAttribute(
+                            'aria-expanded',
+                            String(isOpen)
+                        );
+
+
+                        detailsButton.innerHTML =
+                            isOpen
+                                ? `
+                                    Hide Details
+                                    <span class="details-arrow">
+                                        ↑
+                                    </span>
+                                `
+                                : `
+                                    View Details
+                                    <span class="details-arrow">
+                                        ↓
+                                    </span>
+                                `;
 
                     }
                 );
@@ -1395,8 +1673,231 @@ function displayScholarships(
             resultsContainer.appendChild(
                 card
             );
+
         }
     );
+}
+
+/* =========================================================
+   RECORD SCHOLARSHIP APPLICATION
+========================================================= */
+
+async function recordScholarshipApplication(
+    scholarshipId,
+    applicationLink,
+    button = null
+) {
+
+    if (
+        !scholarshipId ||
+        !applicationLink
+    ) {
+
+        showScholarshipMessage(
+            'Application information is missing.',
+            'error'
+        );
+
+        return false;
+    }
+
+
+    const originalButtonText =
+        button
+            ? button.innerHTML
+            : 'Apply Now';
+
+
+    try {
+
+        /*
+        ---------------------------------------------
+        BUTTON LOADING STATE
+        ---------------------------------------------
+        */
+
+        if (button) {
+
+            button.disabled = true;
+
+            button.innerHTML =
+                'Recording application...';
+        }
+
+
+        /*
+        ---------------------------------------------
+        BUILD FORM DATA
+        ---------------------------------------------
+        */
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            'scholarship_id',
+            scholarshipId
+        );
+
+
+        /*
+        ---------------------------------------------
+        SEND APPLICATION TO PHP
+        ---------------------------------------------
+        */
+
+        const response =
+            await fetch(
+                '../backend/apply_scholarship.php',
+                {
+                    method: 'POST',
+
+                    credentials:
+                        'include',
+
+                    body:
+                        formData
+                }
+            );
+
+
+        const responseText =
+            await response.text();
+
+
+        let data;
+
+
+        try {
+
+            data =
+                JSON.parse(
+                    responseText
+                );
+
+        } catch (error) {
+
+            console.error(
+                'Invalid apply response:',
+                responseText
+            );
+
+
+            throw new Error(
+                'The server returned an invalid response.'
+            );
+        }
+
+
+        console.log(
+            'APPLICATION RESPONSE:',
+            data
+        );
+
+
+        /*
+        ---------------------------------------------
+        SESSION EXPIRED
+        ---------------------------------------------
+        */
+
+        if (
+            data.logged_in === false
+        ) {
+
+            window.location.href =
+                '../signin/signin.html';
+
+            return false;
+        }
+
+
+        /*
+        ---------------------------------------------
+        APPLICATION ERROR
+        ---------------------------------------------
+        */
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.message ||
+                'Unable to record application.'
+            );
+        }
+
+
+        /*
+        ---------------------------------------------
+        SUCCESS
+        ---------------------------------------------
+        */
+
+        if (button) {
+
+            button.innerHTML =
+                '✓ Applied';
+
+            button.disabled =
+                false;
+        }
+
+
+        showScholarshipMessage(
+            data.already_recorded
+                ? 'You already recorded this application.'
+                : 'Application recorded successfully.',
+            'success'
+        );
+
+
+        /*
+        ---------------------------------------------
+        OPEN EXTERNAL APPLICATION PAGE
+        ---------------------------------------------
+        */
+
+        window.open(
+            applicationLink,
+            '_blank',
+            'noopener,noreferrer'
+        );
+
+
+        return true;
+
+
+    } catch (error) {
+
+        console.error(
+            'Application recording failed:',
+            error
+        );
+
+
+        if (button) {
+
+            button.disabled =
+                false;
+
+            button.innerHTML =
+                originalButtonText;
+        }
+
+
+        showScholarshipMessage(
+            error.message ||
+            'Unable to record application.',
+            'error'
+        );
+
+
+        return false;
+    }
 }
 
 
@@ -2575,11 +3076,6 @@ function lockDashboardFeatures(
 // STUDENT COMMUNITY
 
 function openStudentCommunity() {
-
-    /*
-       Replace this with the real Discord
-       invitation when we create/connect it.
-    */
 
     const discordInvite =
         'https://discord.gg/THNBweKWq';
@@ -3884,7 +4380,7 @@ async function loadUpdates() {
 }
 
 
-// ISPLAY APPLICATION UPDATES
+// DISPLAY APPLICATION UPDATES
 
 function displayApplicationUpdates(
     applications

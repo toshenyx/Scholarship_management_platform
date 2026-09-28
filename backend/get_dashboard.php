@@ -9,8 +9,6 @@ header(
 require_once "db.php";
 
 
-/*RESPONSE HELPER*/
-
 function sendDashboardResponse(
     $data,
     $status = 200
